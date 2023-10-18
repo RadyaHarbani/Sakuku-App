@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "388317245979",
+    "project_id": "sakuku-application",
+    "storage_bucket": "sakuku-application.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:388317245979:android:f391a24523db9bd8967ebe",
+        "android_client_info": {
+          "package_name": "com.example.sakuku_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBaiuYt9czXkwtzGA1EX3bM9mifa9yVPR0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
