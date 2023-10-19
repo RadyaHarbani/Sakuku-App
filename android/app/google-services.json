@@ -12,7 +12,20 @@
           "package_name": "com.example.sakuku_app"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "388317245979-knes86lgj13c9g1c5tm8equ1dpg558b8.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.sakuku_app",
+            "certificate_hash": "8939b592fb21162e569f9cb8b412ea7ded8982f5"
+          }
+        },
+        {
+          "client_id": "388317245979-ijj2mrd49ca3vku6jpi93j8qeiium3dg.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyBaiuYt9czXkwtzGA1EX3bM9mifa9yVPR0"
@@ -20,7 +33,12 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "388317245979-ijj2mrd49ca3vku6jpi93j8qeiium3dg.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         }
       }
     }
