@@ -48,3 +48,14 @@ const String onboardingImage3 = 'assets/images/on_boarding_images/on_boarding_im
 
 //TARGET IMAGE ASSETS
 const String footerTarget = 'assets/images/target_images/footer_target_page.png';
+
+//ICONS ASSETS
+const String iconBelanja = 'assets/icons/icon_belanja.png';
+const String iconDanaDarurat = 'assets/icons/icon_dana_darurat.png';
+const String iconGoogle = 'assets/icons/icon_google.svg'; //ini svg
+const String iconIbadah = 'assets/icons/icon_ibadah.png';
+const String iconLiburan = 'assets/icons/icon_liburan.png';
+const String iconPemasukan = 'assets/icons/icon_pemasukan.png';
+const String iconPendidikan = 'assets/icons/icon_pendidikan.png';
+const String iconPinjaman = 'assets/icons/icon_pinjaman.png';
+const String iconTarget = 'assets/icons/icon_target.png';
