@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:sakuku_app/routes/app_pages.dart';
 
 class SplashScreenController extends GetxController {
     Future splashScreen() async {
@@ -6,7 +7,7 @@ class SplashScreenController extends GetxController {
       const Duration(seconds: 3),
       () {
         Get.offAndToNamed(
-          '/on-boarding-page',
+          Routes.ON_BOARDING_PAGE,
         );
       },
     );
