@@ -4,8 +4,8 @@ import 'package:sakuku_app/modules/splash_screen/controllers/splash_screen_contr
 class SplashScreenBinding extends Bindings {
   @override
   void dependencies() {
-    Get.lazyPut<SplashScreenController>(
-      () => SplashScreenController(),
+    Get.put<SplashScreenController>(
+       SplashScreenController(),
     );
   }
 }

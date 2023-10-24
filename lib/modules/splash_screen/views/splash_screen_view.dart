@@ -5,7 +5,7 @@ import 'package:sakuku_app/helpers/themes.dart';
 import 'package:sakuku_app/modules/splash_screen/controllers/splash_screen_controller.dart';
 
 class SplashScreenView extends GetView<SplashScreenController> {
-  const SplashScreenView({super.key});
+  const SplashScreenView({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
