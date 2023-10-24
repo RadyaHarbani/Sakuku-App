@@ -34,7 +34,7 @@ class ButtonLandingPage extends StatelessWidget {
           ),
         ),
         child: Text(
-          "Ya",
+          textButton,
           style: GoogleFonts.poppins(
             fontSize: figmaFontsize(17),
             fontWeight: FontWeight.bold,
