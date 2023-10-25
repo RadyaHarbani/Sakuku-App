@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:sakuku_app/components/button_landing_page.dart';
 import 'package:sakuku_app/helpers/themes.dart';
 
 class LandingPageView extends StatelessWidget {
@@ -62,21 +62,16 @@ class LandingPageView extends StatelessWidget {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text(
-                    "Apakah Kamu Punya",
-                    style: GoogleFonts.poppins(
-                      fontSize: figmaFontsize(20),
-                      fontWeight: FontWeight.bold,
-                      color: Colors.black,
-                    ),
-                  ),
-                  Text(
-                    "Akun?",
-                    style: GoogleFonts.poppins(
-                      height: 1.3,
-                      fontSize: figmaFontsize(20),
-                      fontWeight: FontWeight.bold,
-                      color: Colors.black,
+                  Container(
+                    width: 250,
+                    child: Text(
+                      "Apakah Kamu Punya Akun?",
+                      textAlign: TextAlign.center,
+                      style: GoogleFonts.poppins(
+                        fontSize: figmaFontsize(20),
+                        fontWeight: FontWeight.bold,
+                        color: Colors.black,
+                      ),
                     ),
                   ),
                   SizedBox(height: 30),
@@ -84,56 +79,16 @@ class LandingPageView extends StatelessWidget {
                     padding: const EdgeInsets.symmetric(horizontal: 40),
                     child: Row(
                       children: [
-                        Expanded(
-                          child: ElevatedButton(
-                            onPressed: () {
-                              Get.toNamed('/login-page');
-                            },
-                            style: ElevatedButton.styleFrom(
-                              padding: EdgeInsets.all(13),
-                              backgroundColor: fourthColor,
-                              elevation: 0,
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(25),
-                              ),
-                            ),
-                            child: Text(
-                              "Ya",
-                              style: GoogleFonts.poppins(
-                                fontSize: figmaFontsize(17),
-                                fontWeight: FontWeight.bold,
-                                color: Colors.white,
-                              ),
-                            ),
-                          ),
+                        ButtonLandingPage(
+                          buttonColor: fourthColor,
+                          textButton: "Ya",
+                          isBorder: false,
                         ),
                         SizedBox(width: 15),
-                        Expanded(
-                          child: ElevatedButton(
-                            onPressed: () {
-                              Get.toNamed('/register-page');
-                            },
-                            style: ElevatedButton.styleFrom(
-                              padding: EdgeInsets.all(13),
-                              backgroundColor: Colors.transparent,
-                              side: BorderSide(
-                                color: fourthColor,
-                                width: 2,
-                              ),
-                              elevation: 0,
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(25),
-                              ),
-                            ),
-                            child: Text(
-                              "Tidak",
-                              style: GoogleFonts.poppins(
-                                fontSize: figmaFontsize(17),
-                                fontWeight: FontWeight.bold,
-                                color: fourthColor,
-                              ),
-                            ),
-                          ),
+                        ButtonLandingPage(
+                          buttonColor: fourthColor,
+                          textButton: "Tidak",
+                          isBorder: true,
                         ),
                       ],
                     ),
