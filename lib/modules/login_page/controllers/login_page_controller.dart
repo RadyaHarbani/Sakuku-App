@@ -6,9 +6,9 @@ import 'package:sakuku_app/routes/app_pages.dart';
 
 class LoginPageController extends GetxController {
   final formField = GlobalKey<FormState>();
-  TextEditingController? cUsername;
-  TextEditingController? cEmail;
-  TextEditingController? cPassword;
+  TextEditingController? cUsernameSignIn;
+  TextEditingController? cEmailSignIn;
+  TextEditingController? cPasswordSignIn;
   RxBool isVisibleSignIn = true.obs;
   RxBool isEmailSignIn = false.obs;
   RxBool isGoogleSignIn = false.obs;
@@ -23,9 +23,9 @@ class LoginPageController extends GetxController {
   @override
   void onInit() {
     super.onInit();
-    cUsername = new TextEditingController();
-    cEmail = new TextEditingController();
-    cPassword = new TextEditingController();
+    cUsernameSignIn = new TextEditingController();
+    cEmailSignIn = new TextEditingController();
+    cPasswordSignIn = new TextEditingController();
   }
 
   Future<void> signInWithEmailAndPassword() async {
@@ -34,17 +34,10 @@ class LoginPageController extends GetxController {
       isUsernameEmailSignIn.value = true;
 
       await FirebaseAuth.instance.signInWithEmailAndPassword(
-        email: cEmail!.text,
-        password: cPassword!.text,
+        email: cEmailSignIn!.text,
+        password: cPasswordSignIn!.text,
       );
-      Get.snackbar("Selamat", "Login Berhasil Sebagai" + cUsername!.text);
-      // Navigator.pushAndRemoveUntil(
-      //   context,
-      //   MaterialPageRoute(
-      //     builder: (context) => BottomNavComponent(),
-      //   ),
-      //   (route) => false,
-      // );
+      Get.snackbar("Selamat", "Login Berhasil Sebagai" + cUsernameSignIn!.text);
       Get.offAllNamed(Routes.HOME_PAGE);
       isEmailSignIn.value = false;
     } catch (e) {
@@ -69,25 +62,22 @@ class LoginPageController extends GetxController {
       );
 
       await FirebaseAuth.instance.signInWithCredential(credential);
-
       Get.snackbar(
         "Haloo...👋",
         "Login Sebagai " + googleUser.displayName.toString(),
       );
-      // Navigator.pushAndRemoveUntil(
-      //   context,
-      //   MaterialPageRoute(
-      //     builder: (context) => BottomNavComponent(),
-      //   ),
-      //   (route) => false,
-      // );
+
       Get.offAllNamed(Routes.HOME_PAGE);
       isGoogleSignIn.value = false;
+
     } catch (e) {
       isGoogleSignIn.value = false;
       isUsernameGoogleSignIn.value = false;
+
       print('Google Sign-In error: $e');
+
       Get.snackbar("Waduhh:(", "Kayaknya Jaringannya Lagi Gangguan Nihh");
+
       isGoogleSignIn.value = true;
     }
   }

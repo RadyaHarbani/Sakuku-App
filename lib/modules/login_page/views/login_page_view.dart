@@ -71,7 +71,7 @@ class LoginPageView extends GetView<LoginPageController> {
                 child: Column(
                   children: [
                     TextfieldLoginRegister(
-                      fieldController: controller.cUsername,
+                      fieldController: controller.cUsernameSignIn,
                       obscureText: false,
                       keyboardType: TextInputType.name,
                       hintText: "Username",
@@ -91,7 +91,7 @@ class LoginPageView extends GetView<LoginPageController> {
                       height: 10,
                     ),
                     TextfieldLoginRegister(
-                      fieldController: controller.cEmail,
+                      fieldController: controller.cEmailSignIn,
                       obscureText: false,
                       keyboardType: TextInputType.emailAddress,
                       hintText: "Email",
@@ -114,7 +114,7 @@ class LoginPageView extends GetView<LoginPageController> {
                     ),
                     Obx(
                       () => TextfieldLoginRegister(
-                        fieldController: controller.cPassword,
+                        fieldController: controller.cPasswordSignIn,
                         obscureText: controller.isVisibleSignIn.value,
                         keyboardType: TextInputType.visiblePassword,
                         hintText: "Password",
