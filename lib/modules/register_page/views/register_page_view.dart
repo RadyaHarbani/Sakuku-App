@@ -55,16 +55,8 @@ class RegisterPageView extends GetView<RegisterPageController> {
                   color: primaryColor,
                 ),
               ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 20),
-                    child: Image.asset(
-                      'assets/images/login_register_images/robot_register_image.png',
-                    ),
-                  ),
-                ],
+              SizedBox(
+                height: 30,
               ),
               Form(
                 key: controller.formField,
