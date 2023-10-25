@@ -26,7 +26,7 @@ class OnBoardingPageView extends GetView<OnBoardingPageController> {
       body: SafeArea(
         child: Column(
           children: [
-            Expanded(
+            Flexible(
               child: PageView.builder(
                 controller: controller.pageController,
                 onPageChanged: (value) {
@@ -44,16 +44,6 @@ class OnBoardingPageView extends GetView<OnBoardingPageController> {
               padding: const EdgeInsets.only(right: 25, left: 25, bottom: 30),
               child: Column(
                 children: [
-                  ...List.generate(
-                    contentList.list_on_board.length,
-                    (index) => Padding(
-                      padding: const EdgeInsets.only(bottom: 8),
-                      child: Obx(() => DotIndicator(
-                            isActive: index == controller.currentIndex.value,
-                          )),
-                    ),
-                  ),
-                  Spacer(),
                   Obx(
                     () => controller.currentIndex.value ==
                             contentList.list_on_board.length - 1
@@ -77,7 +67,7 @@ class OnBoardingPageView extends GetView<OnBoardingPageController> {
                                   'Mulai Sekarang',
                                   style: TextStyle(
                                     color: Colors.white,
-                                    fontSize: 13,
+                                    fontSize: 17,
                                     fontWeight: FontWeight.bold,
                                   ),
                                 ),
@@ -109,13 +99,28 @@ class OnBoardingPageView extends GetView<OnBoardingPageController> {
                                   'Lanjut',
                                   style: TextStyle(
                                     color: Colors.white,
-                                    fontSize: 13,
+                                    fontSize: 17,
                                     fontWeight: FontWeight.bold,
                                   ),
                                 ),
                               ),
                             ),
                           ),
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      ...List.generate(
+                        contentList.list_on_board.length,
+                        (index) => Padding(
+                          padding: const EdgeInsets.only(top: 20, left: 3),
+                          child: Obx(() => DotIndicator(
+                                isActive:
+                                    index == controller.currentIndex.value,
+                              )),
+                        ),
+                      ),
+                    ],
                   ),
                 ],
               ),

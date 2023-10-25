@@ -20,7 +20,7 @@ class OnBoardingContent extends StatelessWidget {
         Spacer(),
         Image.asset(
           image,
-          width: 200,
+          width: 250,
         ),
         Spacer(),
         Container(
@@ -90,13 +90,13 @@ class DotIndicator extends StatelessWidget {
   Widget build(BuildContext context) {
     return AnimatedContainer(
       duration: Duration(milliseconds: 300),
-      height: 4,
-      width: isActive ? 12 : 4,
+      height: 5,
+      width: isActive ? 115 : 57,
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(12),
+        borderRadius: BorderRadius.circular(15),
         color: isActive
-            ? Color.fromARGB(255, 0, 139, 128)
-            : Color.fromARGB(255, 0, 139, 128).withOpacity(0.5),
+            ? Color.fromRGBO(57, 62, 70, 1)
+            : Color.fromRGBO(150, 150, 150, 34),
       ),
     );
   }
