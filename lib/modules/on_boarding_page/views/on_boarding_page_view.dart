@@ -53,7 +53,7 @@ class OnBoardingPageView extends GetView<OnBoardingPageController> {
                         ? GestureDetector(
                             onTap: () => Get.offAndToNamed(Routes.LANDING_PAGE),
                             child: Container(
-                              height: 60,
+                              height: 55,
                               width: 276,
                               decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(15),
@@ -85,7 +85,7 @@ class OnBoardingPageView extends GetView<OnBoardingPageController> {
                               );
                             },
                             child: Container(
-                              height: 60,
+                              height: 55,
                               width: 276,
                               decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(15),
@@ -109,6 +109,9 @@ class OnBoardingPageView extends GetView<OnBoardingPageController> {
                               ),
                             ),
                           ),
+                  ),
+                  SizedBox(
+                    height: 20,
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
