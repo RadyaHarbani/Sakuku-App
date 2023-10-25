@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:sakuku_app/helpers/themes.dart';
 
-//On Boarding Content
 class OnBoardingContent extends StatelessWidget {
   const OnBoardingContent({
     super.key,
@@ -17,18 +16,17 @@ class OnBoardingContent extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Spacer(),
         Image.asset(
           image,
-          width: 250,
         ),
-        Spacer(),
+        SizedBox(height: 30),
         Container(
-          width: 260,
+          width: 300,
           child: Text(
             title,
             textAlign: TextAlign.center,
             style: GoogleFonts.poppins(
+              height: 1.3,
               fontSize: 22,
               fontWeight: FontWeight.bold,
             ),
@@ -37,7 +35,7 @@ class OnBoardingContent extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.only(top: 15),
           child: SizedBox(
-            width: 290,
+            width: 270,
             child: Text(
               description,
               textAlign: TextAlign.center,
@@ -48,13 +46,11 @@ class OnBoardingContent extends StatelessWidget {
             ),
           ),
         ),
-        Spacer(),
       ],
     );
   }
 }
 
-//List On Boarding Content
 class OnBoardingContentList {
   final List<OnBoardingContent> list_on_board = [
     OnBoardingContent(
@@ -75,29 +71,4 @@ class OnBoardingContentList {
           "Hemat pangkal kaya, mulai sekarang untuk komitmen dengan dirimu",
     ),
   ];
-}
-
-//Dot Indicator
-class DotIndicator extends StatelessWidget {
-  const DotIndicator({
-    super.key,
-    this.isActive = false,
-  });
-
-  final bool isActive;
-
-  @override
-  Widget build(BuildContext context) {
-    return AnimatedContainer(
-      duration: Duration(milliseconds: 300),
-      height: 5,
-      width: isActive ? 115 : 57,
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(15),
-        color: isActive
-            ? Color.fromRGBO(57, 62, 70, 1)
-            : Color.fromRGBO(150, 150, 150, 34),
-      ),
-    );
-  }
 }
