@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:sakuku_app/components/button_landing_page.dart';
 import 'package:sakuku_app/helpers/themes.dart';
+import 'package:sakuku_app/routes/app_pages.dart';
 
 class LandingPageView extends StatelessWidget {
   const LandingPageView({super.key});
@@ -80,12 +82,14 @@ class LandingPageView extends StatelessWidget {
                     child: Row(
                       children: [
                         ButtonLandingPage(
+                          onPressed: () => Get.toNamed(Routes.LOGIN_PAGE),
                           buttonColor: fourthColor,
                           textButton: "Ya",
                           isBorder: false,
                         ),
                         SizedBox(width: 15),
                         ButtonLandingPage(
+                          onPressed: () => Get.toNamed(Routes.REGISTER_PAGE),
                           buttonColor: fourthColor,
                           textButton: "Tidak",
                           isBorder: true,
