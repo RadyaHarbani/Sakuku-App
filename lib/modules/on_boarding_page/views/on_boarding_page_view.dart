@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:sakuku_app/components/dot_indicator_onboard_page.dart';
+import 'package:sakuku_app/components/on_boarding_content_page.dart';
+import 'package:sakuku_app/helpers/themes.dart';
 import 'package:sakuku_app/routes/app_pages.dart';
 import '../controllers/on_boarding_page_controller.dart';
-import 'package:sakuku_app/modules/on_boarding_page/views/widgets/on_boarding_widget.dart';
 
 class OnBoardingPageView extends GetView<OnBoardingPageController> {
   const OnBoardingPageView({super.key});
@@ -50,7 +53,7 @@ class OnBoardingPageView extends GetView<OnBoardingPageController> {
                         ? GestureDetector(
                             onTap: () => Get.offAndToNamed(Routes.LANDING_PAGE),
                             child: Container(
-                              height: 52,
+                              height: 60,
                               width: 276,
                               decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(15),
@@ -65,10 +68,10 @@ class OnBoardingPageView extends GetView<OnBoardingPageController> {
                               child: Center(
                                 child: Text(
                                   'Mulai Sekarang',
-                                  style: TextStyle(
+                                  style: GoogleFonts.poppins(
                                     color: Colors.white,
-                                    fontSize: 17,
-                                    fontWeight: FontWeight.bold,
+                                    fontSize: figmaFontsize(17),
+                                    fontWeight: FontWeight.w600,
                                   ),
                                 ),
                               ),
@@ -82,7 +85,7 @@ class OnBoardingPageView extends GetView<OnBoardingPageController> {
                               );
                             },
                             child: Container(
-                              height: 52,
+                              height: 60,
                               width: 276,
                               decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(15),
@@ -97,10 +100,10 @@ class OnBoardingPageView extends GetView<OnBoardingPageController> {
                               child: Center(
                                 child: Text(
                                   'Lanjut',
-                                  style: TextStyle(
+                                  style: GoogleFonts.poppins(
                                     color: Colors.white,
-                                    fontSize: 17,
-                                    fontWeight: FontWeight.bold,
+                                    fontSize: figmaFontsize(17),
+                                    fontWeight: FontWeight.w600,
                                   ),
                                 ),
                               ),
