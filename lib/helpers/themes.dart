@@ -6,6 +6,7 @@ const Color primaryColor = Color(0xFF3A4757);
 const Color secondaryColor = Color(0xFF00DEA4);
 const Color thirdColor = Color(0xFFF2E7D5);
 const Color fourthColor = Color(0xFF6D9886);
+const Color anotherPrimaryColor = Color(0xFF2C3642);
 const Color anotherGreen = Color(0xFF28C62E);
 const Color primaryTextColor = Color(0xFF333333);
 const Color hintTextColor = Color(0xFF989898);
