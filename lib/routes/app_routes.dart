@@ -9,6 +9,8 @@ abstract class Routes {
   static const REGISTER_PAGE = _Paths.REGISTER_PAGE;
   static const HOME_PAGE = _Paths.HOME_PAGE;
   static const PROFILE_PAGE = _Paths.PROFILE_PAGE;
+  static const ADD_TRANSACTIONS_PAGE = _Paths.ADD_TRANSACTIONS_PAGE;
+  static const ALL_TRANSACTIONS_PAGE = _Paths.ALL_TRANSACTIONS_PAGE;
 }
 
 abstract class _Paths {
@@ -20,4 +22,6 @@ abstract class _Paths {
   static const REGISTER_PAGE = '/register-page';
   static const HOME_PAGE = '/home-page';
   static const PROFILE_PAGE = '/profile-page';
+  static const ADD_TRANSACTIONS_PAGE = '/add-transaction-page';
+  static const ALL_TRANSACTIONS_PAGE = '/all-transactions-page';
 }
