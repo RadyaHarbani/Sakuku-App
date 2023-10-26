@@ -27,21 +27,39 @@ class AddTransactionsPageView extends StatelessWidget {
           onPressed: () => Get.back(),
           icon: Icon(
             Icons.arrow_back_ios_new_rounded,
-            size: 20,
+            size: 18,
             color: generalBackgroundColor,
           ),
         ),
       ),
-      body: Column(
-        children: [
-          Row(
-            children: [
-              Container(
-                
-              ),
-            ],
-          ),
-        ],
+      body: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 15),
+        child: Column(
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                Container(
+                  width: 155,
+                  height: 40,
+                  decoration: BoxDecoration(
+                    color: anotherPrimaryColor,
+                    borderRadius: BorderRadius.circular(25),
+                  ),
+                  child: Image.asset('assets/icons/icon_arrow_pengeluaran.png'),
+                ),
+                Container(
+                  width: 155,
+                  height: 40,
+                  decoration: BoxDecoration(
+                    color: generalBackgroundColor,
+                    borderRadius: BorderRadius.circular(25),
+                  ),
+                ),
+              ],
+            ),
+          ],
+        ),
       ),
     );
   }
