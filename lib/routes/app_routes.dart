@@ -11,6 +11,8 @@ abstract class Routes {
   static const PROFILE_PAGE = _Paths.PROFILE_PAGE;
   static const ADD_TRANSACTIONS_PAGE = _Paths.ADD_TRANSACTIONS_PAGE;
   static const ALL_TRANSACTIONS_PAGE = _Paths.ALL_TRANSACTIONS_PAGE;
+  static const ADD_TARGET_FIRST_PAGE = _Paths.ADD_TARGET_FIRST_PAGE;
+  static const ADD_TARGET_SECOND_PAGE = _Paths.ADD_TARGET_SECOND_PAGE;
 }
 
 abstract class _Paths {
@@ -24,4 +26,6 @@ abstract class _Paths {
   static const PROFILE_PAGE = '/profile-page';
   static const ADD_TRANSACTIONS_PAGE = '/add-transaction-page';
   static const ALL_TRANSACTIONS_PAGE = '/all-transactions-page';
+  static const ADD_TARGET_FIRST_PAGE = '/add-target-first-page';
+  static const ADD_TARGET_SECOND_PAGE = '/add-target-second-page';
 }
