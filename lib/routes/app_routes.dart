@@ -13,6 +13,8 @@ abstract class Routes {
   static const ALL_TRANSACTIONS_PAGE = _Paths.ALL_TRANSACTIONS_PAGE;
   static const ADD_TARGET_FIRST_PAGE = _Paths.ADD_TARGET_FIRST_PAGE;
   static const ADD_TARGET_SECOND_PAGE = _Paths.ADD_TARGET_SECOND_PAGE;
+  static const ADD_TARGET_THIRD_PAGE = _Paths.ADD_TARGET_THIRD_PAGE;
+  static const ADD_TARGET_fOURTH_PAGE = _Paths.ADD_TARGET_fOURTH_PAGE;
 }
 
 abstract class _Paths {
@@ -28,4 +30,6 @@ abstract class _Paths {
   static const ALL_TRANSACTIONS_PAGE = '/all-transactions-page';
   static const ADD_TARGET_FIRST_PAGE = '/add-target-first-page';
   static const ADD_TARGET_SECOND_PAGE = '/add-target-second-page';
+  static const ADD_TARGET_THIRD_PAGE = '/add-target-third-page';
+  static const ADD_TARGET_fOURTH_PAGE = '/add-target-fourth-page';
 }

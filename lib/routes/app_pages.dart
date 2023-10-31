@@ -2,6 +2,8 @@ import 'package:get/get.dart';
 import 'package:sakuku_app/modules/add_target_page/bindings/add_target_page_binding.dart';
 import 'package:sakuku_app/modules/add_target_page/views/add_target_first_page_view.dart';
 import 'package:sakuku_app/modules/add_target_page/views/add_target_second_page_view.dart';
+import 'package:sakuku_app/modules/add_target_page/views/add_target_third_page_view.dart';
+import 'package:sakuku_app/modules/add_target_page/views/add_target_fourth_page_view.dart';
 import 'package:sakuku_app/modules/add_transactions_page/bindings/add_transactions_page_binding.dart';
 import 'package:sakuku_app/modules/add_transactions_page/views/add_transactions_page_view.dart';
 import 'package:sakuku_app/modules/all_transactions_page/bindings/all_transactions_page_binding.dart';
@@ -81,6 +83,16 @@ class AppPages {
     GetPage(
       name: _Paths.ADD_TARGET_SECOND_PAGE,
       page: () => AddTargetSecondPageView(),
+      binding: AddTargetsPageBinding(),
+    ),
+    GetPage(
+      name: _Paths.ADD_TARGET_THIRD_PAGE,
+      page: () => AddTargetThirdPageView(),
+      binding: AddTargetsPageBinding(),
+    ),
+    GetPage(
+      name: _Paths.ADD_TARGET_fOURTH_PAGE,
+      page: () => AddTargetFourthPageView(),
       binding: AddTargetsPageBinding(),
     ),
   ];

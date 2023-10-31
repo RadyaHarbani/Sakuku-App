@@ -7,8 +7,8 @@ import 'package:sakuku_app/components/textfield_add_target_page.dart';
 import 'package:sakuku_app/helpers/themes.dart';
 import 'package:sakuku_app/routes/app_pages.dart';
 
-class AddTargetSecondPageView extends StatelessWidget {
-  const AddTargetSecondPageView({super.key});
+class AddTargetFourthPageView extends StatelessWidget {
+  const AddTargetFourthPageView({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -36,14 +36,14 @@ class AddTargetSecondPageView extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    '50%',
+                    '100%',
                     style: GoogleFonts.poppins(
                         color: secondaryColor,
                         fontSize: figmaFontsize(11),
                         fontWeight: FontWeight.w600),
                   ),
                   Text(
-                    'Apa kategori mu saat ini?',
+                    'Target ini harus selesai kapan?',
                     style: GoogleFonts.poppins(
                         fontSize: figmaFontsize(15),
                         fontWeight: FontWeight.w600),
@@ -64,16 +64,18 @@ class AddTargetSecondPageView extends StatelessWidget {
               children: [
                 Image.asset(footerTarget),
                 LinearPercentIndicator(
-                    padding: EdgeInsets.zero,
-                    animation: true,
-                    animateFromLastPercent: true ,
-                    animationDuration: 1000,
-                    lineHeight: 8,
-                    percent: 0.5,
-                    progressColor: Color(0xFF00E7B1)),
+                  padding: EdgeInsets.zero,
+                  animation: true,
+                  animateFromLastPercent: true,
+                  animationDuration: 1000,
+                  lineHeight: 8,
+                  percent: 1,
+                  progressColor: Color(0xFF00E7B1),
+                ),
                 InkWell(
-                    onTap: () => Get.toNamed(Routes.ADD_TARGET_THIRD_PAGE),
-                    child: ButtonAddTargetPage()),
+                  onTap: () => Get.toNamed(Routes.ADD_TARGET_SECOND_PAGE),
+                  child: ButtonAddTargetPage(),
+                ),
               ],
             )
           ],
