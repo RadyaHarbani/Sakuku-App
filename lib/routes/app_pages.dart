@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+
 import 'package:sakuku_app/components/bottom_nav_component.dart';
 import 'package:sakuku_app/modules/transaction_entry_page/bindings/transaction_entry_page_binding.dart';
 import 'package:sakuku_app/modules/transaction_entry_page/views/transaction_entry_page_view.dart';
@@ -74,6 +75,16 @@ class AppPages {
     GetPage(
       name: _Paths.NAVIGATOR_COMPONENT,
       page: () => BottomNavComponent(),
+    ),
+    GetPage(
+      name: _Paths.ADD_TARGET_FIRST_PAGE,
+      page: () => AddTargetFirstPageView(),
+      binding: AddTargetsPageBinding(),
+    ),
+    GetPage(
+      name: _Paths.ADD_TARGET_SECOND_PAGE,
+      page: () => AddTargetSecondPageView(),
+      binding: AddTargetsPageBinding(),
     ),
   ];
 }
