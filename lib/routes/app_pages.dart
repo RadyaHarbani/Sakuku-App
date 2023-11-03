@@ -71,9 +71,13 @@ class AppPages {
       binding: AllTransactionsPageBinding(),
     ),
     GetPage(
-      name: _Paths.ADD_TRANSACTIONS_PAGE,
-      page: () => AddTransactionsPageView(),
-      binding: AddTransactionsPageBinding(),
+      name: _Paths.TRANSACTION_ENTRY_PAGE,
+      page: () => TransactionEntryPageView(),
+      binding: TransactionEntryPageBinding(),
+    ),
+    GetPage(
+      name: _Paths.NAVIGATOR_COMPONENT,
+      page: () => BottomNavComponent(),
     ),
     GetPage(
       name: _Paths.ADD_TARGET_FIRST_PAGE,

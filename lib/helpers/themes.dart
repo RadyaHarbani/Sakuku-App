@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:intl/intl.dart';
 
 //COLOR
 const Color generalBackgroundColor = Color(0xFFF7F7F7);
@@ -16,6 +18,12 @@ const Color warningColor = Color(0xFFE64A4A);
 figmaFontsize(int fontSize) {
   return fontSize * 0.95;
 }
+
+final money = NumberFormat("#.##0", "en_US").format(0);
+
+//MEDIAQUERY
+double sizeWidth = Get.mediaQuery.size.width;
+double sizeHeight = Get.mediaQuery.size.height;
 
 //LOGO ASSETS
 const String logoUtama = 'assets/logos/logo_utama.svg'; //ini svg
@@ -70,3 +78,4 @@ const String iconTarget = 'assets/icons/icon_target.png';
 const String iconKategori = 'assets/icons/icon_kategori.png';
 const String iconKota = 'assets/icons/icon_kota.png';
 const String iconNulis = 'assets/icons/icon_nulis.png';
+const String iconBenderaIndonesia = 'assets/icons/icon_bendera_indonesia.png';
