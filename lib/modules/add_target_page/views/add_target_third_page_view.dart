@@ -3,16 +3,15 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
 import 'package:sakuku_app/components/button_add_target_page.dart';
-import 'package:sakuku_app/components/option_add_target_page.dart';
+import 'package:sakuku_app/components/textfield_add_target_page.dart';
 import 'package:sakuku_app/helpers/themes.dart';
 import 'package:sakuku_app/routes/app_pages.dart';
 
-class AddTargetFirstPageView extends StatelessWidget {
-  const AddTargetFirstPageView({super.key});
+class AddTargetThirdPageView extends StatelessWidget {
+  const AddTargetThirdPageView({super.key});
 
   @override
   Widget build(BuildContext context) {
-    // OptionAddTargetList option_list = OptionAddTargetList();
     return Scaffold(
         appBar: AppBar(
           backgroundColor: Colors.transparent,
@@ -31,7 +30,7 @@ class AddTargetFirstPageView extends StatelessWidget {
           children: [
             Container(
               margin: EdgeInsets.only(right: 20, left: 20, top: 5),
-              height: 75,
+              height: 148,
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -44,7 +43,7 @@ class AddTargetFirstPageView extends StatelessWidget {
                         fontWeight: FontWeight.w600),
                   ),
                   Text(
-                    'Apa kategori targetmu saat ini?',
+                    'Berapa total uang yang harus kamu kumpulkan?',
                     style: GoogleFonts.poppins(
                         fontSize: figmaFontsize(15),
                         fontWeight: FontWeight.w600),
@@ -56,17 +55,11 @@ class AddTargetFirstPageView extends StatelessWidget {
                         fontSize: figmaFontsize(11),
                         fontWeight: FontWeight.w600),
                   ),
+                  SizedBox(height: 26),
+                  TextFieldAddTarget(),
                 ],
               ),
             ),
-            SizedBox(height: 20),
-            // GridView(
-            //   shrinkWrap: true,
-            //   gridDelegate:
-            //       SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 3),
-            //   children: option_list.list_option_add_target,
-            // ),
-            // OptionAddTarget(),
             Column(
               children: [
                 Image.asset(footerTarget),

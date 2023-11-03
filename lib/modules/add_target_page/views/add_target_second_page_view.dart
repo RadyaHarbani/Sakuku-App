@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:percent_indicator/linear_percent_indicator.dart';
 import 'package:sakuku_app/components/button_add_target_page.dart';
 import 'package:sakuku_app/components/textfield_add_target_page.dart';
 import 'package:sakuku_app/helpers/themes.dart';
+import 'package:sakuku_app/routes/app_pages.dart';
 
 class AddTargetSecondPageView extends StatelessWidget {
   const AddTargetSecondPageView({super.key});
@@ -23,7 +26,6 @@ class AddTargetSecondPageView extends StatelessWidget {
           ),
         ),
         body: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Container(
@@ -34,7 +36,7 @@ class AddTargetSecondPageView extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    '25%',
+                    '50%',
                     style: GoogleFonts.poppins(
                         color: secondaryColor,
                         fontSize: figmaFontsize(11),
@@ -61,11 +63,17 @@ class AddTargetSecondPageView extends StatelessWidget {
             Column(
               children: [
                 Image.asset(footerTarget),
-                Container(
-                    height: 8,
-                    width: MediaQuery.of(context).size.width / 4,
-                    color: Color(0xFF00E7B1)),
-                ButtonAddTargetPage()
+                LinearPercentIndicator(
+                    padding: EdgeInsets.zero,
+                    animation: true,
+                    animateFromLastPercent: true ,
+                    animationDuration: 1000,
+                    lineHeight: 8,
+                    percent: 0.5,
+                    progressColor: Color(0xFF00E7B1)),
+                InkWell(
+                    onTap: () => Get.toNamed(Routes.ADD_TARGET_THIRD_PAGE),
+                    child: ButtonAddTargetPage()),
               ],
             )
           ],
