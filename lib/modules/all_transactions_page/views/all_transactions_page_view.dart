@@ -26,7 +26,7 @@ class AllTransactionsPageView extends StatelessWidget {
       ),
       floatingActionButton: IconButton(
         onPressed: () {
-          Get.toNamed(Routes.ADD_TRANSACTIONS_PAGE);
+          Get.toNamed(Routes.TRANSACTION_ENTRY_PAGE);
         },
         icon: Icon(
           Icons.add,
