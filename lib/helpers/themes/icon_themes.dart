@@ -1,0 +1,13 @@
+const String iconBelanja = 'assets/icons/icon_belanja.png';
+const String iconDanaDarurat = 'assets/icons/icon_dana_darurat.png';
+const String iconGoogle = 'assets/icons/icon_google.svg'; //ini svg
+const String iconIbadah = 'assets/icons/icon_ibadah.png';
+const String iconLiburan = 'assets/icons/icon_liburan.png';
+const String iconPemasukan = 'assets/icons/icon_pemasukan.png';
+const String iconPendidikan = 'assets/icons/icon_pendidikan.png';
+const String iconPinjaman = 'assets/icons/icon_pinjaman.png';
+const String iconTarget = 'assets/icons/icon_target.png';
+const String iconKategori = 'assets/icons/icon_kategori.png';
+const String iconKota = 'assets/icons/icon_kota.png';
+const String iconNulis = 'assets/icons/icon_nulis.png';
+const String iconBenderaIndonesia = 'assets/icons/icon_bendera_indonesia.png';
