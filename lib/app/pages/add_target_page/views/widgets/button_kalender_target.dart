@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:sakuku_app/helpers/themes/color_themes.dart';
 import 'package:sakuku_app/helpers/themes/default_themes.dart';
-import 'package:sakuku_app/helpers/themes/text_style_themes/add_target_page/add_target_page_themes.dart';
+import 'package:sakuku_app/helpers/themes/text_style_themes/add_target_page_themes.dart';
 
 class ButtonKalenderTarget extends StatelessWidget {
   const ButtonKalenderTarget({super.key});

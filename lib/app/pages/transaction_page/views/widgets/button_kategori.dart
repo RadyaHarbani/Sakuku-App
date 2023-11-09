@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:sakuku_app/helpers/themes/color_themes.dart';
 import 'package:sakuku_app/helpers/themes/default_themes.dart';
+import 'package:sakuku_app/helpers/themes/text_style_themes/transaction_page_themes.dart';
 
 class ButtonKategori extends StatelessWidget {
   ButtonKategori({
@@ -9,7 +9,8 @@ class ButtonKategori extends StatelessWidget {
     required this.icon,
     required this.title,
     required this.isSelected,
-    required this.subtitle, required this.iconSize,
+    required this.subtitle,
+    required this.iconSize,
   });
 
   final String icon;
@@ -31,8 +32,8 @@ class ButtonKategori extends StatelessWidget {
                 clipBehavior: Clip.none,
                 children: [
                   Container(
-                    width: 40,
-                    height: 40,
+                    width: sizeWidth * 0.12,
+                    height: sizeHeight * 0.05,
                     decoration: BoxDecoration(
                       color: thirdColor,
                       borderRadius: BorderRadius.circular(10),
@@ -57,33 +58,24 @@ class ButtonKategori extends StatelessWidget {
                 children: [
                   Text(
                     title,
-                    style: GoogleFonts.poppins(
-                      fontSize: figmaFontsize(15),
-                      fontWeight: FontWeight.w600,
-                      color: primaryTextColorBlack,
-                    ),
+                    style: buttonKategoriTitle,
                   ),
                   SizedBox(
                     height: 5,
                   ),
                   Text(
                     subtitle,
-                    style: GoogleFonts.poppins(
-                      height: 1,
-                      fontSize: figmaFontsize(11),
-                      fontWeight: FontWeight.w400,
-                      color: primaryTextColorBlack,
-                    ),
+                    style: buttonKategoriSubtitle,
                   ),
                 ],
               ),
             ],
           ),
           Container(
-            width: 20,
-            height: 20,
+            width: sizeWidth * 0.06,
+            height: sizeHeight * 0.04,
             decoration: BoxDecoration(
-              color: hintTextColor,
+              color: filledTextfieldColor,
               shape: BoxShape.circle,
             ),
             child: Container(

@@ -1,14 +1,14 @@
 import 'package:get/get.dart';
+import 'package:sakuku_app/app/pages/splash_screen/views/splash_screen_view.dart';
 import 'package:sakuku_app/app/widgets/bottom_nav_component.dart';
 import 'package:sakuku_app/app/pages/add_target_page/bindings/add_target_page_binding.dart';
 import 'package:sakuku_app/app/pages/add_target_page/views/add_target_first_page_view.dart';
 import 'package:sakuku_app/app/pages/add_target_page/views/add_target_second_page_view.dart';
 import 'package:sakuku_app/app/pages/add_target_page/views/add_target_third_page_view.dart';
 import 'package:sakuku_app/app/pages/add_target_page/views/add_target_fourth_page_view.dart';
-import 'package:sakuku_app/app/pages/all_transactions_page/bindings/all_transactions_page_binding.dart';
-import 'package:sakuku_app/app/pages/all_transactions_page/views/all_transactions_page_view.dart';
-import 'package:sakuku_app/app/pages/exit_transaction_page/bindings/exit_transaction_page_binding.dart';
-import 'package:sakuku_app/app/pages/exit_transaction_page/views/exit_transaction_page_view.dart';
+import 'package:sakuku_app/app/pages/transaction_page/views/all_transactions_page_view.dart';
+import 'package:sakuku_app/app/pages/transaction_page/bindings/transaction_page_binding.dart';
+import 'package:sakuku_app/app/pages/transaction_page/views/exit_transaction_page_view.dart';
 import 'package:sakuku_app/app/pages/home_page/bindings/home_page_binding.dart';
 import 'package:sakuku_app/app/pages/home_page/views/home_page_view.dart';
 import 'package:sakuku_app/app/pages/landing_page/bindings/landing_page_binding.dart';
@@ -22,15 +22,13 @@ import 'package:sakuku_app/app/pages/profile_page/views/profile_page_view.dart';
 import 'package:sakuku_app/app/pages/register_page/bindings/register_page_binding.dart';
 import 'package:sakuku_app/app/pages/register_page/views/register_page_view.dart';
 import 'package:sakuku_app/app/pages/splash_screen/bindings/splash_screen_binding.dart';
-import 'package:sakuku_app/app/pages/splash_screen/views/splash_screen_view.dart';
-import 'package:sakuku_app/app/pages/incoming_transaction_page/bindings/incoming_transaction_page_binding.dart';
-import 'package:sakuku_app/app/pages/incoming_transaction_page/views/incoming_transaction_page_view.dart';
+import 'package:sakuku_app/app/pages/transaction_page/views/incoming_transaction_page_view.dart';
 part 'app_routes.dart';
 
 class AppPages {
   AppPages._();
 
-  static const INITIAL = Routes.ADD_TARGET_THIRD_PAGE;
+  static const INITIAL = Routes.LANDING_PAGE;
 
   static final routes = [
     GetPage(
@@ -71,7 +69,7 @@ class AppPages {
     GetPage(
       name: _Paths.ALL_TRANSACTIONS_PAGE,
       page: () => AllTransactionsPageView(),
-      binding: AllTransactionsPageBinding(),
+      binding: TransactionPageBinding(),
     ),
     GetPage(
       name: _Paths.ADD_TARGET_FIRST_PAGE,
@@ -96,12 +94,12 @@ class AppPages {
     GetPage(
       name: _Paths.INCOMING_TRANSACTION_PAGE,
       page: () => IncomingTransactionPageView(),
-      binding: IncomingTransactionPageBinding(),
+      binding: TransactionPageBinding(),
     ),
     GetPage(
       name: _Paths.EXIT_TRANSACTION_PAGE,
-      page: () => ExitTransactionPageBView(),
-      binding: ExitTransactionPageBinding(),
+      page: () => ExitTransactionPageView(),
+      binding: TransactionPageBinding(),
     ),
     GetPage(
       name: _Paths.NAVIGATOR_COMPONENT,

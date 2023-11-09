@@ -8,7 +8,7 @@ import 'package:sakuku_app/app/routes/app_pages.dart';
 import 'package:sakuku_app/helpers/themes/color_themes.dart';
 import 'package:sakuku_app/helpers/themes/default_themes.dart';
 import 'package:sakuku_app/helpers/themes/image_themes.dart';
-import 'package:sakuku_app/helpers/themes/text_style_themes/add_target_page/add_target_page_themes.dart';
+import 'package:sakuku_app/helpers/themes/text_style_themes/add_target_page_themes.dart';
 
 class AddTargetFirstPageView extends GetView<AddTargetsPageController> {
   const AddTargetFirstPageView({super.key});
@@ -57,6 +57,9 @@ class AddTargetFirstPageView extends GetView<AddTargetsPageController> {
                   ],
                 ),
               ),
+              SizedBox(
+                height: sizeHeight * 0.39,
+              ),
               Container(
                 height: sizeHeight * 0.39,
                 width: sizeWidth,
@@ -72,12 +75,6 @@ class AddTargetFirstPageView extends GetView<AddTargetsPageController> {
                         lineHeight: sizeHeight * 0.013,
                         percent: 0.25,
                         progressColor: fourthColor,
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(top: 20),
-                      child: ButtonTargetLanjut(
-                        routeName: Routes.ADD_TARGET_SECOND_PAGE,
                       ),
                     ),
                   ],
@@ -96,6 +93,12 @@ class AddTargetFirstPageView extends GetView<AddTargetsPageController> {
             ),
           ),
         ],
+      ),
+      floatingActionButton: Padding(
+        padding: const EdgeInsets.only(bottom: 8),
+        child: ButtonTargetLanjut(
+          routeName: Routes.ADD_TARGET_SECOND_PAGE,
+        ),
       ),
     );
   }

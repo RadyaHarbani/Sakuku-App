@@ -7,7 +7,7 @@ import 'package:sakuku_app/app/routes/app_pages.dart';
 import 'package:sakuku_app/helpers/themes/color_themes.dart';
 import 'package:sakuku_app/helpers/themes/default_themes.dart';
 import 'package:sakuku_app/helpers/themes/image_themes.dart';
-import 'package:sakuku_app/helpers/themes/text_style_themes/add_target_page/add_target_page_themes.dart';
+import 'package:sakuku_app/helpers/themes/text_style_themes/add_target_page_themes.dart';
 
 class AddTargetThirdPageView extends StatelessWidget {
   const AddTargetThirdPageView({super.key});
@@ -81,16 +81,16 @@ class AddTargetThirdPageView extends StatelessWidget {
                       progressColor: fourthColor,
                     ),
                   ),
-                  Padding(
-                    padding: const EdgeInsets.only(top: 20),
-                    child: ButtonTargetLanjut(
-                      routeName: Routes.ADD_TARGET_fOURTH_PAGE,
-                    ),
-                  ),
                 ],
               ),
             )
           ],
+        ),
+      ),
+      floatingActionButton: Padding(
+        padding: const EdgeInsets.only(bottom: 8),
+        child: ButtonTargetLanjut(
+          routeName: Routes.ADD_TARGET_fOURTH_PAGE,
         ),
       ),
     );
