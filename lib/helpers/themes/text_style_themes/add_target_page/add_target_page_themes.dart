@@ -3,7 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:sakuku_app/helpers/themes/color_themes.dart';
 import 'package:sakuku_app/helpers/themes/default_themes.dart';
 
-//Add First Target Page
+//Add Target Page
 TextStyle percentTextStyle = GoogleFonts.poppins(
   color: secondaryColor,
   fontSize: figmaFontsize(12),
@@ -36,3 +36,30 @@ itemKategoriTextStyle(bool isClicked) {
   );
 }
 
+//Button Kalender Component
+TextStyle tanggalKalenderStyle = GoogleFonts.poppins(
+  fontStyle: FontStyle.italic,
+  fontSize: figmaFontsize(14),
+  fontWeight: FontWeight.w600,
+  color: hintTextColor,
+);
+
+//Custom Textfield Target Component
+TextStyle prefixTextStyle = GoogleFonts.poppins(
+  fontSize: figmaFontsize(14),
+  fontWeight: FontWeight.w600,
+  color: primaryTextColorBlack,
+);
+
+TextStyle hintTextStyle = GoogleFonts.poppins(
+  fontStyle: FontStyle.italic,
+  fontSize: figmaFontsize(14),
+  fontWeight: FontWeight.w600,
+  color: hintTextColor,
+);
+
+TextStyle inputTextStyle = GoogleFonts.poppins(
+  fontSize: figmaFontsize(14),
+  fontWeight: FontWeight.w600,
+  color: primaryTextColorBlack,
+);

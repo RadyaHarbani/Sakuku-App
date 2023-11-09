@@ -57,7 +57,6 @@ class AddTargetFirstPageView extends GetView<AddTargetsPageController> {
                   ],
                 ),
               ),
-              Spacer(),
               Container(
                 height: sizeHeight * 0.39,
                 width: sizeWidth,
