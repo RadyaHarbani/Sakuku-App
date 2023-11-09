@@ -20,10 +20,6 @@ final BorderRadius defaultBottomSheetRadius = BorderRadius.only(
   topLeft: Radius.circular(15),
   topRight: Radius.circular(15),
 );
-final BorderRadius defaultTopSheetRadius = BorderRadius.only(
-  bottomLeft: Radius.circular(15),
-  bottomRight: Radius.circular(15),
-);
 final List<BoxShadow> defaultBoxShadow = [
   BoxShadow(
     blurRadius: 25,
@@ -32,17 +28,3 @@ final List<BoxShadow> defaultBoxShadow = [
     color: Colors.black.withOpacity(0.08),
   )
 ];
-
-//Height gap
-final hGap5 = SizedBox(height: 5);
-final hGap10 = SizedBox(height: 10);
-final hGap15 = SizedBox(height: 15);
-final hGap20 = SizedBox(height: 20);
-final hGap30 = SizedBox(height: 30);
-final hGap40 = SizedBox(height: 40);
-
-//Width gap
-final wGap5 = SizedBox(width: 5);
-final wGap10 = SizedBox(width: 10);
-final wGap15 = SizedBox(width: 15);
-final wGap20 = SizedBox(width: 20);

@@ -2,14 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:sakuku_app/app/pages/transaction_page/controllers/transaction_page_controller.dart';
 import 'package:sakuku_app/helpers/converter/currency_format_flutter.dart';
-import 'package:sakuku_app/app/pages/incoming_transaction_page/controllers/incoming_transaction_page_controller.dart';
 import 'package:sakuku_app/helpers/themes/color_themes.dart';
 import 'package:sakuku_app/helpers/themes/default_themes.dart';
 import 'package:sakuku_app/helpers/themes/icon_themes.dart';
+import 'package:sakuku_app/helpers/themes/text_style_themes/transaction_page_themes.dart';
 
 class CustomTextfieldInput extends StatelessWidget {
-  final controller = Get.put(IncomingTransactionPageController());
+  final controller = Get.put(TransactionPageController());
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +30,7 @@ class CustomTextfieldInput extends StatelessWidget {
             width: 60,
             decoration: BoxDecoration(
               color: filledTextfieldColor.withOpacity(0.1),
-              borderRadius: BorderRadius.circular(15),
+              borderRadius: defaulBorderRadius,
             ),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -54,33 +55,25 @@ class CustomTextfieldInput extends StatelessWidget {
           ),
         ),
         border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(15),
+          borderRadius: defaulBorderRadius,
         ),
         enabledBorder: OutlineInputBorder(
           borderSide: BorderSide(
             color: filledTextfieldColor.withOpacity(0.3),
           ),
-          borderRadius: BorderRadius.circular(15),
+          borderRadius: defaulBorderRadius,
         ),
         focusedBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(15),
+          borderRadius: defaulBorderRadius,
           borderSide: BorderSide(
             color: Colors.green,
             width: 1.5,
           ),
         ),
         hintText: "0",
-        hintStyle: GoogleFonts.poppins(
-          fontSize: figmaFontsize(20),
-          color: backgroundColor.withOpacity(0.5),
-          fontWeight: FontWeight.w600,
-        ),
+        hintStyle: hintCustomTextfield,
       ),
-      style: GoogleFonts.poppins(
-        color: backgroundColor,
-        fontSize: figmaFontsize(20),
-        fontWeight: FontWeight.w600,
-      ),
+      style: styleInputTextfield,
       inputFormatters: [
         FilteringTextInputFormatter.digitsOnly,
         CurrencyFormatTextfield(),

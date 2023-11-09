@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:sakuku_app/helpers/themes/color_themes.dart';
 import 'package:sakuku_app/helpers/themes/default_themes.dart';
+import 'package:sakuku_app/helpers/themes/text_style_themes/transaction_page_themes.dart';
 
 class AlertContainer extends StatelessWidget {
   const AlertContainer({
@@ -14,14 +14,14 @@ class AlertContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Positioned(
-      top: 120,
+      top: sizeHeight * 0.175,
       child: Padding(
         padding: const EdgeInsets.all(15),
         child: Container(
-          width: 330,
-          height: 60,
+          width: sizeWidth * 0.915,
+          height: sizeHeight * 0.08,
           decoration: BoxDecoration(
-            color: Colors.white,
+            color: primaryTextColorWhite,
             borderRadius: BorderRadius.circular(10),
             boxShadow: [
               BoxShadow(
@@ -34,12 +34,10 @@ class AlertContainer extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              SizedBox(
-                width: 15,
-              ),
               Container(
-                width: 60,
-                height: 30,
+                margin: EdgeInsets.only(left: 2),
+                width: sizeWidth * 0.16,
+                height: sizeHeight * 0.04,
                 decoration: BoxDecoration(
                   color: warningColor,
                   borderRadius: BorderRadius.circular(20),
@@ -47,27 +45,18 @@ class AlertContainer extends StatelessWidget {
                 child: Center(
                   child: Text(
                     "Alert",
-                    style: GoogleFonts.poppins(
-                      color: backgroundColor,
-                      fontSize: figmaFontsize(13),
-                      fontWeight: FontWeight.w600,
-                    ),
+                    style: textStyleAlert,
                   ),
                 ),
               ),
               SizedBox(
-                width: 15,
+                width: sizeWidth * 0.04,
               ),
               Container(
-                width: 230,
+                width: sizeWidth * 0.6,
                 child: Text(
                   content,
-                  style: GoogleFonts.poppins(
-                    height: 1.4,
-                    color: primaryColor,
-                    fontSize: figmaFontsize(12),
-                    fontWeight: FontWeight.w600,
-                  ),
+                  style: alertContentTextStyle,
                 ),
               )
             ],

@@ -1,62 +1,53 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:sakuku_app/app/widgets/button_kategori.dart';
-import 'package:sakuku_app/app/pages/incoming_transaction_page/controllers/incoming_transaction_page_controller.dart';
+import 'package:sakuku_app/app/pages/transaction_page/controllers/transaction_page_controller.dart';
+import 'package:sakuku_app/app/pages/transaction_page/views/widgets/button_kategori.dart';
 import 'package:sakuku_app/helpers/themes/color_themes.dart';
 import 'package:sakuku_app/helpers/themes/default_themes.dart';
 import 'package:sakuku_app/helpers/themes/icon_themes.dart';
+import 'package:sakuku_app/helpers/themes/text_style_themes/transaction_page_themes.dart';
 
 class BottomSheetKategori extends StatelessWidget {
-  final controller = Get.put(IncomingTransactionPageController());
+  final controller = Get.put(TransactionPageController());
   BottomSheetKategori({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 680,
+      height: sizeHeight * 0.84,
       child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 20),
+        padding: EdgeInsets.symmetric(horizontal: sizeWidth * 0.06),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Center(
               child: Padding(
-                padding: const EdgeInsets.only(top: 10),
+                padding: const EdgeInsets.only(top: 15),
                 child: Container(
-                  width: 50,
-                  height: 5,
+                  width: sizeWidth * 0.1,
+                  height: sizeHeight * 0.007,
                   decoration: BoxDecoration(
-                    color: Colors.grey[400],
-                    borderRadius: BorderRadius.circular(15),
+                    color: primaryTextColorGrey.withOpacity(0.5),
+                    borderRadius: defaulBorderRadius,
                   ),
                 ),
               ),
             ),
             SizedBox(
-              height: 15,
+              height: sizeHeight * 0.03,
             ),
             ListView(
               physics: NeverScrollableScrollPhysics(),
               shrinkWrap: true,
               children: [
-                Padding(
-                  padding: const EdgeInsets.only(
-                    top: 10,
-                    bottom: 30,
-                    left: 10,
-                    right: 10,
+                Center(
+                  child: Text(
+                    "Pilih Kategori",
+                    style: titleBottomSheetKategori,
                   ),
-                  child: Center(
-                    child: Text(
-                      "Pilih Kategori",
-                      style: GoogleFonts.poppins(
-                        fontSize: figmaFontsize(16),
-                        fontWeight: FontWeight.w600,
-                        color: primaryTextColorBlack,
-                      ),
-                    ),
-                  ),
+                ),
+                SizedBox(
+                  height: sizeHeight * 0.03,
                 ),
                 Wrap(
                   children: RxList<Widget>.generate(
@@ -72,7 +63,7 @@ class BottomSheetKategori extends StatelessWidget {
                             borderRadius: BorderRadius.circular(15),
                           ),
                           padding: EdgeInsets.symmetric(
-                            vertical: 15,
+                            vertical: sizeHeight * 0.018,
                           ),
                           elevation: 0.1,
                           backgroundColor: Colors.white,
@@ -138,7 +129,7 @@ class BottomSheetKategori extends StatelessWidget {
                   ),
                 ),
                 SizedBox(
-                  height: 40,
+                  height: sizeHeight * 0.05,
                 ),
                 Row(
                   children: [
@@ -148,10 +139,10 @@ class BottomSheetKategori extends StatelessWidget {
                           backgroundColor: warningColor,
                           elevation: 0,
                           shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(15),
+                            borderRadius: defaulBorderRadius,
                           ),
                           padding: EdgeInsets.symmetric(
-                            vertical: 15,
+                            vertical: sizeWidth * 0.04,
                           ),
                         ),
                         onPressed: () {
@@ -159,27 +150,23 @@ class BottomSheetKategori extends StatelessWidget {
                         },
                         child: Text(
                           "Batal",
-                          style: GoogleFonts.poppins(
-                            color: backgroundColor,
-                            fontSize: figmaFontsize(16),
-                            fontWeight: FontWeight.w600,
-                          ),
+                          style: buttonBatalKategori,
                         ),
                       ),
                     ),
                     SizedBox(
-                      width: 10,
+                      width: sizeWidth * 0.02,
                     ),
                     Expanded(
                       child: ElevatedButton(
                         style: ElevatedButton.styleFrom(
-                          backgroundColor: successColor,
+                          backgroundColor: secondaryColor,
                           elevation: 0,
                           shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(15),
+                            borderRadius: defaulBorderRadius,
                           ),
                           padding: EdgeInsets.symmetric(
-                            vertical: 15,
+                            vertical: sizeWidth * 0.04,
                           ),
                         ),
                         onPressed: () {
@@ -187,11 +174,7 @@ class BottomSheetKategori extends StatelessWidget {
                         },
                         child: Text(
                           "Pilih",
-                          style: GoogleFonts.poppins(
-                            color: backgroundColor,
-                            fontSize: figmaFontsize(16),
-                            fontWeight: FontWeight.w600,
-                          ),
+                          style: buttonPilihKategori,
                         ),
                       ),
                     ),

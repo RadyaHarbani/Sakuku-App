@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:sakuku_app/helpers/themes/color_themes.dart';
 import 'package:sakuku_app/helpers/themes/default_themes.dart';
-import 'package:sakuku_app/helpers/themes/text_style_themes/add_target_page/add_target_page_themes.dart';
+import 'package:sakuku_app/helpers/themes/text_style_themes/add_target_page_themes.dart';
 
 class ItemKategori extends StatelessWidget {
   const ItemKategori({
