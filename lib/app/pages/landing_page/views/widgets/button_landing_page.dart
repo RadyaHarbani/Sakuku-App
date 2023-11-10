@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:sakuku_app/helpers/themes/default_themes.dart';
+import 'package:sakuku_app/helpers/themes/text_style_themes/landing_page_themes.dart';
 
 class ButtonLandingPage extends StatelessWidget {
   const ButtonLandingPage({
@@ -35,10 +34,9 @@ class ButtonLandingPage extends StatelessWidget {
         ),
         child: Text(
           textButton,
-          style: GoogleFonts.poppins(
-            fontSize: figmaFontsize(17),
-            fontWeight: FontWeight.bold,
-            color: isBorder == true ? buttonColor : Colors.white,
+          style: textButtonLandingComponent(
+            isBorder,
+            buttonColor,
           ),
         ),
       ),

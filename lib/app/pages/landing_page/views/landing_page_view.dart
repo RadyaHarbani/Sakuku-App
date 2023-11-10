@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:sakuku_app/app/routes/app_pages.dart';
 import 'package:sakuku_app/app/pages/landing_page/views/widgets/button_landing_page.dart';
 import 'package:sakuku_app/helpers/themes/color_themes.dart';
 import 'package:sakuku_app/helpers/themes/default_themes.dart';
 import 'package:sakuku_app/helpers/themes/image_themes.dart';
+import 'package:sakuku_app/helpers/themes/text_style_themes/landing_page_themes.dart';
 
 class LandingPageView extends StatelessWidget {
   const LandingPageView({super.key});
@@ -72,28 +72,24 @@ class LandingPageView extends StatelessWidget {
                     child: Text(
                       "Apakah Kamu Punya Akun?",
                       textAlign: TextAlign.center,
-                      style: GoogleFonts.poppins(
-                        fontSize: figmaFontsize(20),
-                        fontWeight: FontWeight.bold,
-                        color: primaryTextColorBlack,
-                      ),
+                      style: titleLandingPage,
                     ),
                   ),
-                  SizedBox(height: 30),
+                  SizedBox(height: sizeHeight * 0.04),
                   Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 40),
+                    padding: EdgeInsets.symmetric(horizontal: sizeWidth * 0.09),
                     child: Row(
                       children: [
                         ButtonLandingPage(
                           onPressed: () => Get.toNamed(Routes.LOGIN_PAGE),
-                          buttonColor: fourthColor,
+                          buttonColor: secondaryColor,
                           textButton: "Ya",
                           isBorder: false,
                         ),
-                        SizedBox(width: 15),
+                        SizedBox(width: sizeWidth * 0.025),
                         ButtonLandingPage(
                           onPressed: () => Get.toNamed(Routes.REGISTER_PAGE),
-                          buttonColor: fourthColor,
+                          buttonColor: secondaryColor,
                           textButton: "Tidak",
                           isBorder: true,
                         ),

@@ -1,14 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:sakuku_app/app/routes/app_pages.dart';
-import 'package:sakuku_app/app/widgets/button_login_register.dart';
-import 'package:sakuku_app/app/widgets/or_widget_login_register.dart';
-import 'package:sakuku_app/app/widgets/textfield_login_register.dart';
+import 'package:sakuku_app/app/pages/login_page/views/widgets/button_login_register.dart';
+import 'package:sakuku_app/app/pages/login_page/views/widgets/or_widget_login_register.dart';
+import 'package:sakuku_app/app/pages/login_page/views/widgets/textfield_login_register.dart';
 import 'package:sakuku_app/app/pages/login_page/controllers/login_page_controller.dart';
 import 'package:sakuku_app/helpers/themes/color_themes.dart';
 import 'package:sakuku_app/helpers/themes/default_themes.dart';
+import 'package:sakuku_app/helpers/themes/icon_themes.dart';
+import 'package:sakuku_app/helpers/themes/image_themes.dart';
+import 'package:sakuku_app/helpers/themes/text_style_themes/login_register_page_themes.dart';
 
 class LoginPageView extends GetView<LoginPageController> {
   const LoginPageView({super.key});
@@ -25,44 +27,40 @@ class LoginPageView extends GetView<LoginPageController> {
           icon: Icon(
             Icons.arrow_back_ios_new_rounded,
             size: 20,
-            color: Colors.black,
+            color: primaryTextColorBlack,
           ),
         ),
         actions: [
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 25),
-            child: SvgPicture.asset('assets/logos/logo_horizontal.svg'),
+            padding: EdgeInsets.symmetric(horizontal: sizeWidth * 0.06),
+            child: SvgPicture.asset(logoHorizontal),
           ),
         ],
       ),
       body: SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 20),
+          padding: EdgeInsets.symmetric(
+            horizontal: sizeWidth * 0.065,
+            vertical: sizeHeight * 0.025,
+          ),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
                 "Selamat Kembali! ",
-                style: GoogleFonts.poppins(
-                  fontSize: figmaFontsize(24),
-                  fontWeight: FontWeight.bold,
-                  color: primaryColor,
-                ),
+                style: titleLoginRegisterPage,
               ),
               Text(
                 "Masuk Untuk Melanjutkan",
-                style: GoogleFonts.poppins(
-                  fontSize: figmaFontsize(14),
-                  height: 1.2,
-                ),
+                style: subtitleLoginRegisterPage,
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
                   Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 20),
+                    padding: EdgeInsets.symmetric(horizontal: sizeWidth * 0.04),
                     child: Image.asset(
-                      'assets/images/login_register_images/robot_login_image.png',
+                      robotLogin,
                     ),
                   ),
                 ],
@@ -79,7 +77,7 @@ class LoginPageView extends GetView<LoginPageController> {
                       prefixIcon: Icon(
                         Icons.person,
                         size: 20,
-                        color: Color(0xFF7B7B7B),
+                        color: hintTextColor,
                       ),
                       validator: (value) {
                         if (value!.isEmpty) {
@@ -89,7 +87,7 @@ class LoginPageView extends GetView<LoginPageController> {
                       },
                     ),
                     SizedBox(
-                      height: 10,
+                      height: sizeHeight * 0.01,
                     ),
                     TextfieldLoginRegister(
                       fieldController: controller.cEmailSignIn,
@@ -99,7 +97,7 @@ class LoginPageView extends GetView<LoginPageController> {
                       prefixIcon: Icon(
                         Icons.email_rounded,
                         size: 20,
-                        color: Color(0xFF7B7B7B),
+                        color: hintTextColor,
                       ),
                       validator: (value) {
                         if (value!.isEmpty) {
@@ -111,7 +109,7 @@ class LoginPageView extends GetView<LoginPageController> {
                       },
                     ),
                     SizedBox(
-                      height: 10,
+                      height: sizeHeight * 0.01,
                     ),
                     Obx(
                       () => TextfieldLoginRegister(
@@ -122,7 +120,7 @@ class LoginPageView extends GetView<LoginPageController> {
                         prefixIcon: Icon(
                           Icons.lock,
                           size: 20,
-                          color: Color(0xFF7B7B7B),
+                          color: hintTextColor,
                         ),
                         suffixIcon: IconButton(
                           onPressed: () {
@@ -134,7 +132,7 @@ class LoginPageView extends GetView<LoginPageController> {
                                 ? Icons.visibility_off
                                 : Icons.visibility,
                             size: 20,
-                            color: Color(0xFF7B7B7B),
+                            color: hintTextColor,
                           ),
                         ),
                         validator: (value) {
@@ -148,7 +146,7 @@ class LoginPageView extends GetView<LoginPageController> {
                       ),
                     ),
                     SizedBox(
-                      height: 30,
+                      height: sizeHeight * 0.04,
                     ),
                     Obx(
                       () => ButtonLoginRegister(
@@ -161,20 +159,16 @@ class LoginPageView extends GetView<LoginPageController> {
                         isColor: true,
                         child: Text(
                           "Sign In",
-                          style: GoogleFonts.poppins(
-                            color: Colors.white,
-                            fontSize: figmaFontsize(16),
-                            fontWeight: FontWeight.w500,
-                          ),
+                          style: buttonLoginRegister,
                         ),
                       ),
                     ),
                     SizedBox(
-                      height: 20,
+                      height: sizeHeight * 0.03,
                     ),
                     OrWidget(),
                     SizedBox(
-                      height: 20,
+                      height: sizeHeight * 0.03,
                     ),
                     ButtonLoginRegister(
                       onTap: () {
@@ -183,32 +177,27 @@ class LoginPageView extends GetView<LoginPageController> {
                       isEmailOrGoogle: controller.isGoogleSignIn.value,
                       isColor: false,
                       child: SvgPicture.asset(
-                        'assets/icons/icon_google.svg',
+                        iconGoogle,
                       ),
                     ),
                     SizedBox(
-                      height: 30,
+                      height: sizeHeight * 0.035,
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(
                           "Already as user?",
-                          style: GoogleFonts.poppins(
-                            color: primaryColor,
-                          ),
+                          style: textAlreadyUser,
                         ),
                         SizedBox(
-                          width: 3,
+                          width: sizeWidth * 0.01,
                         ),
                         InkWell(
                           onTap: () => Get.toNamed(Routes.REGISTER_PAGE),
                           child: Text(
                             "Sign In",
-                            style: TextStyle(
-                              color: primaryColor,
-                              fontWeight: FontWeight.w800,
-                            ),
+                            style: textSignInUp,
                           ),
                         ),
                       ],

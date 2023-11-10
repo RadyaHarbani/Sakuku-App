@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'package:sakuku_app/helpers/themes/color_themes.dart';
 import 'package:sakuku_app/helpers/themes/default_themes.dart';
+import 'package:sakuku_app/helpers/themes/text_style_themes/login_register_page_themes.dart';
 
 class ButtonLoginRegister extends StatelessWidget {
   const ButtonLoginRegister({
@@ -23,13 +24,13 @@ class ButtonLoginRegister extends StatelessWidget {
       child: AnimatedContainer(
         duration: Duration(milliseconds: 600),
         width: double.infinity,
-        height: isEmailOrGoogle ? 70 : 50,
+        height: isEmailOrGoogle ? sizeHeight * 0.09 : sizeHeight * 0.07,
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(15),
-          color: isColor == true ? Color(0xFF375A5A) : Colors.transparent,
+          borderRadius: defaulBorderRadius,
+          color: isColor == true ? primaryColor : Colors.transparent,
           border: isColor == false
               ? Border.all(
-                  color: Color(0xFF375A5A),
+                  color: primaryColor,
                   width: 1.3,
                 )
               : null,
@@ -39,11 +40,7 @@ class ButtonLoginRegister extends StatelessWidget {
               ? Center(
                   child: Text(
                     "Loading...",
-                    style: GoogleFonts.poppins(
-                      color: isColor == true ? Colors.white : Color(0xFF375A5A),
-                      fontSize: figmaFontsize(17),
-                      fontWeight: FontWeight.w500,
-                    ),
+                    style: isLoadingButtonText(isColor),
                   ),
                 )
               : child,
