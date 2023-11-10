@@ -79,3 +79,4 @@ const String iconKategori = 'assets/icons/icon_kategori.png';
 const String iconKota = 'assets/icons/icon_kota.png';
 const String iconNulis = 'assets/icons/icon_nulis.png';
 const String iconBenderaIndonesia = 'assets/icons/icon_bendera_indonesia.png';
+const String iconKeuangan = 'assets/icons/icon_keuangan.png';

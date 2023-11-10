@@ -3,7 +3,6 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
 import 'package:sakuku_app/components/button_add_target_page.dart';
-import 'package:sakuku_app/components/option_add_target_page.dart';
 import 'package:sakuku_app/helpers/themes.dart';
 import 'package:sakuku_app/routes/app_pages.dart';
 

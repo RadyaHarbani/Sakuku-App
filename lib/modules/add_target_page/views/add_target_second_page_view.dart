@@ -62,11 +62,17 @@ class AddTargetSecondPageView extends StatelessWidget {
             ),
             Column(
               children: [
-                Image.asset(footerTarget),
+                Container(
+                  width: sizeWidth,
+                  child: Image.asset(
+                    footerTarget,
+                    fit: BoxFit.fitWidth,
+                  ),
+                ),
                 LinearPercentIndicator(
                     padding: EdgeInsets.zero,
                     animation: true,
-                    animateFromLastPercent: true ,
+                    animateFromLastPercent: true,
                     animationDuration: 1000,
                     lineHeight: 8,
                     percent: 0.5,
