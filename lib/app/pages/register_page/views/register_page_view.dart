@@ -1,14 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:sakuku_app/app/routes/app_pages.dart';
-import 'package:sakuku_app/app/widgets/button_login_register.dart';
-import 'package:sakuku_app/app/widgets/or_widget_login_register.dart';
-import 'package:sakuku_app/app/widgets/textfield_login_register.dart';
+import 'package:sakuku_app/app/pages/login_page/views/widgets/button_login_register.dart';
+import 'package:sakuku_app/app/pages/login_page/views/widgets/or_widget_login_register.dart';
+import 'package:sakuku_app/app/pages/login_page/views/widgets/textfield_login_register.dart';
 import 'package:sakuku_app/helpers/themes/color_themes.dart';
 import 'package:sakuku_app/helpers/themes/default_themes.dart';
 import 'package:sakuku_app/app/pages/register_page/controllers/register_page_controller.dart';
+import 'package:sakuku_app/helpers/themes/icon_themes.dart';
+import 'package:sakuku_app/helpers/themes/image_themes.dart';
+import 'package:sakuku_app/helpers/themes/text_style_themes/login_register_page_themes.dart';
 
 class RegisterPageView extends GetView<RegisterPageController> {
   const RegisterPageView({super.key});
@@ -30,34 +32,30 @@ class RegisterPageView extends GetView<RegisterPageController> {
         ),
         actions: [
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 25),
-            child: SvgPicture.asset('assets/logos/logo_horizontal.svg'),
+            padding: EdgeInsets.symmetric(horizontal: sizeWidth * 0.06),
+            child: SvgPicture.asset(logoHorizontal),
           ),
         ],
       ),
       body: SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 25),
+          padding: EdgeInsets.symmetric(
+            horizontal: sizeWidth * 0.065,
+            vertical: sizeHeight * 0.015,
+          ),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
                 "Selamat Datang Di Sakuku!",
-                style: GoogleFonts.poppins(
-                  fontSize: figmaFontsize(14),
-                ),
+                style: subtitleLoginRegisterPage,
               ),
               Text(
                 "Gabung Sekarang!",
-                style: GoogleFonts.poppins(
-                  height: 1.2,
-                  fontSize: figmaFontsize(24),
-                  fontWeight: FontWeight.bold,
-                  color: primaryColor,
-                ),
+                style: titleLoginRegisterPage,
               ),
               SizedBox(
-                height: 30,
+                height: sizeHeight * 0.035,
               ),
               Form(
                 key: controller.formField,
@@ -70,7 +68,7 @@ class RegisterPageView extends GetView<RegisterPageController> {
                       prefixIcon: Icon(
                         Icons.person,
                         size: 20,
-                        color: Color(0xFF7B7B7B),
+                        color: hintTextColor,
                       ),
                       hintText: "Username",
                       validator: (value) {
@@ -81,7 +79,7 @@ class RegisterPageView extends GetView<RegisterPageController> {
                       },
                     ),
                     SizedBox(
-                      height: 10,
+                      height: sizeHeight * 0.01,
                     ),
                     TextfieldLoginRegister(
                       fieldController: controller.cEmailSignUp,
@@ -90,7 +88,7 @@ class RegisterPageView extends GetView<RegisterPageController> {
                       prefixIcon: Icon(
                         Icons.email_rounded,
                         size: 20,
-                        color: Color(0xFF7B7B7B),
+                        color: hintTextColor,
                       ),
                       hintText: "Email",
                       validator: (value) {
@@ -103,7 +101,7 @@ class RegisterPageView extends GetView<RegisterPageController> {
                       },
                     ),
                     SizedBox(
-                      height: 10,
+                      height: sizeHeight * 0.01,
                     ),
                     Obx(() => TextfieldLoginRegister(
                           fieldController: controller.cPasswordSignUp,
@@ -112,7 +110,7 @@ class RegisterPageView extends GetView<RegisterPageController> {
                           prefixIcon: Icon(
                             Icons.lock_rounded,
                             size: 20,
-                            color: Color(0xFF7B7B7B),
+                            color: hintTextColor,
                           ),
                           hintText: "Password",
                           validator: (value) {
@@ -132,17 +130,17 @@ class RegisterPageView extends GetView<RegisterPageController> {
                                 ? Icon(
                                     Icons.visibility_rounded,
                                     size: 23,
-                                    color: Color(0xFF7B7B7B),
+                                    color: hintTextColor,
                                   )
                                 : Icon(
                                     Icons.visibility_off_rounded,
                                     size: 23,
-                                    color: Color(0xFF7B7B7B),
+                                    color: hintTextColor,
                                   ),
                           ),
                         )),
                     SizedBox(
-                      height: 10,
+                      height: sizeHeight * 0.01,
                     ),
                     Obx(() => TextfieldLoginRegister(
                           fieldController: controller.cConfirmPasswordSignUp,
@@ -151,7 +149,7 @@ class RegisterPageView extends GetView<RegisterPageController> {
                           prefixIcon: Icon(
                             Icons.lock_rounded,
                             size: 20,
-                            color: Color(0xFF7B7B7B),
+                            color: hintTextColor,
                           ),
                           hintText: "Confirm Password",
                           validator: (value) {
@@ -172,17 +170,17 @@ class RegisterPageView extends GetView<RegisterPageController> {
                                 ? Icon(
                                     Icons.visibility_rounded,
                                     size: 23,
-                                    color: Color(0xFF7B7B7B),
+                                    color: hintTextColor,
                                   )
                                 : Icon(
                                     Icons.visibility_off_rounded,
                                     size: 23,
-                                    color: Color(0xFF7B7B7B),
+                                    color: hintTextColor,
                                   ),
                           ),
                         )),
                     SizedBox(
-                      height: 20,
+                      height: sizeHeight * 0.04,
                     ),
                     ButtonLoginRegister(
                       onTap: () {
@@ -194,19 +192,15 @@ class RegisterPageView extends GetView<RegisterPageController> {
                       isColor: true,
                       child: Text(
                         "Register",
-                        style: GoogleFonts.poppins(
-                          color: Colors.white,
-                          fontSize: figmaFontsize(17),
-                          fontWeight: FontWeight.w500,
-                        ),
+                        style: buttonLoginRegister,
                       ),
                     ),
                     SizedBox(
-                      height: 30,
+                      height: sizeHeight * 0.03,
                     ),
                     OrWidget(),
                     SizedBox(
-                      height: 30,
+                      height: sizeHeight * 0.03,
                     ),
                     ButtonLoginRegister(
                       onTap: () {
@@ -215,32 +209,27 @@ class RegisterPageView extends GetView<RegisterPageController> {
                       isEmailOrGoogle: controller.isGoogleSignUp.value,
                       isColor: false,
                       child: SvgPicture.asset(
-                        'assets/icons/icon_google.svg',
+                        iconGoogle,
                       ),
                     ),
                     SizedBox(
-                      height: 30,
+                      height: sizeHeight * 0.035,
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(
                           "Already as user?",
-                          style: GoogleFonts.poppins(
-                            color: primaryColor,
-                          ),
+                          style: textAlreadyUser,
                         ),
                         SizedBox(
-                          width: 3,
+                          width: sizeWidth * 0.01,
                         ),
                         InkWell(
                           onTap: () => Get.toNamed(Routes.LOGIN_PAGE),
                           child: Text(
                             "Sign In",
-                            style: TextStyle(
-                              color: primaryColor,
-                              fontWeight: FontWeight.w800,
-                            ),
+                            style: textSignInUp,
                           ),
                         ),
                       ],

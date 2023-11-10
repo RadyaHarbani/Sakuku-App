@@ -1,5 +1,6 @@
-
 import 'package:flutter/material.dart';
+import 'package:sakuku_app/helpers/themes/color_themes.dart';
+import 'package:sakuku_app/helpers/themes/default_themes.dart';
 
 class DotIndicator extends StatelessWidget {
   const DotIndicator({
@@ -13,13 +14,11 @@ class DotIndicator extends StatelessWidget {
   Widget build(BuildContext context) {
     return AnimatedContainer(
       duration: Duration(milliseconds: 300),
-      height: 5,
-      width: isActive ? 115 : 57,
+      height: sizeHeight * 0.006,
+      width: isActive ? sizeWidth * 0.3 : sizeWidth * 0.16,
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(15),
-        color: isActive
-            ? Color.fromRGBO(57, 62, 70, 1)
-            : Color.fromRGBO(150, 150, 150, 34),
+        borderRadius: defaulBorderRadius,
+        color: isActive ? primaryColor : hintTextColor.withOpacity(0.3),
       ),
     );
   }

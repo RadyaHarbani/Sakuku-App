@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'package:sakuku_app/helpers/themes/default_themes.dart';
 import 'package:sakuku_app/helpers/themes/image_themes.dart';
+import 'package:sakuku_app/helpers/themes/text_style_themes/on_boarding_page_themes.dart';
 
 class OnBoardingContent extends StatelessWidget {
   const OnBoardingContent({
@@ -19,30 +20,23 @@ class OnBoardingContent extends StatelessWidget {
         Image.asset(
           image,
         ),
-        SizedBox(height: 30),
+        SizedBox(height: sizeHeight * 0.04),
         Container(
-          width: 300,
+          width: sizeWidth * 0.79,
           child: Text(
             title,
             textAlign: TextAlign.center,
-            style: GoogleFonts.poppins(
-              height: 1.3,
-              fontSize: 22,
-              fontWeight: FontWeight.bold,
-            ),
+            style: titleOnboardingContent,
           ),
         ),
         Padding(
-          padding: const EdgeInsets.only(top: 15),
+          padding: EdgeInsets.only(top: sizeHeight * 0.02),
           child: SizedBox(
-            width: 270,
+            width: sizeWidth * 0.68,
             child: Text(
               description,
               textAlign: TextAlign.center,
-              style: GoogleFonts.poppins(
-                fontSize: 13,
-                color: Color.fromRGBO(98, 98, 98, 1),
-              ),
+              style: descOnboardingContent,
             ),
           ),
         ),

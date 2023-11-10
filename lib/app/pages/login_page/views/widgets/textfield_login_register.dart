@@ -35,21 +35,19 @@ class TextfieldLoginRegister extends StatelessWidget {
       decoration: InputDecoration(
         contentPadding: EdgeInsets.symmetric(vertical: 16),
         filled: true,
-        fillColor: primaryTextColorGrey,
+        fillColor: filledTextfieldColor,
         prefixIcon: prefixIcon,
-        border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(15),
-        ),
+        border: OutlineInputBorder(borderRadius: defaulBorderRadius),
         enabledBorder: OutlineInputBorder(
           borderSide: BorderSide(
             color: Colors.transparent,
           ),
-          borderRadius: BorderRadius.circular(15),
+          borderRadius: defaulBorderRadius,
         ),
         focusedBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(15),
+          borderRadius: defaulBorderRadius,
           borderSide: BorderSide(
-            color: Colors.green,
+            color: successColor,
             width: 1.5,
           ),
         ),
@@ -59,7 +57,7 @@ class TextfieldLoginRegister extends StatelessWidget {
         ),
         suffixIcon: suffixIcon,
       ),
-      cursorColor: Colors.black,
+      cursorColor: primaryTextColorBlack,
       validator: validator as String? Function(String?)?,
     );
   }

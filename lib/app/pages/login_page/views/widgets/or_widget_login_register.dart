@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:sakuku_app/helpers/themes/color_themes.dart';
+import 'package:sakuku_app/helpers/themes/default_themes.dart';
+import 'package:sakuku_app/helpers/themes/text_style_themes/login_register_page_themes.dart';
 
 class OrWidget extends StatelessWidget {
   const OrWidget({super.key});
@@ -8,28 +9,25 @@ class OrWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 10),
+      padding: EdgeInsets.symmetric(horizontal: sizeWidth * 0.025),
       child: Row(
         children: [
           Expanded(
             child: Divider(
-              color: Color(0xFF0F110E),
+              color: primaryTextColorBlack,
               thickness: 1,
             ),
           ),
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 10),
+            padding: EdgeInsets.symmetric(horizontal: sizeWidth * 0.025),
             child: Text(
               "Or",
-              style: GoogleFonts.poppins(
-                fontWeight: FontWeight.w600,
-                color: primaryColor,
-              ),
+              style: orWidgetStyle,
             ),
           ),
           Expanded(
             child: Divider(
-              color: Color(0xFF0F110E),
+              color: primaryTextColorBlack,
               thickness: 1,
             ),
           ),
