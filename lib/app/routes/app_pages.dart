@@ -1,4 +1,8 @@
 import 'package:get/get.dart';
+import 'package:sakuku_app/app/pages/congrats_page/bindings/congrats_page_binding.dart';
+import 'package:sakuku_app/app/pages/congrats_page/views/congrats_nabung_page.dart';
+import 'package:sakuku_app/app/pages/congrats_page/views/congrats_selesai_page.dart';
+import 'package:sakuku_app/app/pages/congrats_page/views/congrats_target_page.dart';
 import 'package:sakuku_app/app/pages/splash_screen/views/splash_screen_view.dart';
 import 'package:sakuku_app/app/widgets/bottom_nav_component.dart';
 import 'package:sakuku_app/app/pages/add_target_page/bindings/add_target_page_binding.dart';
@@ -28,7 +32,7 @@ part 'app_routes.dart';
 class AppPages {
   AppPages._();
 
-  static const INITIAL = Routes.HOME_PAGE;
+  static const INITIAL = Routes.SPLASH_SCREEN;
 
   static final routes = [
     GetPage(
@@ -104,6 +108,21 @@ class AppPages {
     GetPage(
       name: _Paths.NAVIGATOR_COMPONENT,
       page: () => BottomNavComponent(),
+    ),
+    GetPage(
+      name: _Paths.CONGRATS_TARGET_PAGE,
+      page: () => CongratsTargetPage(),
+      binding: CongratsPageBinding(),
+    ),
+    GetPage(
+      name: _Paths.CONGRATS_NABUNG_PAGE,
+      page: () => CongratsNabungPage(),
+      binding: CongratsPageBinding(),
+    ),
+    GetPage(
+      name: _Paths.CONGRATS_SELESAI_PAGE,
+      page: () => CongratsSelesaiPage(),
+      binding: CongratsPageBinding(),
     ),
   ];
 }
