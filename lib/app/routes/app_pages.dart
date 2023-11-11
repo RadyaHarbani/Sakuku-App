@@ -1,4 +1,6 @@
 import 'package:get/get.dart';
+import 'package:sakuku_app/app/pages/all_target_page/bindings/all_target_page_binding.dart';
+import 'package:sakuku_app/app/pages/all_target_page/views/all_target_page_view.dart';
 import 'package:sakuku_app/app/pages/splash_screen/views/splash_screen_view.dart';
 import 'package:sakuku_app/app/widgets/bottom_nav_component.dart';
 import 'package:sakuku_app/app/pages/add_target_page/bindings/add_target_page_binding.dart';
@@ -27,7 +29,7 @@ part 'app_routes.dart';
 
 class AppPages {
   AppPages._();
-
+  
   static const INITIAL = Routes.HOME_PAGE;
 
   static final routes = [
@@ -70,6 +72,11 @@ class AppPages {
       name: _Paths.ALL_TRANSACTIONS_PAGE,
       page: () => AllTransactionsPageView(),
       binding: TransactionPageBinding(),
+    ),
+    GetPage(
+      name: _Paths.ALL_TARGET_PAGE,
+      page: () => AllTargetPageView(),
+      binding: AllTargetPageBinding(),
     ),
     GetPage(
       name: _Paths.ADD_TARGET_FIRST_PAGE,
