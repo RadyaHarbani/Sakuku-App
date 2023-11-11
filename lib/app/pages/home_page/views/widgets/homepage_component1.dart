@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
 import 'package:sakuku_app/helpers/themes/color_themes.dart';
 import 'package:sakuku_app/helpers/themes/default_themes.dart';
 import 'package:sakuku_app/helpers/themes/icon_themes.dart';
+import 'package:sakuku_app/helpers/themes/text_style_themes/homepage_themes.dart';
 
 class HomePageComponentOne extends StatelessWidget {
   const HomePageComponentOne({super.key});
@@ -11,86 +11,67 @@ class HomePageComponentOne extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.symmetric(horizontal: 36, vertical: 15),
-      height: 244,
+      margin: EdgeInsets.symmetric(
+          horizontal: sizeWidth * 0.05, vertical: sizeHeight * 0.03),
+      // height: sizeHeight * 0.287,
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(20), color: Colors.white),
       child: Column(
         children: [
           Container(
-            padding: EdgeInsets.symmetric(horizontal: 25),
-            height: 62.96,
+            padding: EdgeInsets.symmetric(
+                horizontal: sizeWidth * 0.05, vertical: sizeHeight * 0.02),
             decoration: BoxDecoration(
                 color: thirdColor,
                 borderRadius: BorderRadius.only(
                     topLeft: Radius.circular(20),
-                    topRight: Radius.circular(20))),
+                    topRight: Radius.circular(20)),
+                boxShadow: defaultBoxShadow),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Expanded(
                     child: Text(
-                  'Keuangan Bulan Ini (bulanan)',
-                  style: GoogleFonts.poppins(
-                      fontSize: figmaFontsize(15), fontWeight: FontWeight.bold),
+                  'Keuangan\nBulan Ini (bulanan)',
+                  style: containerTittleHomePage(true),
                   maxLines: 2,
                 )),
                 Image.asset(
                   iconKeuangan,
-                  height: 28.19,
+                  height: sizeHeight * 0.034,
                 )
               ],
             ),
           ),
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+            padding: EdgeInsets.symmetric(
+                horizontal: sizeWidth * 0.05, vertical: sizeHeight * 0.01),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
-                  'OKTOBER 2023',
-                  style: GoogleFonts.poppins(
-                      color: Colors.black.withOpacity(0.53),
-                      fontSize: figmaFontsize(10),
-                      fontWeight: FontWeight.w600),
-                ),
-                SizedBox(height: 10),
+                Text('OKTOBER 2023', style: containerDateHomePage),
+                SizedBox(height: sizeHeight * 0.01),
                 Container(
-                  height: 118,
-                  width: 284,
+                  height: sizeHeight * 0.14,
+                  margin: EdgeInsets.only(bottom: sizeHeight * 0.015),
                   decoration: BoxDecoration(
                       border: Border.all(color: Colors.grey),
                       borderRadius: BorderRadius.circular(10)),
                   child: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 17),
+                    padding:
+                        EdgeInsets.symmetric(horizontal: sizeWidth * 0.045),
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Text(
-                              'Budget',
-                              style: GoogleFonts.poppins(
-                                  fontSize: figmaFontsize(13),
-                                  fontWeight: FontWeight.w600),
-                            ),
+                            Text('Budget', style: BudgetHomePage),
                             Row(
                               children: [
-                                Text(
-                                  'sisa ',
-                                  style: GoogleFonts.poppins(
-                                      fontWeight: FontWeight.w500,
-                                      fontSize: figmaFontsize(11),
-                                      color: Colors.black.withOpacity(0.58)),
-                                ),
-                                Text(
-                                  '-1.000',
-                                  style: GoogleFonts.poppins(
-                                      fontSize: figmaFontsize(12),
-                                      fontWeight: FontWeight.w600,
-                                      color: Colors.red),
-                                ),
+                                Text('sisa ', style: chipHomePage),
+                                Text('-1.000',
+                                    style: moneyRemainderHomePage(true)),
                               ],
                             )
                           ],
@@ -107,34 +88,10 @@ class HomePageComponentOne extends StatelessWidget {
                         ),
                         Row(
                           children: [
-                            Text(
-                              'terpakai ',
-                              style: GoogleFonts.poppins(
-                                  fontWeight: FontWeight.w500,
-                                  fontSize: figmaFontsize(11),
-                                  color: Colors.black.withOpacity(0.58)),
-                            ),
-                            Text(
-                              'Rp1.000.000 ',
-                              style: GoogleFonts.poppins(
-                                fontWeight: FontWeight.bold,
-                                fontSize: figmaFontsize(11),
-                              ),
-                            ),
-                            Text(
-                              '/ ',
-                              style: GoogleFonts.poppins(
-                                  fontWeight: FontWeight.w500,
-                                  fontSize: figmaFontsize(11),
-                                  color: Colors.black.withOpacity(0.58)),
-                            ),
-                            Text(
-                              'Rp2.000.000',
-                              style: GoogleFonts.poppins(
-                                  fontWeight: FontWeight.w500,
-                                  fontSize: figmaFontsize(11),
-                                  color: Colors.black.withOpacity(0.58)),
-                            ),
+                            Text('terpakai ', style: chipHomePage),
+                            Text('Rp1.000.000 ', style: moneyUsedHomePage),
+                            Text('/ ', style: chipHomePage),
+                            Text('Rp2.000.000', style: chipHomePage),
                           ],
                         )
                       ],

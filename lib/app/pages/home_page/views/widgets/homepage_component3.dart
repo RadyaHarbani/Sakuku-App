@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:sakuku_app/helpers/themes/color_themes.dart';
 import 'package:sakuku_app/helpers/themes/default_themes.dart';
 import 'package:sakuku_app/helpers/themes/icon_themes.dart';
+import 'package:sakuku_app/helpers/themes/text_style_themes/homepage_themes.dart';
 
 class HomePageComponentThree extends StatelessWidget {
   const HomePageComponentThree({super.key});
@@ -10,15 +10,16 @@ class HomePageComponentThree extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.symmetric(horizontal: 36, vertical: 15),
-      height: 181,
+      margin: EdgeInsets.symmetric(
+          horizontal: sizeWidth * 0.05, vertical: sizeHeight * 0.01),
+      // height: sizeHeight * 0.203,
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(20), color: Colors.white),
       child: Column(
         children: [
           Container(
-            padding: EdgeInsets.symmetric(horizontal: 25),
-            height: 47,
+            padding: EdgeInsets.symmetric(
+                horizontal: sizeWidth * 0.05, vertical: sizeHeight * 0.02),
             decoration: BoxDecoration(
                 color: thirdColor,
                 borderRadius: BorderRadius.only(
@@ -27,11 +28,8 @@ class HomePageComponentThree extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text(
-                  'Transaksi Terakhir',
-                  style: GoogleFonts.poppins(
-                      fontSize: figmaFontsize(15), fontWeight: FontWeight.bold),
-                ),
+                Text('Transaksi Terakhir',
+                    style: containerTittleHomePage(false)),
                 Icon(
                   Icons.arrow_forward_ios_rounded,
                   size: 20,
@@ -40,65 +38,44 @@ class HomePageComponentThree extends StatelessWidget {
             ),
           ),
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+            padding: EdgeInsets.symmetric(
+                horizontal: sizeWidth * 0.05, vertical: sizeHeight * 0.01),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
-                  'KAMIS, 18 OKTOBER 2023',
-                  style: GoogleFonts.poppins(
-                      color: Colors.black.withOpacity(0.53),
-                      fontSize: figmaFontsize(10),
-                      fontWeight: FontWeight.w600),
-                ),
-                SizedBox(height: 10),
+                Text('KAMIS, 18 OKTOBER 2023', style: containerDateHomePage),
+                SizedBox(height: sizeHeight * 0.01),
                 Container(
-                  height: 62,
-                  width: 284,
+                  height: sizeHeight * 0.074,
+                  margin: EdgeInsets.only(bottom: sizeHeight * 0.015),
                   decoration: BoxDecoration(
                       border: Border.all(color: Colors.grey),
                       borderRadius: BorderRadius.circular(10)),
                   child: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 17),
+                    padding:
+                        EdgeInsets.symmetric(horizontal: sizeWidth * 0.045),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Row(
                           children: [
                             Container(
-                              margin: EdgeInsets.only(right: 6),
+                              margin: EdgeInsets.only(right: sizeWidth * 0.02),
                               child: Image.asset(
                                 iconPemasukan,
-                                height: 25,
+                                height: sizeHeight * 0.029,
                               ),
                             ),
                             Column(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
-                                Text(
-                                  'Pemasukan ',
-                                  style: GoogleFonts.poppins(
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: figmaFontsize(11)),
-                                ),
-                                Text(
-                                  'Gajian Kantor',
-                                  style: GoogleFonts.poppins(
-                                    fontSize: figmaFontsize(10),
-                                    fontWeight: FontWeight.w500,
-                                  ),
-                                ),
+                                Text('Pemasukan ', style: moneyUsedHomePage),
+                                Text('Gajian Kantor', style: paydayHomePage),
                               ],
                             ),
                           ],
                         ),
-                        Text(
-                          '2.000.000',
-                          style: GoogleFonts.poppins(
-                              fontSize: figmaFontsize(12),
-                              fontWeight: FontWeight.w600,
-                              color: Color(0xFFE3B9B65)),
-                        )
+                        Text('2.000.000', style: moneyRemainderHomePage(false))
                       ],
                     ),
                   ),
