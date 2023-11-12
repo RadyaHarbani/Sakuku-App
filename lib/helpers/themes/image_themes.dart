@@ -4,7 +4,7 @@ const String logoHorizontal = 'assets/logos/logo_horizontal.svg'; //ini svg
 
 //Congrats Image Assets
 const String footerBlack =
-    'assets/images/congrats_images/footer_home_page_hitam.png';
+    'assets/images/congrats_images/footer_home_page_black.png';
 const String robotCongratsNabung =
     'assets/images/congrats_images/robot_congrats_nabung.png';
 const String robotCongratsTarget =

@@ -18,6 +18,9 @@ abstract class Routes {
   static const INCOMING_TRANSACTION_PAGE = _Paths.INCOMING_TRANSACTION_PAGE;
   static const EXIT_TRANSACTION_PAGE = _Paths.EXIT_TRANSACTION_PAGE;
   static const NAVIGATOR_COMPONENT = _Paths.NAVIGATOR_COMPONENT;
+  static const CONGRATS_TARGET_PAGE = _Paths.CONGRATS_TARGET_PAGE;
+  static const CONGRATS_NABUNG_PAGE = _Paths.CONGRATS_NABUNG_PAGE;
+  static const CONGRATS_SELESAI_PAGE = _Paths.CONGRATS_SELESAI_PAGE;
 }
 
 abstract class _Paths {
@@ -38,4 +41,7 @@ abstract class _Paths {
   static const INCOMING_TRANSACTION_PAGE = '/transaction-entry-page';
   static const EXIT_TRANSACTION_PAGE = '/transaction-exit-page';
   static const NAVIGATOR_COMPONENT = '/navigator-component';
+  static const CONGRATS_TARGET_PAGE = '/congrats-target-page';
+  static const CONGRATS_NABUNG_PAGE = '/congrats-nabung-page';
+  static const CONGRATS_SELESAI_PAGE = '/congrats-selesai-page';
 }
