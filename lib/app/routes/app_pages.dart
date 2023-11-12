@@ -1,6 +1,8 @@
 import 'package:get/get.dart';
 import 'package:sakuku_app/app/pages/all_target_page/bindings/all_target_page_binding.dart';
 import 'package:sakuku_app/app/pages/all_target_page/views/all_target_page_view.dart';
+import 'package:sakuku_app/app/pages/budget_page.dart/bindings/budget_page_binding.dart';
+import 'package:sakuku_app/app/pages/budget_page.dart/views/budget_page_view.dart';
 import 'package:sakuku_app/app/pages/congrats_page/bindings/congrats_page_binding.dart';
 import 'package:sakuku_app/app/pages/congrats_page/views/congrats_nabung_page.dart';
 import 'package:sakuku_app/app/pages/congrats_page/views/congrats_selesai_page.dart';
@@ -34,7 +36,7 @@ part 'app_routes.dart';
 class AppPages {
   AppPages._();
 
-  static const INITIAL = Routes.ON_BOARDING_PAGE;
+  static const INITIAL = Routes.BUDGET_PAGE;
 
   static final routes = [
     GetPage(
@@ -130,6 +132,11 @@ class AppPages {
       name: _Paths.CONGRATS_SELESAI_PAGE,
       page: () => CongratsSelesaiPage(),
       binding: CongratsPageBinding(),
+    ),
+    GetPage(
+      name: _Paths.BUDGET_PAGE,
+      page: () => BudgetPageView(),
+      binding: BudgetPageBinding(),
     ),
   ];
 }

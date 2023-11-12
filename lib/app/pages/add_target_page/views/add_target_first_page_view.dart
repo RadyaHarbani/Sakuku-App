@@ -65,7 +65,11 @@ class AddTargetFirstPageView extends GetView<AddTargetsPageController> {
                 width: sizeWidth,
                 child: Column(
                   children: [
-                    Image.asset(footerTarget, width: sizeWidth),
+                    Image.asset(
+                      footerTarget,
+                      width: sizeWidth,
+                      fit: BoxFit.fill,
+                    ),
                     Container(
                       width: sizeWidth,
                       child: LinearPercentIndicator(

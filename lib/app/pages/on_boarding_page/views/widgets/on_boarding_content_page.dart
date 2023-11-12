@@ -32,6 +32,9 @@ class OnBoardingContent extends StatelessWidget {
                 textAlign: TextAlign.center,
                 style: titleOnboardingContent,
               ),
+              SizedBox(
+                height: sizeHeight * 0.015,
+              ),
               Text(
                 description,
                 textAlign: TextAlign.center,

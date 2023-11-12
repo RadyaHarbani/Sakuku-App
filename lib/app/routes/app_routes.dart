@@ -21,6 +21,7 @@ abstract class Routes {
   static const CONGRATS_TARGET_PAGE = _Paths.CONGRATS_TARGET_PAGE;
   static const CONGRATS_NABUNG_PAGE = _Paths.CONGRATS_NABUNG_PAGE;
   static const CONGRATS_SELESAI_PAGE = _Paths.CONGRATS_SELESAI_PAGE;
+  static const BUDGET_PAGE = _Paths.BUDGET_PAGE;
 }
 
 abstract class _Paths {
@@ -44,4 +45,5 @@ abstract class _Paths {
   static const CONGRATS_TARGET_PAGE = '/congrats-target-page';
   static const CONGRATS_NABUNG_PAGE = '/congrats-nabung-page';
   static const CONGRATS_SELESAI_PAGE = '/congrats-selesai-page';
+  static const BUDGET_PAGE = '/budget-page';
 }
