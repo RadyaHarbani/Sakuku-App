@@ -63,7 +63,7 @@ class HomePageView extends GetView<HomePageController> {
                     ],
                   ),
                   SizedBox(
-                    height: sizeHeight * 0.023,
+                    height: sizeHeight * 0.04,
                   ),
                   Stack(
                     children: [
@@ -82,6 +82,9 @@ class HomePageView extends GetView<HomePageController> {
                                 Text("POSITIF", style: keuanganHomePage(true)),
                               ],
                             ),
+                            SizedBox(
+                              height: sizeHeight * 0.01,
+                            ),
                             Row(
                               crossAxisAlignment: CrossAxisAlignment.end,
                               children: [
@@ -91,6 +94,9 @@ class HomePageView extends GetView<HomePageController> {
                                 ),
                                 Text("1.000.000", style: moneyHomePage(true)),
                               ],
+                            ),
+                            SizedBox(
+                              height: sizeHeight * 0.045,
                             ),
                           ],
                         ),
@@ -105,73 +111,79 @@ class HomePageView extends GetView<HomePageController> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Container(
-                        width: sizeWidth / 2.3,
-                        height: sizeHeight * 0.056,
-                        decoration: BoxDecoration(
+                      Expanded(
+                        child: Container(
+                          height: sizeHeight * 0.075,
+                          decoration: BoxDecoration(
                             color: Colors.black.withOpacity(0.24),
-                            borderRadius: defaulBorderRadius),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: [
-                            Transform.rotate(
-                              angle: 4.7,
-                              child: Container(
-                                width: sizeWidth * 0.07,
-                                height: sizeHeight * 0.027,
-                                decoration: BoxDecoration(
-                                  color: Colors.green,
-                                  shape: BoxShape.circle,
-                                ),
-                                child: Icon(
-                                  Icons.arrow_forward_ios_rounded,
-                                  size: 13,
-                                  color: backgroundColor,
+                            borderRadius: defaulBorderRadius,
+                          ),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: [
+                              Transform.rotate(
+                                angle: 4.7,
+                                child: Container(
+                                  width: sizeWidth * 0.07,
+                                  height: sizeHeight * 0.027,
+                                  decoration: BoxDecoration(
+                                    color: successColor,
+                                    shape: BoxShape.circle,
+                                  ),
+                                  child: Icon(
+                                    Icons.arrow_forward_ios_rounded,
+                                    size: 13,
+                                    color: backgroundColor,
+                                  ),
                                 ),
                               ),
-                            ),
-                            Row(
-                              children: [
-                                Text("Rp ", style: rpHomePage(false, false)),
-                                Text("500.000", style: moneyHomePage(false)),
-                              ],
-                            ),
-                          ],
+                              Row(
+                                children: [
+                                  Text("Rp ", style: rpHomePage(false, false)),
+                                  Text("500.000", style: moneyHomePage(false)),
+                                ],
+                              ),
+                            ],
+                          ),
                         ),
                       ),
-                      Container(
-                        width: sizeWidth / 2.3,
-                        height: sizeHeight * 0.056,
-                        decoration: BoxDecoration(
-                          color: Colors.black.withOpacity(0.24),
-                          borderRadius: defaulBorderRadius,
-                        ),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: [
-                            Transform.rotate(
-                              angle: pi / 2,
-                              child: Container(
-                                width: sizeWidth * 0.07,
-                                height: sizeHeight * 0.027,
-                                decoration: BoxDecoration(
-                                  color: Colors.red,
-                                  shape: BoxShape.circle,
-                                ),
-                                child: Icon(
-                                  Icons.arrow_forward_ios_rounded,
-                                  size: 13,
-                                  color: backgroundColor,
+                      SizedBox(
+                        width: sizeWidth * 0.01,
+                      ),
+                      Expanded(
+                        child: Container(
+                          height: sizeHeight * 0.075,
+                          decoration: BoxDecoration(
+                            color: Colors.black.withOpacity(0.24),
+                            borderRadius: defaulBorderRadius,
+                          ),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: [
+                              Transform.rotate(
+                                angle: pi / 2,
+                                child: Container(
+                                  width: sizeWidth * 0.07,
+                                  height: sizeHeight * 0.027,
+                                  decoration: BoxDecoration(
+                                    color: Colors.red,
+                                    shape: BoxShape.circle,
+                                  ),
+                                  child: Icon(
+                                    Icons.arrow_forward_ios_rounded,
+                                    size: 13,
+                                    color: backgroundColor,
+                                  ),
                                 ),
                               ),
-                            ),
-                            Row(
-                              children: [
-                                Text("Rp ", style: rpHomePage(false, false)),
-                                Text("500.000", style: moneyHomePage(false)),
-                              ],
-                            ),
-                          ],
+                              Row(
+                                children: [
+                                  Text("Rp ", style: rpHomePage(false, false)),
+                                  Text("500.000", style: moneyHomePage(false)),
+                                ],
+                              ),
+                            ],
+                          ),
                         ),
                       ),
                     ],

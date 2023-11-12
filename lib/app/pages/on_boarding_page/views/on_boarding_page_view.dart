@@ -80,7 +80,7 @@ class OnBoardingPageView extends GetView<OnBoardingPageController> {
                                     contentList.list_on_board.length - 1
                                 ? 'Mulai Sekarang'
                                 : "Lanjut",
-                            style:buttonTextOnboarding,
+                            style: buttonTextOnboarding,
                           ),
                         ),
                       ),
