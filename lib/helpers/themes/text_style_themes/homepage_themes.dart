@@ -5,13 +5,13 @@ import 'package:sakuku_app/helpers/themes/default_themes.dart';
 
 TextStyle bulanChipHomepage = GoogleFonts.poppins(
   color: primaryTextColorBlack,
-  fontSize: figmaFontsize(14),
+  fontSize: figmaFontsize(13),
   fontWeight: FontWeight.w600,
 );
 
 TextStyle goodChipHomepage = GoogleFonts.poppins(
   color: primaryTextColorWhite,
-  fontSize: figmaFontsize(14),
+  fontSize: figmaFontsize(13),
   fontWeight: FontWeight.w600,
 );
 
@@ -28,7 +28,7 @@ rpHomePage(bool weight, bool height) {
   return GoogleFonts.poppins(
     fontWeight: weight ? FontWeight.bold : FontWeight.w600,
     height: height ? 4 : 2,
-    fontSize: figmaFontsize(13),
+    fontSize: figmaFontsize(11),
     color: filledTextfieldColor.withOpacity(.7),
   );
 }
