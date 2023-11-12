@@ -7,13 +7,10 @@ class FooterWhiteCongratsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Align(
-      alignment: Alignment.bottomCenter,
-      child: Image.asset(
-        footerWhite,
-        width: sizeWidth,
-        fit: BoxFit.fitWidth,
-      ),
+    return Image.asset(
+      footerWhite,
+      width: sizeWidth,
+      fit: BoxFit.fitWidth,
     );
   }
 }

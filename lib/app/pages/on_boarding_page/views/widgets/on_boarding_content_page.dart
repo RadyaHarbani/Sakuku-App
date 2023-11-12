@@ -19,27 +19,29 @@ class OnBoardingContent extends StatelessWidget {
       children: [
         Image.asset(
           image,
+          width: sizeWidth,
+          fit: BoxFit.fitWidth,
         ),
-        SizedBox(height: sizeHeight * 0.04),
+        Spacer(),
         Container(
           width: sizeWidth * 0.79,
-          child: Text(
-            title,
-            textAlign: TextAlign.center,
-            style: titleOnboardingContent,
+          child: Column(
+            children: [
+              Text(
+                title,
+                textAlign: TextAlign.center,
+                style: titleOnboardingContent,
+              ),
+              Text(
+                description,
+                textAlign: TextAlign.center,
+                style: descOnboardingContent,
+              ),
+            ],
           ),
         ),
-        Padding(
-          padding: EdgeInsets.only(top: sizeHeight * 0.02),
-          child: SizedBox(
-            width: sizeWidth * 0.68,
-            child: Text(
-              description,
-              textAlign: TextAlign.center,
-              style: descOnboardingContent,
-            ),
-          ),
-        ),
+        Spacer(),
+        Spacer()
       ],
     );
   }

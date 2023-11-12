@@ -47,13 +47,10 @@ class CongratsSelesaiPage extends GetView<CongratsPageController> {
             ),
           ),
           Spacer(),
-          Align(
-            alignment: Alignment.bottomCenter,
-            child: Image.asset(
-              footerBlack,
-              width: sizeWidth,
-              fit: BoxFit.fitWidth,
-            ),
+          Image.asset(
+            footerBlack,
+            width: sizeWidth,
+            fit: BoxFit.fitWidth,
           )
         ],
       ),
