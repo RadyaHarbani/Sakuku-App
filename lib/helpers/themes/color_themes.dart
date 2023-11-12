@@ -14,3 +14,4 @@ const Color primaryTextColorGrey = Color(0xFF434242);
 const Color hintTextColor = Color(0xFF7B7B7B);
 const Color warningColor = Color(0xFFE64A4A);
 const Color successColor = Color(0xFF28C62E);
+const Color textCongratsColor = Color(0xFF393E46);

@@ -62,8 +62,8 @@ class OnBoardingPageView extends GetView<OnBoardingPageController> {
                               curve: Curves.ease,
                             ),
                       child: Container(
-                        height: 55,
-                        width: 276,
+                        height: sizeHeight * 0.065,
+                        width: sizeWidth * 0.73,
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(15),
                             gradient: LinearGradient(
@@ -80,14 +80,11 @@ class OnBoardingPageView extends GetView<OnBoardingPageController> {
                                     contentList.list_on_board.length - 1
                                 ? 'Mulai Sekarang'
                                 : "Lanjut",
-                            style:buttonTextOnboarding,
+                            style: buttonTextOnboarding,
                           ),
                         ),
                       ),
                     ),
-                  ),
-                  SizedBox(
-                    height: 20,
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
