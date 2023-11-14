@@ -16,3 +16,4 @@ const Color warningColor = Color(0xFFE64A4A);
 const Color successColor = Color(0xFF28C62E);
 const Color textCongratsColor = Color(0xFF393E46);
 const Color textBudgetColor = Color(0xFFD8D8D8);
+const Color textAllTargetColor = Color(0xFF878787);

@@ -37,3 +37,5 @@ const String onboardingImage3 =
 //Target Image Assets
 const String footerTarget =
     'assets/images/target_images/footer_target_page.png';
+const String footerTargetBlack =
+    'assets/images/target_images/footer_target_page_black.png';
