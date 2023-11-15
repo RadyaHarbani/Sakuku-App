@@ -57,7 +57,10 @@ class ExitTransactionPageView extends GetView<TransactionPageController> {
                         SizedBox(
                           height: sizeHeight * 0.015,
                         ),
-                        CustomTextfieldInput(),
+                        CustomTextfieldInput(
+                          controllerNominal:
+                              controller.nominalPengeluaranController,
+                        ),
                       ],
                     ),
                   ),
@@ -117,6 +120,8 @@ class ExitTransactionPageView extends GetView<TransactionPageController> {
                               hintText: 'Cth : "Liburan ke Bali"',
                               namaIcon: iconNulis,
                               scale: 20,
+                              controller:
+                                  controller.catatanPengeluaranController!,
                             ),
                             SizedBox(
                               height: sizeHeight * 0.02,
@@ -131,7 +136,9 @@ class ExitTransactionPageView extends GetView<TransactionPageController> {
                               height: sizeHeight * 0.015,
                             ),
                             ButtonTextfield(
-                              onPressed: () {},
+                              onPressed: () {
+                                controller.getDateFromUser();
+                              },
                               namaIcon: iconKalender,
                               scaleIcon: 25,
                               hintText: '20, November 2022',
@@ -152,10 +159,14 @@ class ExitTransactionPageView extends GetView<TransactionPageController> {
           ),
         ),
       ),
-      floatingActionButton: Padding(
-        padding: const EdgeInsets.only(bottom: 8),
-        child: CustomButtonSimpan(),
-      ),
+      floatingActionButton: Obx(() => Padding(
+            padding: const EdgeInsets.only(bottom: 8),
+            child: CustomButtonSimpan(
+              onPressed: () {
+                controller.saveTransaction();
+              },
+            ),
+          )),
     );
   }
 }

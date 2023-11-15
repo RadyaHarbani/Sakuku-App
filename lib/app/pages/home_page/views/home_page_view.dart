@@ -1,11 +1,11 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:sakuku_app/app/pages/home_page/views/widgets/homepage_component1.dart';
-import 'package:sakuku_app/app/pages/home_page/views/widgets/homepage_component2.dart';
-import 'package:sakuku_app/app/pages/home_page/views/widgets/homepage_component3.dart';
-import 'package:sakuku_app/app/pages/home_page/views/widgets/homepage_component4.dart';
-import 'package:sakuku_app/app/widgets/custom_appbar_home_page.dart';
+import 'package:sakuku_app/app/pages/home_page/views/components/homepage_component1.dart';
+import 'package:sakuku_app/app/pages/home_page/views/components/homepage_component2.dart';
+import 'package:sakuku_app/app/pages/home_page/views/components/homepage_component3.dart';
+import 'package:sakuku_app/app/pages/home_page/views/components/homepage_component4.dart';
+import 'package:sakuku_app/app/pages/home_page/views/components/navbar_component/custom_appbar_home_page.dart';
 import 'package:sakuku_app/helpers/themes/color_themes.dart';
 import 'package:sakuku_app/app/pages/home_page/controllers/home_page_controller.dart';
 import 'package:sakuku_app/helpers/themes/default_themes.dart';
@@ -63,7 +63,7 @@ class HomePageView extends GetView<HomePageController> {
                     ],
                   ),
                   SizedBox(
-                    height: sizeHeight * 0.04,
+                    height: sizeHeight * 0.035,
                   ),
                   Stack(
                     children: [
@@ -83,20 +83,20 @@ class HomePageView extends GetView<HomePageController> {
                               ],
                             ),
                             SizedBox(
-                              height: sizeHeight * 0.01,
+                              height: sizeHeight * 0.015,
                             ),
                             Row(
                               crossAxisAlignment: CrossAxisAlignment.end,
                               children: [
                                 Text("Rp", style: rpHomePage(true, true)),
                                 SizedBox(
-                                  width: sizeWidth * 0.01,
+                                  width: sizeWidth * 0.02,
                                 ),
                                 Text("1.000.000", style: moneyHomePage(true)),
                               ],
                             ),
                             SizedBox(
-                              height: sizeHeight * 0.045,
+                              height: sizeHeight * 0.03,
                             ),
                           ],
                         ),
@@ -113,13 +113,13 @@ class HomePageView extends GetView<HomePageController> {
                     children: [
                       Expanded(
                         child: Container(
-                          height: sizeHeight * 0.075,
+                          height: sizeHeight * 0.065,
                           decoration: BoxDecoration(
                             color: Colors.black.withOpacity(0.24),
                             borderRadius: defaulBorderRadius,
                           ),
                           child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            mainAxisAlignment: MainAxisAlignment.spaceAround,
                             children: [
                               Transform.rotate(
                                 angle: 4.7,
@@ -152,13 +152,13 @@ class HomePageView extends GetView<HomePageController> {
                       ),
                       Expanded(
                         child: Container(
-                          height: sizeHeight * 0.075,
+                          height: sizeHeight * 0.065,
                           decoration: BoxDecoration(
                             color: Colors.black.withOpacity(0.24),
                             borderRadius: defaulBorderRadius,
                           ),
                           child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            mainAxisAlignment: MainAxisAlignment.spaceAround,
                             children: [
                               Transform.rotate(
                                 angle: pi / 2,
@@ -194,12 +194,12 @@ class HomePageView extends GetView<HomePageController> {
             Stack(
               children: <Widget>[
                 Container(
-                  margin: EdgeInsets.only(top: sizeHeight * 0.15),
+                  margin: EdgeInsets.only(top: sizeHeight * 0.1),
                   width: sizeWidth,
-                  height: sizeHeight,
+                  height: sizeHeight * 1.08,
                   decoration: BoxDecoration(
-                      color: backgroundColor,
-                      borderRadius: defaultBottomSheetRadius),
+                    color: backgroundColor,
+                  ),
                 ),
                 Column(
                   children: [
@@ -217,8 +217,8 @@ class HomePageView extends GetView<HomePageController> {
               fit: BoxFit.fitWidth,
             ),
             SizedBox(
-              height: sizeHeight * 0.15,
-            )
+              height: sizeHeight * 0.05,
+            ),
           ],
         ),
       ),

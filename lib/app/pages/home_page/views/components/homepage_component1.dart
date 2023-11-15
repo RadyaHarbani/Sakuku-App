@@ -12,23 +12,30 @@ class HomePageComponentOne extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       margin: EdgeInsets.symmetric(
-          horizontal: sizeWidth * 0.05, vertical: sizeHeight * 0.03),
-      // height: sizeHeight * 0.287,
+        horizontal: sizeWidth * 0.035,
+        vertical: sizeHeight * 0.02,
+      ),
       decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(20), color: Colors.white),
+        borderRadius: BorderRadius.circular(20),
+        boxShadow: defaultBoxShadow,
+        color: Colors.white,
+      ),
       child: Column(
         children: [
           Container(
             padding: EdgeInsets.symmetric(
-                horizontal: sizeWidth * 0.05, vertical: sizeHeight * 0.02),
+              horizontal: sizeWidth * 0.05,
+              vertical: sizeHeight * 0.02,
+            ),
             decoration: BoxDecoration(
-                color: thirdColor,
-                borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(20),
-                    topRight: Radius.circular(20)),
-                boxShadow: defaultBoxShadow),
+              color: thirdColor,
+              borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(20),
+                topRight: Radius.circular(20),
+              ),
+              boxShadow: defaultBoxShadow,
+            ),
             child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Expanded(
                     child: Text(
@@ -38,24 +45,28 @@ class HomePageComponentOne extends StatelessWidget {
                 )),
                 Image.asset(
                   iconKeuangan,
-                  height: sizeHeight * 0.034,
+                  height: sizeHeight * 0.04,
                 )
               ],
             ),
           ),
           Padding(
             padding: EdgeInsets.symmetric(
-                horizontal: sizeWidth * 0.05, vertical: sizeHeight * 0.01),
+              horizontal: sizeWidth * 0.05,
+              vertical: sizeHeight * 0.02,
+            ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text('OKTOBER 2023', style: containerDateHomePage),
-                SizedBox(height: sizeHeight * 0.01),
+                SizedBox(height: sizeHeight * 0.015),
                 Container(
                   height: sizeHeight * 0.14,
                   margin: EdgeInsets.only(bottom: sizeHeight * 0.015),
                   decoration: BoxDecoration(
-                      border: Border.all(color: Colors.grey),
+                      border: Border.all(
+                        color: primaryTextColorGrey.withOpacity(0.2),
+                      ),
                       borderRadius: BorderRadius.circular(10)),
                   child: Padding(
                     padding:

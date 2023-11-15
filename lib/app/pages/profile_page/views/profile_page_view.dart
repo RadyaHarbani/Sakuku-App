@@ -25,7 +25,6 @@ class ProfilePageView extends StatelessWidget {
       ),
       body: SingleChildScrollView(
         child: Container(
-          height: sizeHeight * 1.827,
           child: Stack(
             children: [
               Column(
@@ -71,17 +70,21 @@ class ProfilePageView extends StatelessWidget {
                   SizedBox(
                     height: sizeHeight * 0.2,
                   ),
-                  Expanded(
-                    child: Container(
-                      color: backgroundColor,
-                      child: Column(
-                        children: [
-                          SizedBox(
-                            height: sizeHeight * 1.2,
-                          ),
-                          Image.asset(footerWhite),
-                        ],
-                      ),
+                  Container(
+                    width: sizeWidth,
+                    height: sizeHeight * 1.5455,
+                    color: backgroundColor,
+                    child: Column(
+                      children: [
+                        SizedBox(
+                          height: sizeHeight * 1.2,
+                        ),
+                        Image.asset(
+                          footerWhite,
+                          width: sizeWidth,
+                          fit: BoxFit.fitWidth,
+                        ),
+                      ],
                     ),
                   ),
                 ],
