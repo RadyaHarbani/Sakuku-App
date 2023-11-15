@@ -62,8 +62,8 @@ class OnBoardingPageView extends GetView<OnBoardingPageController> {
                               curve: Curves.ease,
                             ),
                       child: Container(
-                        height: sizeHeight * 0.065,
-                        width: sizeWidth * 0.73,
+                        height: 55,
+                        width: 276,
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(15),
                             gradient: LinearGradient(
@@ -85,6 +85,9 @@ class OnBoardingPageView extends GetView<OnBoardingPageController> {
                         ),
                       ),
                     ),
+                  ),
+                  SizedBox(
+                    height: 20,
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,

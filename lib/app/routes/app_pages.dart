@@ -6,7 +6,7 @@ import 'package:sakuku_app/app/pages/congrats_page/views/congrats_nabung_page.da
 import 'package:sakuku_app/app/pages/congrats_page/views/congrats_selesai_page.dart';
 import 'package:sakuku_app/app/pages/congrats_page/views/congrats_target_page.dart';
 import 'package:sakuku_app/app/pages/splash_screen/views/splash_screen_view.dart';
-import 'package:sakuku_app/app/widgets/bottom_nav_component.dart';
+import 'package:sakuku_app/app/pages/home_page/views/components/bottom_nav_component.dart';
 import 'package:sakuku_app/app/pages/add_target_page/bindings/add_target_page_binding.dart';
 import 'package:sakuku_app/app/pages/add_target_page/views/add_target_first_page_view.dart';
 import 'package:sakuku_app/app/pages/add_target_page/views/add_target_second_page_view.dart';
@@ -33,8 +33,8 @@ part 'app_routes.dart';
 
 class AppPages {
   AppPages._();
-  
-  static const INITIAL = Routes.ON_BOARDING_PAGE;
+
+  static const INITIAL = Routes.LANDING_PAGE;
 
   static final routes = [
     GetPage(

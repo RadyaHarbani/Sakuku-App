@@ -21,7 +21,8 @@ class ButtonBottomSheetContent extends StatelessWidget {
   Widget build(BuildContext context) {
     return ElevatedButton(
       style: ElevatedButton.styleFrom(
-        backgroundColor: Colors.white,
+        elevation: 0.8,
+        backgroundColor: primaryTextColorWhite,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(10),
         ),
@@ -64,16 +65,16 @@ class ButtonBottomSheetContent extends StatelessWidget {
               Text(
                 title,
                 style: GoogleFonts.poppins(
-                  color: primaryColor,
+                  color: primaryTextColorBlack,
                   fontSize: figmaFontsize(14),
-                  fontWeight: FontWeight.bold,
+                  fontWeight: FontWeight.w600,
                 ),
               ),
               Text(
                 subtitle,
                 style: GoogleFonts.poppins(
-                  color: primaryColor,
-                  fontSize: figmaFontsize(9),
+                  color: primaryTextColorBlack.withOpacity(0.6),
+                  fontSize: figmaFontsize(10),
                   fontWeight: FontWeight.w500,
                 ),
               ),

@@ -86,6 +86,7 @@ TextStyle styleInputTextfield = GoogleFonts.poppins(
 
 //Text Title Textfield Component
 titleTextTitleTextfield(bool isAbovePrimary) {
+  return
   GoogleFonts.poppins(
     color:
         isAbovePrimary == true ? primaryTextColorWhite : primaryTextColorBlack,
@@ -95,6 +96,7 @@ titleTextTitleTextfield(bool isAbovePrimary) {
 }
 
 subtitleTextTitleTextfield(bool isAbovePrimary) {
+  return
   GoogleFonts.poppins(
     color: isAbovePrimary == true
         ? primaryTextColorWhite.withOpacity(0.7)

@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:sakuku_app/app/widgets/button_bottom_sheet_content.dart';
-import 'package:sakuku_app/app/widgets/button_catat_transaksi.dart';
+import 'package:sakuku_app/app/pages/home_page/views/components/navbar_component/button_bottom_sheet_content.dart';
+import 'package:sakuku_app/app/pages/home_page/views/components/navbar_component/button_catat_transaksi.dart';
+
 import 'package:sakuku_app/helpers/themes/color_themes.dart';
 import 'package:sakuku_app/helpers/themes/default_themes.dart';
 import 'package:sakuku_app/helpers/themes/icon_themes.dart';
@@ -51,9 +52,9 @@ class BottomSheetComponent extends StatelessWidget {
                           Text(
                             "Apa yang ingin kamu lakukan?",
                             style: GoogleFonts.poppins(
-                              fontSize: figmaFontsize(14),
-                              fontWeight: FontWeight.w600,
-                              color: primaryColor,
+                              fontSize: figmaFontsize(15),
+                              fontWeight: FontWeight.bold,
+                              color: primaryTextColorBlack,
                             ),
                           ),
                           SizedBox(
@@ -65,7 +66,7 @@ class BottomSheetComponent extends StatelessWidget {
                               height: 0.9,
                               fontSize: figmaFontsize(11),
                               fontWeight: FontWeight.w500,
-                              color: primaryColor.withOpacity(0.6),
+                              color: primaryTextColorBlack.withOpacity(0.6),
                             ),
                           ),
                         ],

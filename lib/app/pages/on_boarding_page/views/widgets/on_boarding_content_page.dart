@@ -17,31 +17,33 @@ class OnBoardingContent extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Image.asset(
-          image,
-          width: sizeWidth,
-          fit: BoxFit.fitWidth,
-        ),
-        Spacer(),
         Container(
-          width: sizeWidth * 0.79,
-          child: Column(
-            children: [
-              Text(
-                title,
-                textAlign: TextAlign.center,
-                style: titleOnboardingContent,
-              ),
-              Text(
-                description,
-                textAlign: TextAlign.center,
-                style: descOnboardingContent,
-              ),
-            ],
+          width: sizeWidth,
+          child: Image.asset(
+            image,
+            fit: BoxFit.fitWidth,
           ),
         ),
-        Spacer(),
-        Spacer()
+        SizedBox(height: sizeHeight * 0.04),
+        Container(
+          width: sizeWidth * 0.79,
+          child: Text(
+            title,
+            textAlign: TextAlign.center,
+            style: titleOnboardingContent,
+          ),
+        ),
+        Padding(
+          padding: EdgeInsets.only(top: sizeHeight * 0.02),
+          child: SizedBox(
+            width: sizeWidth * 0.68,
+            child: Text(
+              description,
+              textAlign: TextAlign.center,
+              style: descOnboardingContent,
+            ),
+          ),
+        ),
       ],
     );
   }
