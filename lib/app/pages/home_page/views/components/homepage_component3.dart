@@ -11,10 +11,13 @@ class HomePageComponentThree extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       margin: EdgeInsets.symmetric(
-          horizontal: sizeWidth * 0.05, vertical: sizeHeight * 0.01),
+          horizontal: sizeWidth * 0.05, vertical: sizeHeight * 0.018),
       // height: sizeHeight * 0.203,
       decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(20), color: Colors.white),
+        borderRadius: BorderRadius.circular(20),
+        color: Colors.white,
+        boxShadow: defaultBoxShadow,
+      ),
       child: Column(
         children: [
           Container(
@@ -32,24 +35,26 @@ class HomePageComponentThree extends StatelessWidget {
                     style: containerTittleHomePage(false)),
                 Icon(
                   Icons.arrow_forward_ios_rounded,
-                  size: 20,
+                  size: 16,
                 )
               ],
             ),
           ),
           Padding(
             padding: EdgeInsets.symmetric(
-                horizontal: sizeWidth * 0.05, vertical: sizeHeight * 0.01),
+                horizontal: sizeWidth * 0.05, vertical: sizeHeight * 0.02),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text('KAMIS, 18 OKTOBER 2023', style: containerDateHomePage),
-                SizedBox(height: sizeHeight * 0.01),
+                SizedBox(height: sizeHeight * 0.015),
                 Container(
-                  height: sizeHeight * 0.074,
+                  height: sizeHeight * 0.085,
                   margin: EdgeInsets.only(bottom: sizeHeight * 0.015),
                   decoration: BoxDecoration(
-                      border: Border.all(color: Colors.grey),
+                      border: Border.all(
+                        color: primaryTextColorGrey.withOpacity(0.2),
+                      ),
                       borderRadius: BorderRadius.circular(10)),
                   child: Padding(
                     padding:
@@ -63,8 +68,11 @@ class HomePageComponentThree extends StatelessWidget {
                               margin: EdgeInsets.only(right: sizeWidth * 0.02),
                               child: Image.asset(
                                 iconPemasukan,
-                                height: sizeHeight * 0.029,
+                                height: sizeHeight * 0.045,
                               ),
+                            ),
+                            SizedBox(
+                              width: sizeWidth * 0.01,
                             ),
                             Column(
                               mainAxisAlignment: MainAxisAlignment.center,

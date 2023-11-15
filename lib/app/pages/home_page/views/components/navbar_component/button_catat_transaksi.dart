@@ -1,19 +1,22 @@
 import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:sakuku_app/app/pages/home_page/views/components/navbar_component/button_pemasukan_pengeluaran.dart';
+import 'package:sakuku_app/app/pages/transaction_page/controllers/transaction_page_controller.dart';
 import 'package:sakuku_app/app/routes/app_pages.dart';
-import 'package:sakuku_app/app/widgets/button_pemasukan_pengeluaran.dart';
 import 'package:sakuku_app/helpers/themes/color_themes.dart';
 import 'package:sakuku_app/helpers/themes/default_themes.dart';
 
 class ButtonCatatTransaksi extends StatelessWidget {
-  const ButtonCatatTransaksi({super.key});
+  ButtonCatatTransaksi({super.key});
+  final controller = Get.put(TransactionPageController());
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 360,
+      height: 340,
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 20),
         child: Column(
@@ -41,42 +44,40 @@ class ButtonCatatTransaksi extends StatelessWidget {
               children: [
                 Padding(
                   padding: const EdgeInsets.only(
-                      top: 10, bottom: 30, left: 10, right: 10),
+                      top: 10, bottom: 20, left: 10, right: 10),
                   child: Center(
                     child: Text(
                       "Pilih Catatan Transaksi",
                       style: GoogleFonts.poppins(
                         fontSize: figmaFontsize(16),
-                        fontWeight: FontWeight.w600,
-                        color: primaryColor,
+                        fontWeight: FontWeight.bold,
+                        color: primaryTextColorBlack,
                       ),
                     ),
                   ),
                 ),
-                ButtonPemasukanPengeluaran(
-                  angle: 4.7,
-                  color: successColor,
-                  title: 'Pemasukan',
-                  onPressed: () {
-                    Get.back();
-                    Get.toNamed(Routes.INCOMING_TRANSACTION_PAGE);
-                  },
+                Wrap(
+                  children: List<Widget>.generate(
+                    2,
+                    (int index) => ButtonPemasukanPengeluaran(
+                      angle: index == 0 ? 4.7 : pi / 2,
+                      color: index == 0 ? warningColor : successColor,
+                      title: index == 0 ? 'Pengeluaran' : 'Pemasukan',
+                      onPressed: () {
+                        controller.selectedTransaksi.value = index;
+                        index == 0
+                            ? Get.toNamed(Routes.EXIT_TRANSACTION_PAGE)
+                            : Get.toNamed(Routes.INCOMING_TRANSACTION_PAGE);
+                      },
+                    ),
+                  ),
                 ),
                 SizedBox(
-                  height: 3,
-                ),
-                ButtonPemasukanPengeluaran(
-                  angle: pi / 2,
-                  color: warningColor,
-                  title: 'Pengeluaran',
-                  onPressed: () {},
-                ),
-                SizedBox(
-                  height: 30,
+                  height: 40,
                 ),
                 ElevatedButton(
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.red[800],
+                    backgroundColor: secondaryColor,
                     elevation: 0,
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(15),
@@ -93,7 +94,7 @@ class ButtonCatatTransaksi extends StatelessWidget {
                     style: GoogleFonts.poppins(
                       color: backgroundColor,
                       fontSize: figmaFontsize(16),
-                      fontWeight: FontWeight.w500,
+                      fontWeight: FontWeight.w600,
                     ),
                   ),
                 ),

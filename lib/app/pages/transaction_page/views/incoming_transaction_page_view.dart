@@ -58,7 +58,10 @@ class IncomingTransactionPageView extends GetView<TransactionPageController> {
                         SizedBox(
                           height: sizeHeight * 0.015,
                         ),
-                        CustomTextfieldInput(),
+                        CustomTextfieldInput(
+                          controllerNominal:
+                              controller.nominalPemasukanController,
+                        ),
                       ],
                     ),
                   ),
@@ -90,6 +93,7 @@ class IncomingTransactionPageView extends GetView<TransactionPageController> {
                               hintText: 'Cth : "Dari Gaji Pekerjaan"',
                               namaIcon: iconSumberPemasukan,
                               scale: 20,
+                              controller: controller.sumberPemasukanController!,
                             ),
                             SizedBox(
                               height: sizeHeight * 0.02,
@@ -109,6 +113,8 @@ class IncomingTransactionPageView extends GetView<TransactionPageController> {
                               hintText: 'Cth : "Liburan ke Bali"',
                               namaIcon: iconNulis,
                               scale: 20,
+                              controller:
+                                  controller.catatanPemasukanController!,
                             ),
                             SizedBox(
                               height: sizeHeight * 0.02,
@@ -124,7 +130,7 @@ class IncomingTransactionPageView extends GetView<TransactionPageController> {
                             ),
                             ButtonTextfield(
                               onPressed: () {
-                                Get.toNamed(Routes.EXIT_TRANSACTION_PAGE);
+                                controller.getDateFromUser();
                               },
                               namaIcon: iconKalender,
                               scaleIcon: 25,
@@ -146,10 +152,14 @@ class IncomingTransactionPageView extends GetView<TransactionPageController> {
           ),
         ),
       ),
-      floatingActionButton: Padding(
-        padding: const EdgeInsets.only(bottom: 8),
-        child: CustomButtonSimpan(),
-      ),
+      floatingActionButton: Obx(() => Padding(
+            padding: const EdgeInsets.only(bottom: 8),
+            child: CustomButtonSimpan(
+              onPressed: () {
+                controller.saveTransaction();
+              },
+            ),
+          )),
     );
   }
 }

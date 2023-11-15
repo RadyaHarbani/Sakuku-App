@@ -182,19 +182,19 @@ class RegisterPageView extends GetView<RegisterPageController> {
                     SizedBox(
                       height: sizeHeight * 0.04,
                     ),
-                    ButtonLoginRegister(
-                      onTap: () {
-                        if (controller.formField.currentState!.validate()) {
-                          controller.createUserWithEmailAndPassword();
-                        }
-                      },
-                      isEmailOrGoogle: controller.isEmailSignUp.value,
-                      isColor: true,
-                      child: Text(
-                        "Register",
-                        style: buttonLoginRegister,
-                      ),
-                    ),
+                    Obx(() => ButtonLoginRegister(
+                          onTap: () {
+                            if (controller.formField.currentState!.validate()) {
+                              controller.createUserWithEmailAndPassword();
+                            }
+                          },
+                          isEmailOrGoogle: controller.isEmailSignUp.value,
+                          isColor: true,
+                          child: Text(
+                            "Register",
+                            style: buttonLoginRegister,
+                          ),
+                        )),
                     SizedBox(
                       height: sizeHeight * 0.03,
                     ),

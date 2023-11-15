@@ -70,26 +70,6 @@ class LoginPageView extends GetView<LoginPageController> {
                 child: Column(
                   children: [
                     TextfieldLoginRegister(
-                      fieldController: controller.cUsernameSignIn,
-                      obscureText: false,
-                      keyboardType: TextInputType.name,
-                      hintText: "Username",
-                      prefixIcon: Icon(
-                        Icons.person,
-                        size: 20,
-                        color: hintTextColor,
-                      ),
-                      validator: (value) {
-                        if (value!.isEmpty) {
-                          return "Please enter your name";
-                        }
-                        return null;
-                      },
-                    ),
-                    SizedBox(
-                      height: sizeHeight * 0.01,
-                    ),
-                    TextfieldLoginRegister(
                       fieldController: controller.cEmailSignIn,
                       obscureText: false,
                       keyboardType: TextInputType.emailAddress,
@@ -138,8 +118,8 @@ class LoginPageView extends GetView<LoginPageController> {
                         validator: (value) {
                           if (value!.isEmpty) {
                             return "Please enter your password";
-                          } else if (value.length < 8) {
-                            return "Password must be at least 8 characters";
+                          } else if (value.length < 6) {
+                            return "Password must be at least 6 characters";
                           }
                           return null;
                         },
