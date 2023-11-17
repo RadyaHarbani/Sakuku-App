@@ -10,7 +10,10 @@ import 'package:sakuku_app/helpers/themes/icon_themes.dart';
 import 'package:sakuku_app/helpers/themes/text_style_themes/transaction_page_themes.dart';
 
 class CustomTextfieldInput extends StatelessWidget {
+  CustomTextfieldInput({super.key, required this.controllerNominal});
   final controller = Get.put(TransactionPageController());
+
+  final TextEditingController? controllerNominal;
 
   @override
   Widget build(BuildContext context) {
@@ -70,7 +73,7 @@ class CustomTextfieldInput extends StatelessWidget {
             width: 1.5,
           ),
         ),
-        hintText: "0",
+        hintText: "Rp. 0",
         hintStyle: hintCustomTextfield,
       ),
       style: styleInputTextfield,
@@ -78,7 +81,7 @@ class CustomTextfieldInput extends StatelessWidget {
         FilteringTextInputFormatter.digitsOnly,
         CurrencyFormatTextfield(),
       ],
-      controller: controller.nominalController,
+      controller: controllerNominal,
       cursorColor: backgroundColor,
     );
   }

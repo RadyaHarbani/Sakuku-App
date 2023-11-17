@@ -10,18 +10,21 @@ class TextfieldCatatan extends StatelessWidget {
     required this.hintText,
     required this.namaIcon,
     required this.scale,
+    required this.controller,
   });
 
   final TextInputType inputType;
   final String hintText;
   final String namaIcon;
   final double scale;
+  final TextEditingController? controller;
 
   @override
   Widget build(BuildContext context) {
     return Container(
       width: sizeWidth,
       child: TextField(
+        controller: controller,
         keyboardType: inputType,
         decoration: InputDecoration(
           contentPadding: EdgeInsets.symmetric(vertical: sizeHeight * 0.024),
@@ -48,6 +51,7 @@ class TextfieldCatatan extends StatelessWidget {
               color: successColor,
             ),
           ),
+          border: InputBorder.none,
         ),
         style: inputTextStyle,
       ),

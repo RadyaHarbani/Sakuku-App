@@ -1,6 +1,7 @@
 import 'dart:math';
-
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:sakuku_app/app/routes/app_pages.dart';
 import 'package:sakuku_app/helpers/themes/color_themes.dart';
 import 'package:sakuku_app/helpers/themes/default_themes.dart';
 import 'package:sakuku_app/helpers/themes/icon_themes.dart';
@@ -13,10 +14,12 @@ class HomePageComponentFour extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       margin: EdgeInsets.symmetric(
-          horizontal: sizeWidth * 0.05, vertical: sizeHeight * 0.03),
-      // height: sizeHeight * 0.25,
+          horizontal: sizeWidth * 0.05, vertical: sizeHeight * 0.012),
       decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(20), color: Colors.white),
+        borderRadius: BorderRadius.circular(20),
+        color: Colors.white,
+        boxShadow: defaultBoxShadow,
+      ),
       child: Column(
         children: [
           Container(
@@ -33,6 +36,9 @@ class HomePageComponentFour extends StatelessWidget {
                 Text('Fitur Menarik', style: containerTittleHomePage(false)),
               ],
             ),
+          ),
+          SizedBox(
+            height: sizeHeight * 0.005,
           ),
           Padding(
             padding: EdgeInsets.symmetric(
@@ -70,16 +76,25 @@ class HomePageComponentFour extends StatelessWidget {
                     ],
                   ),
                 ),
-                SizedBox(height: sizeHeight * 0.013),
-                Container(
-                  padding: EdgeInsets.symmetric(
+                SizedBox(height: sizeHeight * 0.015),
+                ElevatedButton(
+                  onPressed: () {
+                    Get.toNamed(Routes.ALL_TARGET_PAGE);
+                  },
+                  style: ElevatedButton.styleFrom(
+                    padding: EdgeInsets.symmetric(
                       horizontal: sizeWidth * 0.017,
-                      vertical: sizeHeight * 0.02),
-                  margin: EdgeInsets.only(bottom: sizeHeight * 0.015),
-                  width: sizeWidth,
-                  decoration: BoxDecoration(
-                      border: Border.all(color: Colors.grey),
-                      borderRadius: BorderRadius.circular(10)),
+                      vertical: sizeHeight * 0.02,
+                    ),
+                    backgroundColor: Colors.white,
+                    elevation: 0,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10),
+                      side: BorderSide(
+                        color: primaryTextColorGrey.withOpacity(0.2),
+                      ),
+                    ),
+                  ),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
@@ -90,11 +105,15 @@ class HomePageComponentFour extends StatelessWidget {
                           height: sizeHeight * 0.044,
                         ),
                       ),
-                      Text('Target Tabungan',
-                          style: containerTittleHomePage(false)),
+                      SizedBox(width: sizeWidth * 0.01),
+                      Text(
+                        'Target Tabungan',
+                        style: containerTittleHomePage(false),
+                      ),
                     ],
                   ),
-                )
+                ),
+                SizedBox(height: sizeHeight * 0.015),
               ],
             ),
           )

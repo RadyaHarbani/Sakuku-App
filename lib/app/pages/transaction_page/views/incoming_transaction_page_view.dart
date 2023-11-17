@@ -1,6 +1,7 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:intl/intl.dart';
 import 'package:sakuku_app/app/pages/transaction_page/controllers/transaction_page_controller.dart';
 import 'package:sakuku_app/app/pages/transaction_page/views/widgets/button_textfield.dart';
 import 'package:sakuku_app/app/pages/transaction_page/views/widgets/custom_appbar_widget.dart';
@@ -8,7 +9,6 @@ import 'package:sakuku_app/app/pages/transaction_page/views/widgets/custom_butto
 import 'package:sakuku_app/app/pages/transaction_page/views/widgets/text_title_textfield.dart';
 import 'package:sakuku_app/app/pages/transaction_page/views/widgets/textfield_catatan.dart';
 import 'package:sakuku_app/app/pages/transaction_page/views/widgets/alert_container.dart';
-import 'package:sakuku_app/app/routes/app_pages.dart';
 import 'package:sakuku_app/app/pages/transaction_page/views/widgets/custom_textfield_input.dart';
 import 'package:sakuku_app/helpers/themes/color_themes.dart';
 import 'package:sakuku_app/helpers/themes/default_themes.dart';
@@ -58,7 +58,10 @@ class IncomingTransactionPageView extends GetView<TransactionPageController> {
                         SizedBox(
                           height: sizeHeight * 0.015,
                         ),
-                        CustomTextfieldInput(),
+                        CustomTextfieldInput(
+                          controllerNominal:
+                              controller.nominalPemasukanController,
+                        ),
                       ],
                     ),
                   ),
@@ -90,6 +93,7 @@ class IncomingTransactionPageView extends GetView<TransactionPageController> {
                               hintText: 'Cth : "Dari Gaji Pekerjaan"',
                               namaIcon: iconSumberPemasukan,
                               scale: 20,
+                              controller: controller.sumberPemasukanController!,
                             ),
                             SizedBox(
                               height: sizeHeight * 0.02,
@@ -109,6 +113,8 @@ class IncomingTransactionPageView extends GetView<TransactionPageController> {
                               hintText: 'Cth : "Liburan ke Bali"',
                               namaIcon: iconNulis,
                               scale: 20,
+                              controller:
+                                  controller.catatanPemasukanController!,
                             ),
                             SizedBox(
                               height: sizeHeight * 0.02,
@@ -122,14 +128,17 @@ class IncomingTransactionPageView extends GetView<TransactionPageController> {
                             SizedBox(
                               height: sizeHeight * 0.015,
                             ),
-                            ButtonTextfield(
-                              onPressed: () {
-                                Get.toNamed(Routes.EXIT_TRANSACTION_PAGE);
-                              },
-                              namaIcon: iconKalender,
-                              scaleIcon: 25,
-                              hintText: '20, November 2022',
-                            ),
+                            Obx(() => ButtonTextfield(
+                                  onPressed: () {
+                                    controller.getDateFromUserIncoming();
+                                  },
+                                  namaIcon: iconKalender,
+                                  scaleIcon: 25,
+                                  hintText: DateFormat.yMMMMd()
+                                      .format(controller
+                                          .selectedTanggalPemasukan.value)
+                                      .toString(),
+                                )),
                             Spacer(),
                           ],
                         ),
@@ -140,7 +149,7 @@ class IncomingTransactionPageView extends GetView<TransactionPageController> {
               ),
               AlertContainer(
                 content:
-                    'Ingatt! Kamu harus bisa melakukan penghematan uang ya!',
+                    'Wahh! Inget ya kamu harus tetap nabung, untuk masa depanmu.',
               ),
             ],
           ),
@@ -148,7 +157,11 @@ class IncomingTransactionPageView extends GetView<TransactionPageController> {
       ),
       floatingActionButton: Padding(
         padding: const EdgeInsets.only(bottom: 8),
-        child: CustomButtonSimpan(),
+        child: CustomButtonSimpan(
+          onPressed: () {
+            controller.saveTransaction();
+          },
+        ),
       ),
     );
   }

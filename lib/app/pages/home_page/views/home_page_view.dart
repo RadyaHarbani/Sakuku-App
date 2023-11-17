@@ -1,11 +1,13 @@
 import 'dart:math';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:sakuku_app/app/pages/home_page/views/widgets/homepage_component1.dart';
-import 'package:sakuku_app/app/pages/home_page/views/widgets/homepage_component2.dart';
-import 'package:sakuku_app/app/pages/home_page/views/widgets/homepage_component3.dart';
-import 'package:sakuku_app/app/pages/home_page/views/widgets/homepage_component4.dart';
-import 'package:sakuku_app/app/widgets/custom_appbar_home_page.dart';
+import 'package:intl/intl.dart';
+import 'package:sakuku_app/app/pages/home_page/views/components/homepage_component1.dart';
+import 'package:sakuku_app/app/pages/home_page/views/components/homepage_component2.dart';
+import 'package:sakuku_app/app/pages/home_page/views/components/homepage_component3.dart';
+import 'package:sakuku_app/app/pages/home_page/views/components/homepage_component4.dart';
+import 'package:sakuku_app/app/pages/home_page/views/components/navbar_component/custom_appbar_home_page.dart';
 import 'package:sakuku_app/helpers/themes/color_themes.dart';
 import 'package:sakuku_app/app/pages/home_page/controllers/home_page_controller.dart';
 import 'package:sakuku_app/helpers/themes/default_themes.dart';
@@ -63,7 +65,7 @@ class HomePageView extends GetView<HomePageController> {
                     ],
                   ),
                   SizedBox(
-                    height: sizeHeight * 0.023,
+                    height: sizeHeight * 0.035,
                   ),
                   Stack(
                     children: [
@@ -82,15 +84,43 @@ class HomePageView extends GetView<HomePageController> {
                                 Text("POSITIF", style: keuanganHomePage(true)),
                               ],
                             ),
+                            SizedBox(
+                              height: sizeHeight * 0.015,
+                            ),
                             Row(
                               crossAxisAlignment: CrossAxisAlignment.end,
                               children: [
                                 Text("Rp", style: rpHomePage(true, true)),
                                 SizedBox(
-                                  width: sizeWidth * 0.01,
+                                  width: sizeWidth * 0.02,
                                 ),
-                                Text("1.000.000", style: moneyHomePage(true)),
+                                StreamBuilder<QuerySnapshot>(
+                                  stream: controller.streamBalance,
+                                  builder: (context, snapshot) {
+                                    if (snapshot.hasData) {
+                                      Map<String, dynamic> documentFields =
+                                          snapshot.data!.docs[0].data()
+                                              as Map<String, dynamic>;
+                                      double value = double.parse(
+                                          documentFields['balance'].toString());
+                                      final formatter =
+                                          NumberFormat("#,##0", "id_ID");
+                                      return Text(
+                                        formatter.format(value).toString(),
+                                        style: moneyHomePage(true),
+                                      );
+                                    } else {
+                                      return Text(
+                                        '0',
+                                        style: moneyHomePage(true),
+                                      );
+                                    }
+                                  },
+                                )
                               ],
+                            ),
+                            SizedBox(
+                              height: sizeHeight * 0.03,
                             ),
                           ],
                         ),
@@ -105,73 +135,165 @@ class HomePageView extends GetView<HomePageController> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Container(
-                        width: sizeWidth / 2.3,
-                        height: sizeHeight * 0.056,
-                        decoration: BoxDecoration(
+                      Expanded(
+                        child: Container(
+                          height: sizeHeight * 0.065,
+                          decoration: BoxDecoration(
                             color: Colors.black.withOpacity(0.24),
-                            borderRadius: defaulBorderRadius),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: [
-                            Transform.rotate(
-                              angle: 4.7,
-                              child: Container(
-                                width: sizeWidth * 0.07,
-                                height: sizeHeight * 0.027,
-                                decoration: BoxDecoration(
-                                  color: Colors.green,
-                                  shape: BoxShape.circle,
-                                ),
-                                child: Icon(
-                                  Icons.arrow_forward_ios_rounded,
-                                  size: 13,
-                                  color: backgroundColor,
+                            borderRadius: defaulBorderRadius,
+                          ),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceAround,
+                            children: [
+                              Transform.rotate(
+                                angle: pi / 2,
+                                child: Container(
+                                  width: sizeWidth * 0.07,
+                                  height: sizeHeight * 0.027,
+                                  decoration: BoxDecoration(
+                                    color: successColor,
+                                    shape: BoxShape.circle,
+                                  ),
+                                  child: Icon(
+                                    Icons.arrow_forward_ios_rounded,
+                                    size: 13,
+                                    color: backgroundColor,
+                                  ),
                                 ),
                               ),
-                            ),
-                            Row(
-                              children: [
-                                Text("Rp ", style: rpHomePage(false, false)),
-                                Text("500.000", style: moneyHomePage(false)),
-                              ],
-                            ),
-                          ],
+                              Row(
+                                children: [
+                                  Text("Rp ", style: rpHomePage(false, false)),
+                                  StreamBuilder<QuerySnapshot>(
+                                    stream: controller.streamPemasukan,
+                                    builder: (context, snapshot) {
+                                      if (snapshot.hasData) {
+                                        List<QueryDocumentSnapshot> documents =
+                                            snapshot.data!.docs;
+
+                                        // Sort transactions by timestamp in descending order
+                                        documents.sort((a, b) {
+                                          Timestamp timestampA = a['timestamp'];
+                                          Timestamp timestampB = b['timestamp'];
+                                          return timestampB
+                                              .compareTo(timestampA);
+                                        });
+
+                                        if (documents.isNotEmpty) {
+                                          Map<String, dynamic> documentFields =
+                                              documents.first.data()
+                                                  as Map<String, dynamic>;
+                                          double value = double.parse(
+                                            documentFields[
+                                                    'nominalTransaksiPemasukan']
+                                                .toString(),
+                                          );
+                                          final formatter =
+                                              NumberFormat("#,##0", "id_ID");
+                                          return Text(
+                                            formatter.format(value).toString(),
+                                            style: moneyHomePage(false),
+                                          );
+                                        } else {
+                                          return Text(
+                                            '0',
+                                            style: moneyHomePage(false),
+                                          );
+                                        }
+                                      } else {
+                                        return Text(
+                                          '0',
+                                          style: moneyHomePage(false),
+                                        );
+                                      }
+                                    },
+                                  )
+                                ],
+                              ),
+                            ],
+                          ),
                         ),
                       ),
-                      Container(
-                        width: sizeWidth / 2.3,
-                        height: sizeHeight * 0.056,
-                        decoration: BoxDecoration(
-                          color: Colors.black.withOpacity(0.24),
-                          borderRadius: defaulBorderRadius,
-                        ),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: [
-                            Transform.rotate(
-                              angle: pi / 2,
-                              child: Container(
-                                width: sizeWidth * 0.07,
-                                height: sizeHeight * 0.027,
-                                decoration: BoxDecoration(
-                                  color: Colors.red,
-                                  shape: BoxShape.circle,
-                                ),
-                                child: Icon(
-                                  Icons.arrow_forward_ios_rounded,
-                                  size: 13,
-                                  color: backgroundColor,
+                      SizedBox(
+                        width: sizeWidth * 0.01,
+                      ),
+                      Expanded(
+                        child: Container(
+                          height: sizeHeight * 0.065,
+                          decoration: BoxDecoration(
+                            color: Colors.black.withOpacity(0.24),
+                            borderRadius: defaulBorderRadius,
+                          ),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceAround,
+                            children: [
+                              Transform.rotate(
+                                angle: pi / 2,
+                                child: Container(
+                                  width: sizeWidth * 0.07,
+                                  height: sizeHeight * 0.027,
+                                  decoration: BoxDecoration(
+                                    color: Colors.red,
+                                    shape: BoxShape.circle,
+                                  ),
+                                  child: Icon(
+                                    Icons.arrow_forward_ios_rounded,
+                                    size: 13,
+                                    color: backgroundColor,
+                                  ),
                                 ),
                               ),
-                            ),
-                            Row(
-                              children: [
-                                Text("Rp ", style: rpHomePage(false, false)),
-                                Text("500.000", style: moneyHomePage(false)),
-                              ],
-                            ),
-                          ],
+                              Row(
+                                children: [
+                                  Text("Rp ", style: rpHomePage(false, false)),
+                                  StreamBuilder<QuerySnapshot>(
+                                    stream: controller.streamPengeluaran,
+                                    builder: (context, snapshot) {
+                                      if (snapshot.hasData) {
+                                        List<QueryDocumentSnapshot> documents =
+                                            snapshot.data!.docs;
+
+                                        // Sort transactions by timestamp in descending order
+                                        documents.sort((a, b) {
+                                          Timestamp timestampA = a['timestamp'];
+                                          Timestamp timestampB = b['timestamp'];
+                                          return timestampB
+                                              .compareTo(timestampA);
+                                        });
+
+                                        if (documents.isNotEmpty) {
+                                          Map<String, dynamic> documentFields =
+                                              documents.first.data()
+                                                  as Map<String, dynamic>;
+                                          double value = double.parse(
+                                            documentFields[
+                                                    'nominalTransaksiPengeluaran']
+                                                .toString(),
+                                          );
+                                          final formatter =
+                                              NumberFormat("#,##0", "id_ID");
+                                          return Text(
+                                            formatter.format(value).toString(),
+                                            style: moneyHomePage(false),
+                                          );
+                                        } else {
+                                          return Text(
+                                            '0',
+                                            style: moneyHomePage(false),
+                                          );
+                                        }
+                                      } else {
+                                        return Text(
+                                          '0',
+                                          style: moneyHomePage(false),
+                                        );
+                                      }
+                                    },
+                                  )
+                                ],
+                              ),
+                            ],
+                          ),
                         ),
                       ),
                     ],
@@ -182,12 +304,12 @@ class HomePageView extends GetView<HomePageController> {
             Stack(
               children: <Widget>[
                 Container(
-                  margin: EdgeInsets.only(top: sizeHeight * 0.15),
+                  margin: EdgeInsets.only(top: sizeHeight * 0.1),
                   width: sizeWidth,
-                  height: sizeHeight,
+                  height: sizeHeight * 1.08,
                   decoration: BoxDecoration(
-                      color: backgroundColor,
-                      borderRadius: defaultBottomSheetRadius),
+                    color: backgroundColor,
+                  ),
                 ),
                 Column(
                   children: [
@@ -205,8 +327,8 @@ class HomePageView extends GetView<HomePageController> {
               fit: BoxFit.fitWidth,
             ),
             SizedBox(
-              height: sizeHeight * 0.15,
-            )
+              height: sizeHeight * 0.05,
+            ),
           ],
         ),
       ),

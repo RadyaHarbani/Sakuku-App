@@ -6,7 +6,6 @@ import 'package:sakuku_app/app/routes/app_pages.dart';
 
 class LoginPageController extends GetxController {
   final formField = GlobalKey<FormState>();
-  TextEditingController? cUsernameSignIn;
   TextEditingController? cEmailSignIn;
   TextEditingController? cPasswordSignIn;
   RxBool isVisibleSignIn = true.obs;
@@ -23,7 +22,6 @@ class LoginPageController extends GetxController {
   @override
   void onInit() {
     super.onInit();
-    cUsernameSignIn = new TextEditingController();
     cEmailSignIn = new TextEditingController();
     cPasswordSignIn = new TextEditingController();
   }
@@ -32,13 +30,14 @@ class LoginPageController extends GetxController {
     try {
       isEmailSignIn.value = true;
       isUsernameEmailSignIn.value = true;
-
       await FirebaseAuth.instance.signInWithEmailAndPassword(
         email: cEmailSignIn!.text,
         password: cPasswordSignIn!.text,
       );
-      Get.snackbar("Selamat", "Login Berhasil Sebagai" + cUsernameSignIn!.text);
-      Get.offAllNamed(Routes.HOME_PAGE);
+      // await writeToSharedPreference();
+      // await fetchUsernameFromFirestore(userCredential.user!.uid);
+      Get.snackbar("Selamat", "Login Berhasil Sebagai" + cEmailSignIn!.text);
+      Get.offAllNamed(Routes.NAVIGATOR_COMPONENT);
       isEmailSignIn.value = false;
     } catch (e) {
       isEmailSignIn.value = false;
@@ -52,33 +51,37 @@ class LoginPageController extends GetxController {
     try {
       isGoogleSignIn.value = true;
       isUsernameGoogleSignIn.value = true;
-
       GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
       GoogleSignInAuthentication googleAuth = await googleUser!.authentication;
-
       AuthCredential credential = GoogleAuthProvider.credential(
         accessToken: googleAuth.accessToken,
         idToken: googleAuth.idToken,
       );
-
       await FirebaseAuth.instance.signInWithCredential(credential);
       Get.snackbar(
         "Haloo...👋",
         "Login Sebagai " + googleUser.displayName.toString(),
       );
-
-      Get.offAllNamed(Routes.HOME_PAGE);
+      Get.offAllNamed(Routes.NAVIGATOR_COMPONENT);
       isGoogleSignIn.value = false;
-
     } catch (e) {
       isGoogleSignIn.value = false;
       isUsernameGoogleSignIn.value = false;
-
       print('Google Sign-In error: $e');
-
       Get.snackbar("Waduhh:(", "Kayaknya Jaringannya Lagi Gangguan Nihh");
-
       isGoogleSignIn.value = true;
     }
   }
+
+  void signOut() {
+    FirebaseAuth.instance.signOut();
+    Get.offAllNamed(Routes.LOGIN_PAGE);
+  }
+
+  // Future<void> writeToSharedPreference() async {
+  //   final prefs = await SharedPreferences.getInstance();
+  //   prefs.setBool("isLogin", true);
+  //   prefs.setString("email", cEmailSignIn!.text);
+  //   Get.offAllNamed(Routes.NAVIGATOR_COMPONENT);
+  // }
 }

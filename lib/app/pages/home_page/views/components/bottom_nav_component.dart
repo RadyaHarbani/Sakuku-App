@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:sakuku_app/app/widgets/bottom_sheet_content.dart';
+import 'package:sakuku_app/app/pages/home_page/views/components/navbar_component/bottom_sheet_content.dart';
 import 'package:sakuku_app/helpers/themes/color_themes.dart';
 import 'package:sakuku_app/helpers/themes/default_themes.dart';
 import 'package:sakuku_app/app/pages/home_page/controllers/home_page_controller.dart';
@@ -9,14 +9,19 @@ import 'package:sakuku_app/app/pages/home_page/controllers/home_page_controller.
 class BottomNavComponent extends StatelessWidget {
   BottomNavComponent({super.key});
   final controller = Get.put(HomePageController());
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: backgroundColor,
+      body: Obx(
+        () => controller.listPageValue[controller.currentIndexBottomNav.value],
+      ),
       floatingActionButton: Container(
-        width: 186,
-        height: 45,
+        width: 188,
+        height: 43,
+        decoration: BoxDecoration(
+          boxShadow: defaultBoxShadow,
+        ),
         child: ElevatedButton(
           onPressed: () {
             Get.bottomSheet(
@@ -42,29 +47,27 @@ class BottomNavComponent extends StatelessWidget {
                 "Catat Transaksi",
                 style: GoogleFonts.poppins(
                   fontSize: 14,
-                  fontWeight: FontWeight.w500,
+                  fontWeight: FontWeight.w600,
                 ),
               ),
             ],
           ),
           style: ElevatedButton.styleFrom(
-            backgroundColor: fourthColor,
+            backgroundColor: Colors.yellow[800],
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(20),
-            ),
-            padding: EdgeInsets.symmetric(
-              horizontal: 20,
-              vertical: 10,
             ),
           ),
         ),
       ),
-      body: Obx(
-        () => controller.listPageValue[controller.currentIndexBottomNav.value],
-      ),
+      floatingActionButtonLocation:
+          FloatingActionButtonLocation.miniCenterFloat,
       bottomNavigationBar: Container(
-        margin: EdgeInsets.only(left: 20, right: 20),
-        height: sizeWidth * .160,
+        margin: EdgeInsets.only(
+          left: 20,
+          right: 20,
+        ),
+        height: sizeWidth * .155,
         color: backgroundColor,
         child: ListView.builder(
           itemCount: 4,
@@ -97,7 +100,7 @@ class BottomNavComponent extends StatelessWidget {
                         ? sizeWidth * .014
                         : 0,
                     decoration: BoxDecoration(
-                      color: secondaryColor,
+                      color: fourthColor,
                       borderRadius: BorderRadius.vertical(
                         bottom: Radius.circular(10),
                       ),
@@ -108,10 +111,10 @@ class BottomNavComponent extends StatelessWidget {
                       controller.listIconNav[index].icon,
                       size: sizeWidth * .076,
                       color: index == controller.currentIndexBottomNav.value
-                          ? secondaryColor
-                          : primaryColor,
+                          ? fourthColor
+                          : primaryTextColorGrey.withOpacity(0.3),
                     )),
-                SizedBox(height: sizeWidth * .03),
+                SizedBox(height: sizeWidth * .02),
               ],
             ),
           ),

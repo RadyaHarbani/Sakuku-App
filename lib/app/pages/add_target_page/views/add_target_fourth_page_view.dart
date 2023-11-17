@@ -66,7 +66,11 @@ class AddTargetFourthPageView extends StatelessWidget {
               width: sizeWidth,
               child: Column(
                 children: [
-                  Image.asset(footerTarget, width: sizeWidth),
+                  Image.asset(
+                    footerTarget,
+                    width: sizeWidth,
+                    fit: BoxFit.fill,
+                  ),
                   Container(
                     width: sizeWidth,
                     child: LinearPercentIndicator(
@@ -87,7 +91,7 @@ class AddTargetFourthPageView extends StatelessWidget {
       floatingActionButton: Padding(
         padding: const EdgeInsets.only(bottom: 8),
         child: ButtonTargetLanjut(
-          routeName: Routes.ADD_TARGET_FIRST_PAGE,
+          routeName: Routes.CONGRATS_TARGET_PAGE,
         ),
       ),
     );

@@ -59,7 +59,7 @@ TextStyle hintTextStyle = GoogleFonts.poppins(
 );
 
 TextStyle inputTextStyle = GoogleFonts.poppins(
-  fontSize: figmaFontsize(14),
+  fontSize: figmaFontsize(15),
   fontWeight: FontWeight.w600,
   color: primaryTextColorBlack,
 );
