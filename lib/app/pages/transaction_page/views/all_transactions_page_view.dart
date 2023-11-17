@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:intl/intl.dart';
 import 'package:sakuku_app/app/models/transaction_model.dart';
 import 'package:sakuku_app/app/pages/transaction_page/controllers/transaction_page_controller.dart';
 import 'package:sakuku_app/helpers/themes/color_themes.dart';
@@ -27,7 +28,7 @@ class AllTransactionsPageView extends StatelessWidget {
         toolbarHeight: 60,
       ),
       body: StreamBuilder(
-        stream: controller.streamTransaction(),
+        stream: controller.stremAllTransaction(),
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return const Center(
@@ -36,7 +37,7 @@ class AllTransactionsPageView extends StatelessWidget {
           }
           if (snapshot.data!.docs.isEmpty) {
             return const Center(
-              child: Text("No products"),
+              child: Text("No Transaction"),
             );
           }
           controller.listTransaksi.clear();
@@ -120,30 +121,27 @@ class AllTransactionsPageView extends StatelessWidget {
                             Text(
                               transaksi.jenisTransaksi ?? "",
                               style: GoogleFonts.poppins(
-                                fontSize: figmaFontsize(14),
+                                fontSize: figmaFontsize(15),
                                 fontWeight: FontWeight.bold,
                                 color: primaryTextColorBlack,
                               ),
                             ),
-                            SizedBox(
-                              height: sizeHeight * 0.005,
-                            ),
                             Builder(builder: (context) {
                               if (transaksi.jenisTransaksi == "Pengeluaran") {
                                 return Text(
-                                  transaksi.kategoriPengeluaran ?? "",
+                                  transaksi.kategoriPengeluaran ?? "-",
                                   style: GoogleFonts.poppins(
-                                    fontSize: figmaFontsize(12),
-                                    fontWeight: FontWeight.w600,
+                                    fontSize: figmaFontsize(13),
+                                    fontWeight: FontWeight.w500,
                                     color: primaryTextColorBlack,
                                   ),
                                 );
                               } else {
                                 return Text(
-                                  transaksi.sumberPemasukan ?? "",
+                                  transaksi.sumberPemasukan ?? "-",
                                   style: GoogleFonts.poppins(
-                                    fontSize: figmaFontsize(12),
-                                    fontWeight: FontWeight.w600,
+                                    fontSize: figmaFontsize(13),
+                                    fontWeight: FontWeight.w500,
                                     color: primaryTextColorBlack,
                                   ),
                                 );
@@ -152,7 +150,7 @@ class AllTransactionsPageView extends StatelessWidget {
                             Builder(builder: (context) {
                               if (transaksi.jenisTransaksi == "Pengeluaran") {
                                 return Text(
-                                  transaksi.catatanTransaksiPengeluaran ?? "",
+                                  transaksi.catatanTransaksiPengeluaran ?? "-",
                                   style: GoogleFonts.poppins(
                                     fontSize: figmaFontsize(12),
                                     fontWeight: FontWeight.w600,
@@ -161,7 +159,7 @@ class AllTransactionsPageView extends StatelessWidget {
                                 );
                               } else {
                                 return Text(
-                                  transaksi.catatanTransaksiPemasukan ?? "",
+                                  transaksi.catatanTransaksiPemasukan ?? "-",
                                   style: GoogleFonts.poppins(
                                     fontSize: figmaFontsize(12),
                                     fontWeight: FontWeight.w600,
@@ -177,7 +175,11 @@ class AllTransactionsPageView extends StatelessWidget {
                           builder: (context) {
                             if (transaksi.jenisTransaksi == "Pengeluaran") {
                               return Text(
-                                "- Rp ${transaksi.nominalTransaksiPengeluaran}",
+                                "- Rp ${NumberFormat.currency(
+                                  locale: 'id',
+                                  symbol: '',
+                                  decimalDigits: 0,
+                                ).format(transaksi.nominalTransaksiPengeluaran)}",
                                 style: GoogleFonts.poppins(
                                   fontSize: figmaFontsize(14),
                                   fontWeight: FontWeight.w600,
@@ -186,7 +188,11 @@ class AllTransactionsPageView extends StatelessWidget {
                               );
                             } else {
                               return Text(
-                                "+ Rp ${transaksi.nominalTransaksiPemasukan}",
+                                "+ Rp ${NumberFormat.currency(
+                                  locale: 'id',
+                                  symbol: '',
+                                  decimalDigits: 0,
+                                ).format(transaksi.nominalTransaksiPemasukan)}",
                                 style: GoogleFonts.poppins(
                                   fontSize: figmaFontsize(14),
                                   fontWeight: FontWeight.w600,

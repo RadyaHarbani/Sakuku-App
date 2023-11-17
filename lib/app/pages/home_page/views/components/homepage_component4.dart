@@ -1,5 +1,7 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:sakuku_app/app/routes/app_pages.dart';
 import 'package:sakuku_app/helpers/themes/color_themes.dart';
 import 'package:sakuku_app/helpers/themes/default_themes.dart';
 import 'package:sakuku_app/helpers/themes/icon_themes.dart';
@@ -75,37 +77,10 @@ class HomePageComponentFour extends StatelessWidget {
                   ),
                 ),
                 SizedBox(height: sizeHeight * 0.015),
-                // InkWell(
-                //   onTap: () {
-
-                //   },
-                //   child: Container(
-                //     padding: EdgeInsets.symmetric(
-                //         horizontal: sizeWidth * 0.017,
-                //         vertical: sizeHeight * 0.02),
-                //     margin: EdgeInsets.only(bottom: sizeHeight * 0.015),
-                //     width: sizeWidth,
-                //     decoration: BoxDecoration(
-                //         border: Border.all(color: Colors.grey),
-                //         borderRadius: BorderRadius.circular(10)),
-                //     child: Row(
-                //       mainAxisAlignment: MainAxisAlignment.center,
-                //       children: [
-                //         Container(
-                //           margin: EdgeInsets.only(right: sizeWidth * 0.019),
-                //           child: Image.asset(
-                //             iconTarget,
-                //             height: sizeHeight * 0.044,
-                //           ),
-                //         ),
-                //         Text('Target Tabungan',
-                //             style: containerTittleHomePage(false)),
-                //       ],
-                //     ),
-                //   ),
-                // )
                 ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Get.toNamed(Routes.ALL_TARGET_PAGE);
+                  },
                   style: ElevatedButton.styleFrom(
                     padding: EdgeInsets.symmetric(
                       horizontal: sizeWidth * 0.017,

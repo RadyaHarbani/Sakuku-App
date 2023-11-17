@@ -1,14 +1,17 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+
 class TransactionModel {
   int? id;
   String? jenisTransaksi;
-  String? nominalTransaksiPengeluaran;
+  int? nominalTransaksiPengeluaran;
   String? kategoriPengeluaran;
   String? catatanTransaksiPengeluaran;
   String? tanggalTransaksiPengeluaran;
-  String? nominalTransaksiPemasukan;
+  int? nominalTransaksiPemasukan;
   String? sumberPemasukan;
   String? catatanTransaksiPemasukan;
   String? tanggalTransaksiPemasukan;
+  Timestamp? timestamp;
 
   TransactionModel({
      this.id,
@@ -21,6 +24,7 @@ class TransactionModel {
      this.sumberPemasukan,
      this.catatanTransaksiPemasukan,
      this.tanggalTransaksiPemasukan,
+     this.timestamp,
   });
 
   Map<String, dynamic> toMap() {
@@ -35,21 +39,23 @@ class TransactionModel {
       'sumberPemasukan': sumberPemasukan,
       'catatanTransaksiPemasukan': catatanTransaksiPemasukan,
       'tanggalTransaksiPemasukan': tanggalTransaksiPemasukan,
+      'timestamp': timestamp ?? Timestamp.now(),
     };
   }
 
   factory TransactionModel.fromMap(Map<String, dynamic> map) {
     return TransactionModel(
-      id: map['id'] ?? "",
+      id: map['id'] ?? 0,
       jenisTransaksi: map['jenisTransaksi'] ?? "",
-      nominalTransaksiPengeluaran: map['nominalTransaksiPengeluaran'] ?? "",
+      nominalTransaksiPengeluaran: map['nominalTransaksiPengeluaran'] ?? 0,
       kategoriPengeluaran: map['kategoriPengeluaran'] ?? "",
       catatanTransaksiPengeluaran: map['catatanTransaksiPengeluaran'] ?? "",
       tanggalTransaksiPengeluaran: map['tanggalTransaksiPengeluaran'] ?? "",
-      nominalTransaksiPemasukan: map['nominalTransaksiPemasukan'] ?? "",
+      nominalTransaksiPemasukan: map['nominalTransaksiPemasukan'] ?? 0,
       sumberPemasukan: map['sumberPemasukan'] ?? "",
       catatanTransaksiPemasukan: map['catatanTransaksiPemasukan'] ?? "",
       tanggalTransaksiPemasukan: map['tanggalTransaksiPemasukan'] ?? "",
+      timestamp: map['timestamp'] ?? Timestamp.now(),
     );
   }
 }

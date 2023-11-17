@@ -9,7 +9,7 @@ class CurrencyFormatTextfield extends TextInputFormatter {
       return newValue;
     }
     double value = double.parse(newValue.text);
-    final formatter = NumberFormat("###,###,###", "en_US");
+    final formatter = NumberFormat("#,##0", "id_ID");
 
     String newText = formatter.format(value);
 

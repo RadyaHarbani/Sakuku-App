@@ -57,7 +57,6 @@ class BottomSheetKategori extends StatelessWidget {
                       child: ElevatedButton(
                         onPressed: () {
                           controller.selectedKategoriPengeluaran.value = index;
-                          
                         },
                         style: ElevatedButton.styleFrom(
                           shape: RoundedRectangleBorder(
@@ -95,10 +94,12 @@ class BottomSheetKategori extends StatelessWidget {
                                                 : index == 4
                                                     ? 'Liburan'
                                                     : 'Lainnya',
-                                isSelected:
-                                    controller.selectedKategoriPengeluaran.value == index
-                                        ? true
-                                        : false,
+                                isSelected: controller
+                                            .selectedKategoriPengeluaran
+                                            .value ==
+                                        index
+                                    ? true
+                                    : false,
                                 subtitle: index == 0
                                     ? 'Makanan, baju, dll'
                                     : index == 1

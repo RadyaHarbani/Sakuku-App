@@ -91,7 +91,7 @@ class AddTargetFourthPageView extends StatelessWidget {
       floatingActionButton: Padding(
         padding: const EdgeInsets.only(bottom: 8),
         child: ButtonTargetLanjut(
-          routeName: Routes.ADD_TARGET_FIRST_PAGE,
+          routeName: Routes.CONGRATS_TARGET_PAGE,
         ),
       ),
     );

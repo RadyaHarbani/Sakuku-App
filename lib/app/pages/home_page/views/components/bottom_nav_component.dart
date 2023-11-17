@@ -16,53 +16,49 @@ class BottomNavComponent extends StatelessWidget {
       body: Obx(
         () => controller.listPageValue[controller.currentIndexBottomNav.value],
       ),
-      floatingActionButton: Obx(
-        () => controller.showButton.value
-            ? Container()
-            : Container(
-                width: 188,
-                height: 43,
-                decoration: BoxDecoration(
-                  boxShadow: defaultBoxShadow,
-                ),
-                child: ElevatedButton(
-                  onPressed: () {
-                    Get.bottomSheet(
-                      BottomSheetComponent(),
-                      backgroundColor: backgroundColor,
-                      isScrollControlled: true,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.only(
-                          topLeft: Radius.circular(30),
-                          topRight: Radius.circular(30),
-                        ),
-                      ),
-                    );
-                  },
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Icon(Icons.add_circle_rounded),
-                      SizedBox(
-                        width: 10,
-                      ),
-                      Text(
-                        "Catat Transaksi",
-                        style: GoogleFonts.poppins(
-                          fontSize: 14,
-                          fontWeight: FontWeight.w600,
-                        ),
-                      ),
-                    ],
-                  ),
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.yellow[800],
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(20),
-                    ),
-                  ),
+      floatingActionButton: Container(
+        width: 188,
+        height: 43,
+        decoration: BoxDecoration(
+          boxShadow: defaultBoxShadow,
+        ),
+        child: ElevatedButton(
+          onPressed: () {
+            Get.bottomSheet(
+              BottomSheetComponent(),
+              backgroundColor: backgroundColor,
+              isScrollControlled: true,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(30),
+                  topRight: Radius.circular(30),
                 ),
               ),
+            );
+          },
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Icon(Icons.add_circle_rounded),
+              SizedBox(
+                width: 10,
+              ),
+              Text(
+                "Catat Transaksi",
+                style: GoogleFonts.poppins(
+                  fontSize: 14,
+                  fontWeight: FontWeight.w600,
+                ),
+              ),
+            ],
+          ),
+          style: ElevatedButton.styleFrom(
+            backgroundColor: Colors.yellow[800],
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(20),
+            ),
+          ),
+        ),
       ),
       floatingActionButtonLocation:
           FloatingActionButtonLocation.miniCenterFloat,

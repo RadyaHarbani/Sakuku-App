@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:sakuku_app/app/routes/app_pages.dart';
 import 'package:sakuku_app/helpers/themes/color_themes.dart';
 import 'package:sakuku_app/helpers/themes/default_themes.dart';
 import 'package:sakuku_app/helpers/themes/image_themes.dart';
@@ -19,7 +20,7 @@ class AllTargetPageView extends StatelessWidget {
         centerTitle: true,
         title: Text("Target Kamu", style: appbarTextBudgetPage),
         leading: IconButton(
-          onPressed: () => Get.back(),
+          onPressed: () => Get.offAllNamed(Routes.NAVIGATOR_COMPONENT),
           icon: Icon(
             Icons.arrow_back_ios_new_rounded,
             size: 20,
@@ -130,7 +131,7 @@ class AllTargetPageView extends StatelessWidget {
                   color: aboveBackgroundColor, boxShadow: defaultBoxShadow),
               child: ElevatedButton(
                 onPressed: () {
-                  Get.toNamed('routeName');
+                  Get.toNamed(Routes.ADD_TARGET_FIRST_PAGE);
                 },
                 style: ElevatedButton.styleFrom(
                   fixedSize: Size.fromHeight(sizeHeight * 0.09),

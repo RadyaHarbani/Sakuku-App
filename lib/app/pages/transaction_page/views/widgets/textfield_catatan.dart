@@ -9,7 +9,8 @@ class TextfieldCatatan extends StatelessWidget {
     required this.inputType,
     required this.hintText,
     required this.namaIcon,
-    required this.scale, required this.controller,
+    required this.scale,
+    required this.controller,
   });
 
   final TextInputType inputType;
@@ -50,6 +51,7 @@ class TextfieldCatatan extends StatelessWidget {
               color: successColor,
             ),
           ),
+          border: InputBorder.none,
         ),
         style: inputTextStyle,
       ),

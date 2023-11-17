@@ -86,7 +86,7 @@ class BudgetPageView extends StatelessWidget {
                         margin: EdgeInsets.only(
                             right: sizeWidth * 0.045,
                             left: sizeWidth * 0.045,
-                            bottom: sizeHeight * 0.04,
+                            bottom: sizeHeight * 0.025,
                             top: sizeHeight * 0.006),
                         height: 86,
                         decoration: BoxDecoration(

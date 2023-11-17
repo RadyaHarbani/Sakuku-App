@@ -1,6 +1,8 @@
 import 'dart:math';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:intl/intl.dart';
 import 'package:sakuku_app/app/pages/home_page/views/components/homepage_component1.dart';
 import 'package:sakuku_app/app/pages/home_page/views/components/homepage_component2.dart';
 import 'package:sakuku_app/app/pages/home_page/views/components/homepage_component3.dart';
@@ -92,7 +94,29 @@ class HomePageView extends GetView<HomePageController> {
                                 SizedBox(
                                   width: sizeWidth * 0.02,
                                 ),
-                                Text("1.000.000", style: moneyHomePage(true)),
+                                StreamBuilder<QuerySnapshot>(
+                                  stream: controller.streamBalance,
+                                  builder: (context, snapshot) {
+                                    if (snapshot.hasData) {
+                                      Map<String, dynamic> documentFields =
+                                          snapshot.data!.docs[0].data()
+                                              as Map<String, dynamic>;
+                                      double value = double.parse(
+                                          documentFields['balance'].toString());
+                                      final formatter =
+                                          NumberFormat("#,##0", "id_ID");
+                                      return Text(
+                                        formatter.format(value).toString(),
+                                        style: moneyHomePage(true),
+                                      );
+                                    } else {
+                                      return Text(
+                                        '0',
+                                        style: moneyHomePage(true),
+                                      );
+                                    }
+                                  },
+                                )
                               ],
                             ),
                             SizedBox(
@@ -122,7 +146,7 @@ class HomePageView extends GetView<HomePageController> {
                             mainAxisAlignment: MainAxisAlignment.spaceAround,
                             children: [
                               Transform.rotate(
-                                angle: 4.7,
+                                angle: pi / 2,
                                 child: Container(
                                   width: sizeWidth * 0.07,
                                   height: sizeHeight * 0.027,
@@ -140,7 +164,50 @@ class HomePageView extends GetView<HomePageController> {
                               Row(
                                 children: [
                                   Text("Rp ", style: rpHomePage(false, false)),
-                                  Text("500.000", style: moneyHomePage(false)),
+                                  StreamBuilder<QuerySnapshot>(
+                                    stream: controller.streamPemasukan,
+                                    builder: (context, snapshot) {
+                                      if (snapshot.hasData) {
+                                        List<QueryDocumentSnapshot> documents =
+                                            snapshot.data!.docs;
+
+                                        // Sort transactions by timestamp in descending order
+                                        documents.sort((a, b) {
+                                          Timestamp timestampA = a['timestamp'];
+                                          Timestamp timestampB = b['timestamp'];
+                                          return timestampB
+                                              .compareTo(timestampA);
+                                        });
+
+                                        if (documents.isNotEmpty) {
+                                          Map<String, dynamic> documentFields =
+                                              documents.first.data()
+                                                  as Map<String, dynamic>;
+                                          double value = double.parse(
+                                            documentFields[
+                                                    'nominalTransaksiPemasukan']
+                                                .toString(),
+                                          );
+                                          final formatter =
+                                              NumberFormat("#,##0", "id_ID");
+                                          return Text(
+                                            formatter.format(value).toString(),
+                                            style: moneyHomePage(false),
+                                          );
+                                        } else {
+                                          return Text(
+                                            '0',
+                                            style: moneyHomePage(false),
+                                          );
+                                        }
+                                      } else {
+                                        return Text(
+                                          '0',
+                                          style: moneyHomePage(false),
+                                        );
+                                      }
+                                    },
+                                  )
                                 ],
                               ),
                             ],
@@ -179,7 +246,50 @@ class HomePageView extends GetView<HomePageController> {
                               Row(
                                 children: [
                                   Text("Rp ", style: rpHomePage(false, false)),
-                                  Text("500.000", style: moneyHomePage(false)),
+                                  StreamBuilder<QuerySnapshot>(
+                                    stream: controller.streamPengeluaran,
+                                    builder: (context, snapshot) {
+                                      if (snapshot.hasData) {
+                                        List<QueryDocumentSnapshot> documents =
+                                            snapshot.data!.docs;
+
+                                        // Sort transactions by timestamp in descending order
+                                        documents.sort((a, b) {
+                                          Timestamp timestampA = a['timestamp'];
+                                          Timestamp timestampB = b['timestamp'];
+                                          return timestampB
+                                              .compareTo(timestampA);
+                                        });
+
+                                        if (documents.isNotEmpty) {
+                                          Map<String, dynamic> documentFields =
+                                              documents.first.data()
+                                                  as Map<String, dynamic>;
+                                          double value = double.parse(
+                                            documentFields[
+                                                    'nominalTransaksiPengeluaran']
+                                                .toString(),
+                                          );
+                                          final formatter =
+                                              NumberFormat("#,##0", "id_ID");
+                                          return Text(
+                                            formatter.format(value).toString(),
+                                            style: moneyHomePage(false),
+                                          );
+                                        } else {
+                                          return Text(
+                                            '0',
+                                            style: moneyHomePage(false),
+                                          );
+                                        }
+                                      } else {
+                                        return Text(
+                                          '0',
+                                          style: moneyHomePage(false),
+                                        );
+                                      }
+                                    },
+                                  )
                                 ],
                               ),
                             ],

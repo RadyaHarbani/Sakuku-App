@@ -3,10 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:sakuku_app/app/models/transaction_model.dart';
+import 'package:sakuku_app/app/routes/app_pages.dart';
 
 class TransactionPageController extends GetxController {
-  final money = NumberFormat("#,##0", "en_US").format(0).obs;
+  // final money = NumberFormat("#,##0", "en_US").format(0).obs;
   final RxList listTransaksi = [].obs;
+  final RxInt balance = 0.obs;
   final RxInt idTransaction = 0.obs;
   final RxInt selectedTransaksi = 0.obs;
   final RxString selectedTransaksiName = "Pemasukan".obs;
@@ -14,10 +16,20 @@ class TransactionPageController extends GetxController {
   final RxString selectedKategoriPengeluaranName = "Belanja".obs;
   TextEditingController? nominalPengeluaranController;
   TextEditingController? catatanPengeluaranController;
-  DateTime selectedTanggalPengeluaran = DateTime.now();
+  Rx<DateTime> selectedTanggalPengeluaran = DateTime.now().obs;
+  Rx<DateTime> selectedTanggalPemasukan = DateTime.now().obs;
   TextEditingController? nominalPemasukanController;
   TextEditingController? catatanPemasukanController;
   TextEditingController? sumberPemasukanController;
+
+  RxList listKategoriPengeluaran = [
+    "Belanja",
+    "Dana Darurat",
+    "Ibadah",
+    "Pendidikan",
+    "Liburan",
+    "Lainnya"
+  ].obs;
 
   @override
   void onInit() {
@@ -31,7 +43,7 @@ class TransactionPageController extends GetxController {
 
   Future<void> addTransaction({TransactionModel? transactionModel}) async {
     try {
-      var hasil = await FirebaseFirestore.instance
+      final hasil = await FirebaseFirestore.instance
           .collection("transaction")
           .add(transactionModel!.toMap());
       await hasil.collection("transaction").doc(hasil.id).update({
@@ -42,23 +54,61 @@ class TransactionPageController extends GetxController {
     }
   }
 
-  getDateFromUser() async {
+  Future<void> updateBalance() async {
+    try {
+      final hasil = await FirebaseFirestore.instance
+          .collection('users')
+          .where("email", isEqualTo: 'radya@gmail.com')
+          .get();
+      hasil.docs.forEach((doc) async {
+        String docId = doc.id;
+        int currentBalance = doc["balance"];
+        int updatedBalance = currentBalance;
+        if (nominalPemasukanController!.text.isNotEmpty) {
+          updatedBalance += int.parse(nominalPemasukanController!.text
+              .replaceAll(RegExp(r'[^\d]'), ''));
+        } else if (nominalPengeluaranController!.text.isNotEmpty) {
+          updatedBalance -= int.parse(nominalPengeluaranController!.text
+              .replaceAll(RegExp(r'[^\d]'), ''));
+        }
+        await FirebaseFirestore.instance.collection("users").doc(docId).update({
+          "balance": updatedBalance,
+        });
+      });
+    } catch (e) {
+      print(e);
+    }
+  }
+
+  getDateFromUserIncoming() async {
     DateTime? pickedDate = await showDatePicker(
       context: Get.context!,
-      initialDate: DateTime.now(),
-      firstDate: DateTime(2000),
-      lastDate: DateTime(2100),
+      initialDate: selectedTanggalPemasukan.value,
+      firstDate: DateTime(2015),
+      lastDate: DateTime(2101),
     );
-
     if (pickedDate != null) {
-      selectedTanggalPengeluaran = pickedDate;
-    } else {
-      print("Date is not selected");
+      selectedTanggalPemasukan.value = pickedDate;
+      update();
+    }
+  }
+
+  getDateFromUserExit() async {
+    DateTime? pickedDate = await showDatePicker(
+      context: Get.context!,
+      initialDate: selectedTanggalPengeluaran.value,
+      firstDate: DateTime(2015),
+      lastDate: DateTime(2101),
+    );
+    if (pickedDate != null) {
+      selectedTanggalPengeluaran.value = pickedDate;
+      update();
     }
   }
 
   void saveTransaction() async {
     idTransaction.value = idTransaction.value++;
+
     switch (selectedTransaksi.value) {
       case 0:
         selectedTransaksiName.value = "Pengeluaran";
@@ -67,6 +117,7 @@ class TransactionPageController extends GetxController {
         selectedTransaksiName.value = "Pemasukan";
         break;
     }
+
     switch (selectedKategoriPengeluaran.value) {
       case 0:
         selectedKategoriPengeluaranName.value = "Belanja";
@@ -87,30 +138,60 @@ class TransactionPageController extends GetxController {
         selectedKategoriPengeluaranName.value = "Lainnya";
         break;
     }
+
     if (nominalPengeluaranController!.text.isNotEmpty ||
         nominalPemasukanController!.text.isNotEmpty) {
-      addTransaction(
-          transactionModel: TransactionModel(
-        id: idTransaction.value,
-        jenisTransaksi: selectedTransaksiName.value,
-        nominalTransaksiPengeluaran: nominalPengeluaranController!.text,
-        kategoriPengeluaran: selectedKategoriPengeluaranName.value,
-        catatanTransaksiPengeluaran: catatanPengeluaranController!.text,
-        tanggalTransaksiPengeluaran: selectedTanggalPengeluaran.toString(),
-        nominalTransaksiPemasukan: nominalPemasukanController!.text,
-        sumberPemasukan: sumberPemasukanController!.text,
-        catatanTransaksiPemasukan: catatanPemasukanController!.text,
-        tanggalTransaksiPemasukan: selectedTanggalPengeluaran.toString(),
-      ));
+      if (nominalPemasukanController!.text.isNotEmpty) {
+        addTransaction(
+            transactionModel: TransactionModel(
+          id: idTransaction.value,
+          jenisTransaksi: selectedTransaksiName.value,
+          nominalTransaksiPemasukan: int.parse(nominalPemasukanController!.text
+              .replaceAll(RegExp(r'[^\d]'), '')),
+          sumberPemasukan: sumberPemasukanController!.text,
+          catatanTransaksiPemasukan: catatanPemasukanController!.text,
+          tanggalTransaksiPemasukan: DateFormat.yMd()
+              .format(selectedTanggalPemasukan.value)
+              .toString(),
+          nominalTransaksiPengeluaran: 0,
+          kategoriPengeluaran: null,
+          catatanTransaksiPengeluaran: null,
+          tanggalTransaksiPengeluaran: null,
+          timestamp: Timestamp.fromDate(DateTime.now()),
+        ));
+        updateBalance();
+        Get.offAllNamed(Routes.NAVIGATOR_COMPONENT);
+      } else if (nominalPengeluaranController!.text.isNotEmpty) {
+        addTransaction(
+            transactionModel: TransactionModel(
+          id: idTransaction.value,
+          jenisTransaksi: selectedTransaksiName.value,
+          nominalTransaksiPemasukan: 0,
+          sumberPemasukan: null,
+          catatanTransaksiPemasukan: null,
+          tanggalTransaksiPemasukan: null,
+          nominalTransaksiPengeluaran: int.parse(nominalPengeluaranController!
+              .text
+              .replaceAll(RegExp(r'[^\d]'), '')),
+          kategoriPengeluaran: selectedKategoriPengeluaranName.value,
+          catatanTransaksiPengeluaran: catatanPengeluaranController!.text,
+          tanggalTransaksiPengeluaran: DateFormat.yMd()
+              .format(selectedTanggalPengeluaran.value)
+              .toString(),
+          timestamp: Timestamp.fromDate(DateTime.now()),
+        ));
+        updateBalance();
+        Get.offAllNamed(Routes.NAVIGATOR_COMPONENT);
+      }
     } else {
       Get.snackbar("Gagal", "Nominal tidak boleh kosong");
     }
   }
 
-  Stream<QuerySnapshot<Map<String, dynamic>>> streamTransaction() async* {
+  Stream<QuerySnapshot<Map<String, dynamic>>> stremAllTransaction() async* {
     yield* FirebaseFirestore.instance
         .collection("transaction")
-        .orderBy("id", descending: true)
+        .orderBy('timestamp', descending: true)
         .snapshots();
   }
 }

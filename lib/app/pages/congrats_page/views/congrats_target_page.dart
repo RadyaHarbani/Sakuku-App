@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sakuku_app/app/pages/congrats_page/controllers/congrats_page_controller.dart';
 import 'package:sakuku_app/app/pages/congrats_page/views/widgets/footer_white_congrats_page.dart';
+import 'package:sakuku_app/app/routes/app_pages.dart';
 import 'package:sakuku_app/helpers/themes/color_themes.dart';
 import 'package:sakuku_app/helpers/themes/default_themes.dart';
 import 'package:sakuku_app/helpers/themes/image_themes.dart';
@@ -19,7 +20,9 @@ class CongratsTargetPage extends GetView<CongratsPageController> {
         elevation: 0,
         actions: [
           IconButton(
-            onPressed: () {},
+            onPressed: () {
+              Get.offAllNamed(Routes.ALL_TARGET_PAGE);
+            },
             icon: Icon(
               Icons.close,
               size: 22,
@@ -45,7 +48,8 @@ class CongratsTargetPage extends GetView<CongratsPageController> {
                       textAlign: TextAlign.center, style: titleCongratsPage),
                 ),
                 Text('Sekarang kamu harus komitmen sama dirimu sendiri yaa',
-                    textAlign: TextAlign.center, style: textCongratsPage(false)),
+                    textAlign: TextAlign.center,
+                    style: textCongratsPage(false)),
               ],
             ),
           ),
