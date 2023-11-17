@@ -59,33 +59,30 @@ class CustomAppbar extends StatelessWidget {
                             color: Colors.white,
                           ),
                         ),
-                        Builder(
-                          builder: (context) {
-                            if (FirebaseAuth.instance.currentUser?.providerData
-                                    .first.providerId ==
-                                'google.com') {
-                              return Text(
-                                '${FirebaseAuth.instance.currentUser?.displayName} 👋',
+                        FirebaseAuth.instance.currentUser?.providerData.first
+                                    .providerId ==
+                                'google.com'
+                            ? Text(
+                                FirebaseAuth.instance.currentUser?.displayName
+                                        .toString() ??
+                                    '',
                                 style: GoogleFonts.poppins(
                                   fontSize: figmaFontsize(16),
                                   height: 1.2,
                                   fontWeight: FontWeight.w600,
                                   color: fourthColor,
                                 ),
-                              );
-                            } else {
-                              return Text(
-                                '${controllerHomePage.userFullName.value} 👋',
+                              )
+                            : Text(
+                                controllerHomePage.userFullName.value
+                                    .toString(),
                                 style: GoogleFonts.poppins(
                                   fontSize: figmaFontsize(16),
                                   height: 1.2,
                                   fontWeight: FontWeight.w600,
                                   color: fourthColor,
                                 ),
-                              );
-                            }
-                          },
-                        )
+                              ),
                       ],
                     ),
                   ],
@@ -97,9 +94,7 @@ class CustomAppbar extends StatelessWidget {
                       backgroundColor: abovePrimaryColor,
                       radius: 22,
                       child: IconButton(
-                        onPressed: () {
-                          controllerLoginPage.signOut();
-                        },
+                        onPressed: () {},
                         icon: Icon(
                           Icons.notifications_none_rounded,
                           color: Colors.white,

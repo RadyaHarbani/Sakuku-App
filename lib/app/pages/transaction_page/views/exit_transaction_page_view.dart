@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:intl/intl.dart';
 import 'package:sakuku_app/app/pages/transaction_page/views/widgets/alert_container.dart';
 import 'package:sakuku_app/app/pages/transaction_page/views/widgets/bottom_sheet_kategori.dart';
 import 'package:sakuku_app/app/pages/transaction_page/views/widgets/button_textfield.dart';
@@ -87,21 +88,22 @@ class ExitTransactionPageView extends GetView<TransactionPageController> {
                             SizedBox(
                               height: sizeHeight * 0.015,
                             ),
-                            ButtonTextfield(
-                              onPressed: () {
-                                Get.bottomSheet(
-                                  BottomSheetKategori(),
-                                  backgroundColor: backgroundColor,
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: defaultBottomSheetRadius,
-                                  ),
-                                  isScrollControlled: true,
-                                );
-                              },
-                              namaIcon: iconKategori,
-                              scaleIcon: 25,
-                              hintText: 'Pilih Kategori',
-                            ),
+                            Obx(() => ButtonTextfield(
+                                  onPressed: () {
+                                    Get.bottomSheet(
+                                      BottomSheetKategori(),
+                                      backgroundColor: backgroundColor,
+                                      shape: RoundedRectangleBorder(
+                                        borderRadius: defaultBottomSheetRadius,
+                                      ),
+                                      isScrollControlled: true,
+                                    );
+                                  },
+                                  namaIcon: iconKategori,
+                                  scaleIcon: 25,
+                                  hintText:
+                                      'Kategori : ${controller.listKategoriPengeluaran[controller.selectedKategoriPengeluaran.value]}',
+                                )),
                             SizedBox(
                               height: sizeHeight * 0.02,
                             ),
@@ -135,14 +137,17 @@ class ExitTransactionPageView extends GetView<TransactionPageController> {
                             SizedBox(
                               height: sizeHeight * 0.015,
                             ),
-                            ButtonTextfield(
-                              onPressed: () {
-                                controller.getDateFromUser();
-                              },
-                              namaIcon: iconKalender,
-                              scaleIcon: 25,
-                              hintText: '20, November 2022',
-                            ),
+                            Obx(() => ButtonTextfield(
+                                  onPressed: () {
+                                    controller.getDateFromUserExit();
+                                  },
+                                  namaIcon: iconKalender,
+                                  scaleIcon: 25,
+                                  hintText: DateFormat.yMMMMd()
+                                      .format(controller
+                                          .selectedTanggalPengeluaran.value)
+                                      .toString(),
+                                )),
                             Spacer(),
                           ],
                         ),
@@ -159,14 +164,15 @@ class ExitTransactionPageView extends GetView<TransactionPageController> {
           ),
         ),
       ),
-      floatingActionButton: Obx(() => Padding(
-            padding: const EdgeInsets.only(bottom: 8),
-            child: CustomButtonSimpan(
-              onPressed: () {
-                controller.saveTransaction();
-              },
-            ),
-          )),
+      floatingActionButton: Padding(
+        padding: const EdgeInsets.only(bottom: 8),
+        child: CustomButtonSimpan(
+          onPressed: () {
+            controller.saveTransaction();
+            Get.back();
+          },
+        ),
+      ),
     );
   }
 }

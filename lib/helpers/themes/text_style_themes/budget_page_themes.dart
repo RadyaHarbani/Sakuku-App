@@ -21,10 +21,11 @@ TextStyle editChipBudgetPage = GoogleFonts.poppins(
 
 moneyBudgetPage(bool white, bool weight) {
   return GoogleFonts.poppins(
-    color:
-        white ? aboveBackgroundColor : aboveBackgroundColor.withOpacity(0.40),
-    fontWeight: weight ? FontWeight.w500 : FontWeight.bold,
-    fontSize: figmaFontsize(25),
+    color: white == false
+        ? aboveBackgroundColor
+        : aboveBackgroundColor.withOpacity(0.40),
+    fontWeight: weight == false ? FontWeight.w500 : FontWeight.bold,
+    fontSize: weight == false ? figmaFontsize(15) : figmaFontsize(30),
   );
 }
 
@@ -37,6 +38,6 @@ TextStyle kategoriChipBudgetPage = GoogleFonts.poppins(
     fontWeight: FontWeight.bold, fontSize: figmaFontsize(19));
 
 TextStyle plusBudgetPage = GoogleFonts.poppins(
-    fontWeight: FontWeight.bold,
+    fontWeight: FontWeight.w600,
     fontSize: figmaFontsize(15),
     color: fourthColor);

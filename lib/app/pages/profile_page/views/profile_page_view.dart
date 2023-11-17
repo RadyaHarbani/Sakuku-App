@@ -1,4 +1,7 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:sakuku_app/app/pages/profile_page/controllers/profile_page_controller.dart';
 import 'package:sakuku_app/app/pages/profile_page/views/components/informasi_pengaturan_component.dart';
 import 'package:sakuku_app/app/pages/profile_page/views/components/khusus_buat_kamu_component.dart';
 import 'package:sakuku_app/app/pages/profile_page/views/components/kontak_bantuan_component.dart';
@@ -7,8 +10,9 @@ import 'package:sakuku_app/helpers/themes/default_themes.dart';
 import 'package:sakuku_app/helpers/themes/image_themes.dart';
 import 'package:sakuku_app/helpers/themes/text_style_themes/profile_page_themes.dart';
 
-class ProfilePageView extends StatelessWidget {
-  const ProfilePageView({super.key});
+class ProfilePageView extends GetView<ProfilePageController> {
+  final controllerProfile = Get.put(ProfilePageController());
+  ProfilePageView({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -38,12 +42,11 @@ class ProfilePageView extends StatelessWidget {
                       ),
                       child: Row(
                         children: [
-                          Container(
-                            width: sizeWidth * 0.2,
-                            height: sizeHeight * 0.15,
-                            decoration: BoxDecoration(
-                              color: backgroundColor,
-                              shape: BoxShape.circle,
+                          CircleAvatar(
+                            radius: 28,
+                            backgroundImage: NetworkImage(
+                              FirebaseAuth.instance.currentUser?.photoURL ??
+                                  'https://www.pngitem.com/pimgs/m/146-1468479_my-profile-icon-blank-profile-picture-circle-hd.png',
                             ),
                           ),
                           SizedBox(
@@ -53,14 +56,33 @@ class ProfilePageView extends StatelessWidget {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              Text(
-                                "Radya Harbani",
-                                style: userNameProfile,
-                              ),
-                              Text(
-                                "radya.i4m@gmail.com",
-                                style: userEmailProfile,
-                              ),
+                              FirebaseAuth.instance.currentUser?.providerData
+                                          .first.providerId ==
+                                      'google.com'
+                                  ? Text(
+                                      FirebaseAuth
+                                              .instance.currentUser?.displayName
+                                              .toString() ??
+                                          '',
+                                      style: userNameProfile,
+                                    )
+                                  : Text(
+                                      controller.userFullName.value.toString(),
+                                      style: userNameProfile,
+                                    ),
+                              FirebaseAuth.instance.currentUser?.providerData
+                                          .first.providerId ==
+                                      'google.com'
+                                  ? Text(
+                                      FirebaseAuth.instance.currentUser?.email
+                                              .toString() ??
+                                          '',
+                                      style: userEmailProfile,
+                                    )
+                                  : Text(
+                                      controller.userEmail.value.toString(),
+                                      style: userEmailProfile,
+                                    ),
                             ],
                           ),
                         ],
@@ -72,7 +94,6 @@ class ProfilePageView extends StatelessWidget {
                   ),
                   Container(
                     width: sizeWidth,
-                    height: sizeHeight * 1.5455,
                     color: backgroundColor,
                     child: Column(
                       children: [
@@ -116,7 +137,9 @@ class ProfilePageView extends StatelessWidget {
                             borderRadius: BorderRadius.circular(15),
                           ),
                         ),
-                        onPressed: () {},
+                        onPressed: () {
+                          controllerProfile.signOut();
+                        },
                         child: Text(
                           "Keluar Akun",
                           style: buttonLogoutProfile,

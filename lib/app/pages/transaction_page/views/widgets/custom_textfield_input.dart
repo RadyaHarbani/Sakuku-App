@@ -73,14 +73,14 @@ class CustomTextfieldInput extends StatelessWidget {
             width: 1.5,
           ),
         ),
-        hintText: "0",
+        hintText: "Rp. 0",
         hintStyle: hintCustomTextfield,
       ),
       style: styleInputTextfield,
-      // inputFormatters: [
-      //   FilteringTextInputFormatter.digitsOnly,
-      //   CurrencyFormatTextfield(),
-      // ],
+      inputFormatters: [
+        FilteringTextInputFormatter.digitsOnly,
+        CurrencyFormatTextfield(),
+      ],
       controller: controllerNominal,
       cursorColor: backgroundColor,
     );

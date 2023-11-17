@@ -54,6 +54,9 @@ class LoginPageView extends GetView<LoginPageController> {
                 "Masuk Untuk Melanjutkan",
                 style: subtitleLoginRegisterPage,
               ),
+              SizedBox(
+                height: sizeHeight * 0.03,
+              ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [

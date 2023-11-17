@@ -38,7 +38,6 @@ class AppPages {
 
   static const INITIAL = Routes.LANDING_PAGE;
 
-
   static final routes = [
     GetPage(
       name: _Paths.SPLASH_SCREEN,
