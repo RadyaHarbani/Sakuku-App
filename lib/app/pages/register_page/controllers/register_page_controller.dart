@@ -18,8 +18,6 @@ class RegisterPageController extends GetxController {
   RxBool isUsernameGoogleSignUp = false.obs;
   RxBool isUsernameEmailSignUp = false.obs;
 
-
-  
   bool isValidEmail(String email) {
     final emailRegex = RegExp(r'^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$');
     return emailRegex.hasMatch(email);
@@ -83,11 +81,14 @@ class RegisterPageController extends GetxController {
     FirebaseFirestore firestore = FirebaseFirestore.instance;
     try {
       final user = FirebaseAuth.instance.currentUser;
-      DocumentReference docRef = await firestore.collection('users').add({
+      await firestore.collection('users').add({
         'id': user?.uid,
         'username': cUsernameSignUp!.text,
         'email': cEmailSignUp!.text,
         'password': cPasswordSignUp!.text,
+        'balance': 0,
+        'last_income': 0,
+        'last_expense': 0,
       });
     } catch (e) {
       print('Error adding data to Firestore: $e');

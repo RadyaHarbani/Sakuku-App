@@ -165,29 +165,15 @@ class HomePageView extends GetView<HomePageController> {
                                 children: [
                                   Text("Rp ", style: rpHomePage(false, false)),
                                   StreamBuilder<QuerySnapshot>(
-                                    stream: controller.streamPemasukan,
-                                    builder: (context, snapshot) {
-                                      if (snapshot.hasData) {
-                                        List<QueryDocumentSnapshot> documents =
-                                            snapshot.data!.docs;
-
-                                        // Sort transactions by timestamp in descending order
-                                        documents.sort((a, b) {
-                                          Timestamp timestampA = a['timestamp'];
-                                          Timestamp timestampB = b['timestamp'];
-                                          return timestampB
-                                              .compareTo(timestampA);
-                                        });
-
-                                        if (documents.isNotEmpty) {
+                                      stream: controller.streamBalance,
+                                      builder: (context, snapshot) {
+                                        if (snapshot.hasData) {
                                           Map<String, dynamic> documentFields =
-                                              documents.first.data()
+                                              snapshot.data!.docs[0].data()
                                                   as Map<String, dynamic>;
                                           double value = double.parse(
-                                            documentFields[
-                                                    'nominalTransaksiPemasukan']
-                                                .toString(),
-                                          );
+                                              documentFields['last_income']
+                                                  .toString());
                                           final formatter =
                                               NumberFormat("#,##0", "id_ID");
                                           return Text(
@@ -196,18 +182,11 @@ class HomePageView extends GetView<HomePageController> {
                                           );
                                         } else {
                                           return Text(
-                                            '0',
+                                            'Loading...',
                                             style: moneyHomePage(false),
                                           );
                                         }
-                                      } else {
-                                        return Text(
-                                          '0',
-                                          style: moneyHomePage(false),
-                                        );
-                                      }
-                                    },
-                                  )
+                                      }),
                                 ],
                               ),
                             ],
@@ -247,44 +226,24 @@ class HomePageView extends GetView<HomePageController> {
                                 children: [
                                   Text("Rp ", style: rpHomePage(false, false)),
                                   StreamBuilder<QuerySnapshot>(
-                                    stream: controller.streamPengeluaran,
+                                    stream: controller.streamBalance,
                                     builder: (context, snapshot) {
                                       if (snapshot.hasData) {
-                                        List<QueryDocumentSnapshot> documents =
-                                            snapshot.data!.docs;
-
-                                        // Sort transactions by timestamp in descending order
-                                        documents.sort((a, b) {
-                                          Timestamp timestampA = a['timestamp'];
-                                          Timestamp timestampB = b['timestamp'];
-                                          return timestampB
-                                              .compareTo(timestampA);
-                                        });
-
-                                        if (documents.isNotEmpty) {
-                                          Map<String, dynamic> documentFields =
-                                              documents.first.data()
-                                                  as Map<String, dynamic>;
-                                          double value = double.parse(
-                                            documentFields[
-                                                    'nominalTransaksiPengeluaran']
-                                                .toString(),
-                                          );
-                                          final formatter =
-                                              NumberFormat("#,##0", "id_ID");
-                                          return Text(
-                                            formatter.format(value).toString(),
-                                            style: moneyHomePage(false),
-                                          );
-                                        } else {
-                                          return Text(
-                                            '0',
-                                            style: moneyHomePage(false),
-                                          );
-                                        }
+                                        Map<String, dynamic> documentFields =
+                                            snapshot.data!.docs[0].data()
+                                                as Map<String, dynamic>;
+                                        double value = double.parse(
+                                            documentFields['last_expense']
+                                                .toString());
+                                        final formatter =
+                                            NumberFormat("#,##0", "id_ID");
+                                        return Text(
+                                          formatter.format(value).toString(),
+                                          style: moneyHomePage(false),
+                                        );
                                       } else {
                                         return Text(
-                                          '0',
+                                          'Loading...',
                                           style: moneyHomePage(false),
                                         );
                                       }

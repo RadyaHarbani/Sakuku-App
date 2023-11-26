@@ -21,24 +21,10 @@ class HomePageController extends GetxController {
   // Stream<String> get balanceStream => balanceController.stream;
   final Stream<QuerySnapshot> _streamBalance = FirebaseFirestore.instance
       .collection('users')
-      .where("email", isEqualTo: 'radya@gmail.com')
+      .where("email", isEqualTo: FirebaseAuth.instance.currentUser!.email)
       .limit(1)
       .snapshots();
   Stream<QuerySnapshot> get streamBalance => _streamBalance;
-  final Stream<QuerySnapshot> _streamPemasukan = FirebaseFirestore.instance
-      .collection('transaction')
-      .where("nominalTransaksiPemasukan")
-      .orderBy("timestamp", descending: true)
-      .limit(1)
-      .snapshots();
-  Stream<QuerySnapshot> get streamPemasukan => _streamPemasukan;
-  final Stream<QuerySnapshot> _streamPengeluaran = FirebaseFirestore.instance
-      .collection('transaction')
-      .where("nominalTransaksiPengeluaran")
-      .orderBy("timestamp", descending: true)
-      .limit(1)
-      .snapshots();
-  Stream<QuerySnapshot> get streamPengeluaran => _streamPengeluaran;
   final currentUser = FirebaseAuth.instance.currentUser;
   bool isScrollingUp = false;
   double previousOffset = 0.0;
